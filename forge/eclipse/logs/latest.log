@@ -1,0 +1,44 @@
+[22:48:28] [Client thread/INFO]: Setting user: Player311
+[22:48:30] [Client thread/INFO]: LWJGL Version: 2.9.1
+[22:48:33] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Tutorial Mod
+[22:48:34] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[22:48:34] [Thread-9/INFO]: Initializing LWJGL OpenAL
+[22:48:34] [Thread-9/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[22:48:34] [Thread-9/INFO]: OpenAL initialized.
+[22:48:35] [Sound Library Loader/INFO]: Sound engine started
+[22:48:45] [Client thread/INFO]: Created: 512x512 textures-atlas
+[22:48:45] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Tutorial Mod
+[22:48:45] [Client thread/INFO]: SoundSystem shutting down...
+[22:48:46] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
+[22:48:46] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[22:48:46] [Thread-11/INFO]: Initializing LWJGL OpenAL
+[22:48:46] [Thread-11/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[22:48:46] [Thread-11/INFO]: OpenAL initialized.
+[22:48:46] [Sound Library Loader/INFO]: Sound engine started
+[22:48:47] [Client thread/INFO]: Created: 512x512 textures-atlas
+[22:48:51] [Server thread/INFO]: Starting integrated minecraft server version 1.8
+[22:48:51] [Server thread/INFO]: Generating keypair
+[22:48:51] [Server thread/INFO]: Preparing start region for level 0
+[22:48:52] [Server thread/INFO]: Changing view distance to 12, from 10
+[22:48:54] [Server thread/INFO]: Player311[local:E:d25c4cb6] logged in with entity id 362 at (264.81548717358584, 63.0, 142.77884300801406)
+[22:48:54] [Server thread/INFO]: Player311 joined the game
+[22:49:21] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 3887ms behind, skipping 77 tick(s)
+[22:50:07] [Server thread/INFO]: Player311 has just earned the achievement [Taking Inventory]
+[22:50:07] [Client thread/INFO]: [CHAT] Player311 has just earned the achievement [Taking Inventory]
+[22:50:29] [Server thread/INFO]: Saving and pausing game...
+[22:50:29] [Server thread/INFO]: Saving chunks for level 'Test World'/Overworld
+[22:50:29] [Server thread/INFO]: Saving chunks for level 'Test World'/Nether
+[22:50:29] [Server thread/INFO]: Saving chunks for level 'Test World'/The End
+[22:51:36] [Server thread/INFO]: Saving and pausing game...
+[22:51:36] [Server thread/INFO]: Saving chunks for level 'Test World'/Overworld
+[22:51:36] [Server thread/INFO]: Saving chunks for level 'Test World'/Nether
+[22:51:36] [Server thread/INFO]: Saving chunks for level 'Test World'/The End
+[23:17:04] [Client thread/INFO]: Stopping!
+[23:17:04] [Client thread/INFO]: SoundSystem shutting down...
+[23:17:04] [Server thread/INFO]: Stopping server
+[23:17:04] [Server thread/INFO]: Saving players
+[23:17:04] [Server thread/INFO]: Saving worlds
+[23:17:04] [Server thread/INFO]: Saving chunks for level 'Test World'/Overworld
+[23:17:04] [Server thread/INFO]: Saving chunks for level 'Test World'/Nether
+[23:17:04] [Server thread/INFO]: Saving chunks for level 'Test World'/The End
+[23:17:04] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
