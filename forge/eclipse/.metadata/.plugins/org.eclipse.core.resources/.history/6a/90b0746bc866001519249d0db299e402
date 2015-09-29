@@ -1,0 +1,70 @@
+package pregnantboy.tutorial.tasks;
+
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.init.Blocks;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.Vec3;
+
+public class BuildFarm {
+
+	private EntityMob mob;
+	private double x, y, z;
+	private int length, width;
+	boolean isBuilding;
+	boolean finishedBuilding;
+
+	public BuildFarm(EntityMob mob, int length, int width) {
+		this.mob = mob;
+		this.length = length;
+		this.width = width;
+		isBuilding = false;
+		finishedBuilding = false;
+	}
+
+	public void init() {
+
+		x = mob.posX + 3;
+		y = mob.posY;
+		z = mob.posZ + 3;
+
+		double x = xPosition + 3;
+		double y = yPosition;
+		double z = zPosition + 3;
+
+		for (int p = 0; p < 7; p++) {
+
+			for (int i = 0; i < 12; i++) {
+				if (p != 3 && p != 0 && p != 6 && i != 0 && i != 11) {
+					BlockPos block = new BlockPos(x, y - 1, z);
+					IBlockState iblockstate = Blocks.farmland.getDefaultState();
+					world.setBlockState(block, iblockstate);
+					x = x + 1;
+					System.out.println(x);
+				} else if (p == 3 && i != 0 && i != 11) {
+					BlockPos block = new BlockPos(x, y - 1, z);
+					IBlockState iblockstate = Blocks.water.getDefaultState();
+					world.setBlockState(block, iblockstate);
+					x = x + 1;
+					System.out.println(x);
+				} else if (p == 3 && i == 0 || p == 3 && i == 11) {
+					BlockPos block = new BlockPos(x, y, z);
+					IBlockState iblockstate = Blocks.acacia_fence_gate.getStateFromMeta(3);
+					world.setBlockState(block, iblockstate);
+					x = x + 1;
+					System.out.println(x);
+				} else {
+					BlockPos block = new BlockPos(x, y, z);
+					IBlockState iblockstate = Blocks.acacia_fence.getDefaultState();
+					world.setBlockState(block, iblockstate);
+					x = x + 1;
+					System.out.println(x);
+				}
+			}
+			x = xPosition + 1;
+			z = z + 1;
+		}
+
+	}
+
+}

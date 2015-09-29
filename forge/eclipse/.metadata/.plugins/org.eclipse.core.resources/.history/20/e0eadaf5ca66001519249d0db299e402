@@ -1,0 +1,21 @@
+package pregnantboy.tutorial.tasks;
+
+import java.util.Queue;
+
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.Vec3;
+import net.minecraft.world.World;
+
+public abstract class BuildGeneric {
+	
+	private double x, y, z;
+	private World world;
+	private Queue<BlockPos> blockPosQueue;
+	private Queue<IBlockState> blocksQueue;
+	private void enqueue(BlockPos pos, IBlockState block) {
+		blockPosQueue.add(pos);
+		blocksQueue.add(block);
+	}	
+}

@@ -1,0 +1,55 @@
+package pregnantboy.tutorial.tasks;
+
+import java.util.Queue;
+
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.init.Blocks;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.Vec3;
+import net.minecraft.world.World;
+
+public class BuildFarm {
+
+	private EntityMob mob;
+	private double x, y, z;
+	private int length, width;
+	private boolean hasBuildingInit, isBuildingDone;
+	private Queue<BlockPos> blockPosQueue;
+	private Queue<IBlockState> blocksQueue;
+	private World world;
+	private Vec3 buildingSpot;
+
+
+	IBlockState farmBlock = Blocks.farmland.getDefaultState();
+	IBlockState waterBlock = Blocks.water.getDefaultState();
+	IBlockState acaciaFenceGateBlock = Blocks.acacia_fence_gate.getStateFromMeta(3);
+	IBlockState acaciaFenceBlock = Blocks.acacia_fence.getDefaultState();
+	IBlockState currBlock;
+	
+	public BuildFarm(EntityMob mob, int length, int width) {
+		this.mob = mob;
+		this.length = length;
+		this.width = width;
+		hasBuildingInit = false;
+		isBuildingDone = false;
+		world = mob.getEntityWorld();
+	}
+
+	public void init() {
+
+		buildingSpot = mob.getPositionVector();
+		x = mob.posX + 3;
+		y = mob.posY;
+		z = mob.posZ + 3;
+
+		for (int w = 0; w < width; w++) {
+			for (int l = 0; l < length; l++) {
+				BlockPos pos = new BlockPos(x + w, y - 1, z + l);
+				currBlock = farmBlock;
+				enqueue(pos, currBlock);
+			}
+		}
+	}
+	
+}

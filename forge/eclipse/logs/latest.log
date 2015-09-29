@@ -1,28 +1,28 @@
-[03:29:17] [Client thread/INFO]: Setting user: Player793
-[03:29:20] [Client thread/INFO]: LWJGL Version: 2.9.1
-[03:29:22] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Tutorial Mod
-[03:29:23] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[03:29:23] [Thread-9/INFO]: Initializing LWJGL OpenAL
-[03:29:23] [Thread-9/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[03:29:23] [Thread-9/INFO]: OpenAL initialized.
-[03:29:23] [Sound Library Loader/INFO]: Sound engine started
-[03:29:33] [Client thread/INFO]: Created: 512x512 textures-atlas
-[03:29:34] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Tutorial Mod
-[03:29:34] [Client thread/INFO]: SoundSystem shutting down...
-[03:29:34] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
-[03:29:34] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[03:29:34] [Thread-11/INFO]: Initializing LWJGL OpenAL
-[03:29:34] [Thread-11/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[03:29:34] [Thread-11/INFO]: OpenAL initialized.
-[03:29:35] [Sound Library Loader/INFO]: Sound engine started
-[03:29:36] [Client thread/INFO]: Created: 512x512 textures-atlas
-[03:29:41] [Server thread/INFO]: Starting integrated minecraft server version 1.8
-[03:29:41] [Server thread/INFO]: Generating keypair
-[03:29:41] [Server thread/INFO]: Preparing start region for level 0
-[03:29:42] [Server thread/INFO]: Changing view distance to 12, from 10
-[03:29:44] [Server thread/INFO]: Player793[local:E:b1fde938] logged in with entity id 250 at (-524.6750128641763, 78.0, 573.2978887420676)
-[03:29:44] [Server thread/INFO]: Player793 joined the game
-[03:29:45] [pool-2-thread-1/WARN]: Couldn't look up profile properties for com.mojang.authlib.GameProfile@2982f1eb[id=f594da2a-3dc9-39c1-9261-0e67d02259fd,name=Player793,properties={},legacy=false]
+[01:41:04] [Client thread/INFO]: Setting user: Player883
+[01:41:07] [Client thread/INFO]: LWJGL Version: 2.9.1
+[01:41:10] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Tutorial Mod
+[01:41:10] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[01:41:11] [Thread-9/INFO]: Initializing LWJGL OpenAL
+[01:41:11] [Thread-9/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[01:41:11] [Thread-9/INFO]: OpenAL initialized.
+[01:41:11] [Sound Library Loader/INFO]: Sound engine started
+[01:41:13] [Client thread/INFO]: Created: 512x512 textures-atlas
+[01:41:14] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Tutorial Mod
+[01:41:14] [Client thread/INFO]: SoundSystem shutting down...
+[01:41:14] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
+[01:41:14] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[01:41:14] [Thread-11/INFO]: Initializing LWJGL OpenAL
+[01:41:14] [Thread-11/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[01:41:14] [Thread-11/INFO]: OpenAL initialized.
+[01:41:15] [Sound Library Loader/INFO]: Sound engine started
+[01:41:16] [Client thread/INFO]: Created: 512x512 textures-atlas
+[01:41:19] [Server thread/INFO]: Starting integrated minecraft server version 1.8
+[01:41:19] [Server thread/INFO]: Generating keypair
+[01:41:19] [Server thread/INFO]: Preparing start region for level 0
+[01:41:21] [Server thread/INFO]: Changing view distance to 7, from 10
+[01:41:22] [Server thread/INFO]: Player883[local:E:3c923fe3] logged in with entity id 200 at (-250.1175228514188, 72.62523339979893, 1026.4156344311928)
+[01:41:22] [Server thread/INFO]: Player883 joined the game
+[01:41:23] [pool-2-thread-1/WARN]: Couldn't look up profile properties for com.mojang.authlib.GameProfile@2982f1eb[id=8e20979a-9b41-35b8-8d36-ad77135df934,name=Player883,properties={},legacy=false]
 com.mojang.authlib.exceptions.AuthenticationException: The client has sent too many requests within a certain amount of time
 	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.makeRequest(YggdrasilAuthenticationService.java:65) ~[YggdrasilAuthenticationService.class:?]
 	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService.fillGameProfile(YggdrasilMinecraftSessionService.java:158) [YggdrasilMinecraftSessionService.class:?]
@@ -43,71 +43,21 @@ com.mojang.authlib.exceptions.AuthenticationException: The client has sent too m
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_60]
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_60]
 	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_60]
-[03:30:00] [Server thread/INFO]: Player793 has just earned the achievement [Taking Inventory]
-[03:30:00] [Client thread/INFO]: [CHAT] Player793 has just earned the achievement [Taking Inventory]
-[03:32:20] [Server thread/INFO]: [Player793: Set the time to 0]
-[03:32:20] [Client thread/INFO]: [CHAT] Set the time to 0
-[03:32:21] [Server thread/INFO]: Saving and pausing game...
-[03:32:21] [Server thread/INFO]: Saving chunks for level 'Test World'/Overworld
-[03:32:21] [Server thread/INFO]: Saving chunks for level 'Test World'/Nether
-[03:32:21] [Server thread/INFO]: Saving chunks for level 'Test World'/The End
-[03:33:56] [Server thread/INFO]: Saving and pausing game...
-[03:33:56] [Server thread/INFO]: Saving chunks for level 'Test World'/Overworld
-[03:33:56] [Server thread/INFO]: Saving chunks for level 'Test World'/Nether
-[03:33:56] [Server thread/INFO]: Saving chunks for level 'Test World'/The End
-[03:36:57] [Server thread/INFO]: Saving and pausing game...
-[03:36:57] [Server thread/INFO]: Saving chunks for level 'Test World'/Overworld
-[03:36:57] [Server thread/INFO]: Saving chunks for level 'Test World'/Nether
-[03:36:57] [Server thread/INFO]: Saving chunks for level 'Test World'/The End
-[03:37:00] [Server thread/INFO]: Saving and pausing game...
-[03:37:00] [Server thread/INFO]: Saving chunks for level 'Test World'/Overworld
-[03:37:00] [Server thread/INFO]: Saving chunks for level 'Test World'/Nether
-[03:37:00] [Server thread/INFO]: Saving chunks for level 'Test World'/The End
-[03:39:52] [Server thread/INFO]: Saving and pausing game...
-[03:39:52] [Server thread/INFO]: Saving chunks for level 'Test World'/Overworld
-[03:39:52] [Server thread/INFO]: Saving chunks for level 'Test World'/Nether
-[03:39:52] [Server thread/INFO]: Saving chunks for level 'Test World'/The End
-[03:42:24] [Server thread/INFO]: Saving and pausing game...
-[03:42:24] [Server thread/INFO]: Saving chunks for level 'Test World'/Overworld
-[03:42:24] [Server thread/INFO]: Saving chunks for level 'Test World'/Nether
-[03:42:24] [Server thread/INFO]: Saving chunks for level 'Test World'/The End
-[03:44:48] [Server thread/INFO]: Saving and pausing game...
-[03:44:48] [Server thread/INFO]: Saving chunks for level 'Test World'/Overworld
-[03:44:48] [Server thread/INFO]: Saving chunks for level 'Test World'/Nether
-[03:44:48] [Server thread/INFO]: Saving chunks for level 'Test World'/The End
-[03:45:19] [Server thread/INFO]: Saving and pausing game...
-[03:45:19] [Server thread/INFO]: Saving chunks for level 'Test World'/Overworld
-[03:45:19] [Server thread/INFO]: Saving chunks for level 'Test World'/Nether
-[03:45:19] [Server thread/INFO]: Saving chunks for level 'Test World'/The End
-[03:47:52] [Server thread/INFO]: Saving and pausing game...
-[03:47:52] [Server thread/INFO]: Saving chunks for level 'Test World'/Overworld
-[03:47:52] [Server thread/INFO]: Saving chunks for level 'Test World'/Nether
-[03:47:52] [Server thread/INFO]: Saving chunks for level 'Test World'/The End
-[03:50:33] [Server thread/INFO]: Saving and pausing game...
-[03:50:33] [Server thread/INFO]: Saving chunks for level 'Test World'/Overworld
-[03:50:33] [Server thread/INFO]: Saving chunks for level 'Test World'/Nether
-[03:50:33] [Server thread/INFO]: Saving chunks for level 'Test World'/The End
-[03:54:45] [Server thread/INFO]: [Player793: Set the time to 0]
-[03:54:45] [Client thread/INFO]: [CHAT] Set the time to 0
-[03:54:46] [Server thread/INFO]: Saving and pausing game...
-[03:54:46] [Server thread/INFO]: Saving chunks for level 'Test World'/Overworld
-[03:54:46] [Server thread/INFO]: Saving chunks for level 'Test World'/Nether
-[03:54:46] [Server thread/INFO]: Saving chunks for level 'Test World'/The End
-[03:54:53] [Client thread/INFO]: [CHAT] Unknown command. Try /help for a list of commands
-[03:54:58] [Client thread/INFO]: [CHAT] Usage: /weather <clear|rain|thunder> [duration in seconds]
-[03:55:03] [Server thread/INFO]: [Player793: Changing to rain and thunder]
-[03:55:03] [Client thread/INFO]: [CHAT] Changing to rain and thunder
-[03:55:11] [Server thread/INFO]: [Player793: Changing to clear weather]
-[03:55:11] [Client thread/INFO]: [CHAT] Changing to clear weather
-[03:55:14] [Server thread/INFO]: Saving and pausing game...
-[03:55:14] [Server thread/INFO]: Saving chunks for level 'Test World'/Overworld
-[03:55:14] [Server thread/INFO]: Saving chunks for level 'Test World'/Nether
-[03:55:14] [Server thread/INFO]: Saving chunks for level 'Test World'/The End
-[03:58:02] [Server thread/INFO]: Saving and pausing game...
-[03:58:02] [Server thread/INFO]: Saving chunks for level 'Test World'/Overworld
-[03:58:02] [Server thread/INFO]: Saving chunks for level 'Test World'/Nether
-[03:58:02] [Server thread/INFO]: Saving chunks for level 'Test World'/The End
-[04:01:32] [Server thread/INFO]: Saving and pausing game...
-[04:01:32] [Server thread/INFO]: Saving chunks for level 'Test World'/Overworld
-[04:01:32] [Server thread/INFO]: Saving chunks for level 'Test World'/Nether
-[04:01:32] [Server thread/INFO]: Saving chunks for level 'Test World'/The End
+[01:42:04] [Server thread/INFO]: Player883 has just earned the achievement [Taking Inventory]
+[01:42:04] [Client thread/INFO]: [CHAT] Player883 has just earned the achievement [Taking Inventory]
+[01:43:46] [Server thread/INFO]: Saving and pausing game...
+[01:43:46] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[01:43:46] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[01:43:46] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[01:44:52] [Server thread/INFO]: Saving and pausing game...
+[01:44:52] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[01:44:52] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[01:44:52] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[01:49:01] [Server thread/INFO]: [Player883: Set the time to 0]
+[01:49:01] [Client thread/INFO]: [CHAT] Set the time to 0
+[01:50:59] [Client thread/INFO]: [CHAT] Unknown command. Try /help for a list of commands
+[01:51:03] [Client thread/INFO]: [CHAT] Unknown command. Try /help for a list of commands
+[01:51:19] [Server thread/INFO]: Saving and pausing game...
+[01:51:19] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[01:51:20] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[01:51:20] [Server thread/INFO]: Saving chunks for level 'New World'/The End
