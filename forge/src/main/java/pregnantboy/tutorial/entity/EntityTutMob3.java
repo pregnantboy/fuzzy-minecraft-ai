@@ -30,79 +30,67 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import pregnantboy.tutorial.Reference;
-import pregnantboy.tutorial.tasks.BuildFarm;
-import pregnantboy.tutorial.tasks.BuildHouse;
 import pregnantboy.tutorial.tasks.HarvestCrops;
+import pregnantboy.tutorial.tasks.SowSeeds;
 
-public class EntityTutMob2 extends EntityMob {
+public class EntityTutMob3 extends EntityMob {
 
 	private EntityAIAttackOnCollide meleeAttack = new EntityAIAttackOnCollide(this, EntityTutMob.class, 1.5D, false);
-	BuildHouse buildHouse;
-	BuildFarm buildFarm;
-	boolean isBuildingHouse, isBuildingFarm;
+
+	private SowSeeds sower;
+	private boolean startPlanting;
 	private int lastArrowCount;
-	
-	public EntityTutMob2(World worldIn) {
+
+	public EntityTutMob3(World worldIn) {
 		super(worldIn);
 		// TODO Auto-generated constructor stub
-		
-		//this.targetTasks.addTask(0, new EntityAINearestAttackableTarget(this, EntityTutMob.class, false));
-		
-		//this.tasks.addTask(0,  meleeAttack);
-		
-		this.tasks.addTask(0, new HarvestCrops(this, 1.0D));
-		this.setCurrentItemOrArmor(0, new ItemStack(Items.iron_hoe));
 
-		this.setCurrentItemOrArmor(1, new ItemStack(Items.diamond_boots));
-		this.setCurrentItemOrArmor(2, new ItemStack(Items.diamond_leggings));
-		this.setCurrentItemOrArmor(4, new ItemStack(Items.diamond_helmet));
-		this.setCurrentItemOrArmor(3, new ItemStack(Items.diamond_chestplate));
-		
+		// this.targetTasks.addTask(0, new EntityAINearestAttackableTarget(this,
+		// EntityTutMob.class, false));
+
+		// this.tasks.addTask(0, meleeAttack);
+
+		this.tasks.addTask(1, new EntityAISwimming(this));
+
+		sower = new SowSeeds(this, 10);
+		startPlanting = false;
+		this.setCurrentItemOrArmor(0, new ItemStack(Items.iron_hoe));
+		//
+		// this.setCurrentItemOrArmor(1, new ItemStack(Items.diamond_boots));
+		// this.setCurrentItemOrArmor(2, new ItemStack(Items.diamond_leggings));
+		// this.setCurrentItemOrArmor(4, new ItemStack(Items.diamond_helmet));
+		// this.setCurrentItemOrArmor(3, new
+		// ItemStack(Items.diamond_chestplate));
+		//
 		this.setSize(0.9F, 2.0F);
 		this.setCanPickUpLoot(true);
-		isBuildingHouse = false;
-		isBuildingFarm = false;
 	}
-	
+
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)
-				.setBaseValue(20);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed)
-				.setBaseValue(0.25);
-		this.getEntityAttribute(SharedMonsterAttributes.knockbackResistance)
-				.setBaseValue(0.2);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage)
-				.setBaseValue(2);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25);
+		this.getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setBaseValue(0.2);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(2);
 
 	}
+
 	public boolean isAIEnabled() {
 		return true;
 	}
-	
-	public void onUpdate() {
+
+	public void onUpdate()
+	{
 		super.onUpdate();
 		if (this.getArrowCountInEntity() > lastArrowCount) {
-			if (!isBuildingHouse) {
-				buildHouse = new BuildHouse(this, 10, 10, 10);
-				isBuildingHouse = true;
-				buildHouse.init();
+			if (!startPlanting) {
+				startPlanting = true;
 			}
-		
 		}
-		if (isBuildingFarm) {
-			isBuildingFarm = !buildFarm.attemptBuildBlock(1);
-		} else if (isBuildingHouse) {
-			isBuildingHouse = !buildHouse.attemptBuildBlock(10);
+		if (startPlanting) {
+			sower.nextStep();
 		}
 		lastArrowCount = this.getArrowCountInEntity();
 	}
 	
-	public void someLogic() {
-		if (this.getHealth() < (this.getMaxHealth()/2)) {
-			
-		}
-	}
-	
-
 }

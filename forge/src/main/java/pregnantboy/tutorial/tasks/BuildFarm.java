@@ -17,10 +17,12 @@ public class BuildFarm extends BuildGeneric {
 	private int length, width;
 
 	IBlockState farmBlock = Blocks.farmland.getDefaultState();
+//	IBlockState waterBlock = Blocks.wheat.getDefaultState();
 	IBlockState waterBlock = Blocks.water.getDefaultState();
 	IBlockState acaciaFenceGateBlock = Blocks.acacia_fence_gate.getDefaultState();
 	IBlockState acaciaFenceBlock = Blocks.acacia_fence.getDefaultState();
 	IBlockState grassBlock = Blocks.grass.getDefaultState();
+//	IBlockState grassBlock = Blocks.wheat.getDefaultState();
 	IBlockState currBlock;
 
 	public BuildFarm(EntityMob mob, int length, int width) {
