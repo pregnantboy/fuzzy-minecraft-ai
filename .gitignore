@@ -1,1 +1,6 @@
-forge/eclipse/
+# ignore these
+forge/*
+
+# except source files and others
+!forge/src/*
+
