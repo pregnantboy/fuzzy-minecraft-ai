@@ -1,10 +1,10 @@
-package pregnantboy.tutorial.entity;
+package fuzzyMod.entity;
 
+import fuzzyMod.MainRegistry;
 import net.minecraft.entity.EntityList;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.ModClassLoader;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
-import pregnantboy.tutorial.MainRegistry;
 
 public class TestEntity {
 	public static void mainRegistry() {

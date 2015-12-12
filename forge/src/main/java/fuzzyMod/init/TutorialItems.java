@@ -1,10 +1,10 @@
-package pregnantboy.tutorial.init;
+package fuzzyMod.init;
 
+import fuzzyMod.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import pregnantboy.tutorial.Reference;
 
 public class TutorialItems {
 	

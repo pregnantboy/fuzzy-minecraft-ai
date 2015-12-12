@@ -1,5 +1,8 @@
-package pregnantboy.tutorial;
+package fuzzyMod;
 
+import fuzzyMod.entity.TestEntity;
+import fuzzyMod.init.TutorialItems;
+import fuzzyMod.proxy.ServerProxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -7,9 +10,6 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import pregnantboy.tutorial.entity.TestEntity;
-import pregnantboy.tutorial.init.TutorialItems;
-import pregnantboy.tutorial.proxy.ServerProxy;
 
 @Mod(modid=Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
 public class MainRegistry {

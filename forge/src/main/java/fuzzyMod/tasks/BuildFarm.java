@@ -1,4 +1,4 @@
-package pregnantboy.tutorial.tasks;
+package fuzzyMod.tasks;
 
 import java.util.LinkedList;
 import java.util.Queue;

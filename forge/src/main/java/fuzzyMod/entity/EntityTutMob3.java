@@ -1,7 +1,9 @@
-package pregnantboy.tutorial.entity;
+package fuzzyMod.entity;
 
 import com.mojang.authlib.GameProfile;
 
+import fuzzyMod.Reference;
+import fuzzyMod.tasks.SowSeeds;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -29,8 +31,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import pregnantboy.tutorial.Reference;
-import pregnantboy.tutorial.tasks.SowSeeds;
 
 public class EntityTutMob3 extends EntityMob {
 

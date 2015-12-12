@@ -1,8 +1,10 @@
-package pregnantboy.tutorial.entity;
+package fuzzyMod.entity;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 
+import fuzzyMod.tasks.BuildFarm;
+import fuzzyMod.tasks.BuildHouse;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -29,8 +31,6 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
-import pregnantboy.tutorial.tasks.BuildFarm;
-import pregnantboy.tutorial.tasks.BuildHouse;
 
 public class EntityTutMob extends EntityMob {
 

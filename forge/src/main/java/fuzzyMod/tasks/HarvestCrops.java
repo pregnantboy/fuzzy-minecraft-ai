@@ -1,4 +1,4 @@
-package pregnantboy.tutorial.tasks;
+package fuzzyMod.tasks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;

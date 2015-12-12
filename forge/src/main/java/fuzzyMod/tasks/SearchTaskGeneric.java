@@ -1,4 +1,4 @@
-package pregnantboy.tutorial.tasks;
+package fuzzyMod.tasks;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.monster.EntityMob;

@@ -1,18 +1,18 @@
-package pregnantboy.tutorial.proxy;
+package fuzzyMod.proxy;
 
+import fuzzyMod.entity.EntityTutMob;
+import fuzzyMod.entity.EntityTutMob2;
+import fuzzyMod.entity.EntityTutMob3;
+import fuzzyMod.entity.EntityTutMob4;
+import fuzzyMod.entity.TestEntity;
+import fuzzyMod.init.TutorialItems;
+import fuzzyMod.render.RenderTestEntity;
+import fuzzyMod.render.RenderTestEntity2;
+import fuzzyMod.render.RenderTestEntity3;
+import fuzzyMod.render.RenderTestEntity4;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
-import pregnantboy.tutorial.entity.EntityTutMob;
-import pregnantboy.tutorial.entity.EntityTutMob2;
-import pregnantboy.tutorial.entity.EntityTutMob3;
-import pregnantboy.tutorial.entity.EntityTutMob4;
-import pregnantboy.tutorial.entity.TestEntity;
-import pregnantboy.tutorial.init.TutorialItems;
-import pregnantboy.tutorial.render.RenderTestEntity;
-import pregnantboy.tutorial.render.RenderTestEntity2;
-import pregnantboy.tutorial.render.RenderTestEntity3;
-import pregnantboy.tutorial.render.RenderTestEntity4;
 
 public class ClientProxy extends ServerProxy {
 	@Override

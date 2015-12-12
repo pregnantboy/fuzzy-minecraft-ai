@@ -1,5 +1,7 @@
-package pregnantboy.tutorial.render;
+package fuzzyMod.render;
 
+import fuzzyMod.Reference;
+import fuzzyMod.entity.EntityTutMob;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderBiped;
@@ -13,8 +15,6 @@ import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import pregnantboy.tutorial.Reference;
-import pregnantboy.tutorial.entity.EntityTutMob;
 
 @SideOnly(Side.CLIENT)
 public class RenderTestEntity extends RenderBiped
