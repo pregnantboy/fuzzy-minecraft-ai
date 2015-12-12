@@ -2,5 +2,6 @@
 forge/*
 
 # except source files and others
+!forge/src
 !forge/src/*
 
