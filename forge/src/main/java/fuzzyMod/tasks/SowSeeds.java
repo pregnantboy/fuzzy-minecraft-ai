@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 
 public class SowSeeds extends SearchTaskGeneric{
-	private boolean sowingSeeds, tillingSoil;
+	private boolean sowingSeeds, tillingSoil; // actually means moving to block to sow/till
 	IBlockState wheatBlock = Blocks.wheat.getDefaultState();
 	IBlockState farmlandBlock = Blocks.farmland.getDefaultState();
 

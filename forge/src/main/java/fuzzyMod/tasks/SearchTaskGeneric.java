@@ -14,7 +14,7 @@ public abstract class SearchTaskGeneric {
 	protected EntityMob mob;
 	protected int range;
 	protected World world;
-	protected BlockPos nextBlock;
+	protected BlockPos nextBlock; // next block to move to
 	
 	public SearchTaskGeneric (EntityMob mob, int range) {
 		this.mob = mob;
@@ -30,7 +30,11 @@ public abstract class SearchTaskGeneric {
 		mob.getNavigator().tryMoveToXYZ(nextBlock.getX(), nextBlock.getY(), nextBlock.getZ(), 1.0D);
 	}	
 	
+	// most important step, determines the action in each tick
+	
 	public  abstract void nextStep();
+	
+	// mode number is for multiple isCorrectBlock checks
 	
 	protected BlockPos getNextBlock(int mode) {
 
