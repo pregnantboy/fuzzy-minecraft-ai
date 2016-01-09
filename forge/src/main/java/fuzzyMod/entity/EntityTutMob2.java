@@ -34,7 +34,8 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 public class EntityTutMob2 extends EntityMob {
-
+	// farm builder
+	
 	private EntityAIAttackOnCollide meleeAttack = new EntityAIAttackOnCollide(this, EntityTutMob.class, 1.5D, false);
 	BuildHouse buildHouse;
 	BuildFarm buildFarm;

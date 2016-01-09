@@ -33,7 +33,8 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
 public class EntityTutMob extends EntityMob {
-
+	// house builder
+	
 	private EntityAIBase runAway = new EntityAIAvoidEntity(this, EntityTutMob2.mobSelector, 5.0F, 2.0, 0.2);
 	BuildHouse buildHouse;
 	BuildFarm buildFarm;

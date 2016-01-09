@@ -65,6 +65,7 @@ public abstract class SearchTaskGeneric {
 		return null;
 	}
 	
+	// j is the vertical axis and is -1 of altitude of character.
 	protected abstract boolean isCorrectBlock(int i, int j, int k, int mode);
 	
 	protected void setCurrentItem (Item item) {

@@ -4,6 +4,7 @@ import com.mojang.authlib.GameProfile;
 
 import fuzzyMod.Reference;
 import fuzzyMod.tasks.HarvestCrops;
+import fuzzyMod.tasks.MineOres;
 import fuzzyMod.tasks.SowSeeds;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -34,11 +35,15 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 public class EntityTutMob4 extends EntityMob {
-
+	// harvester (but currently miner)
+	
 	private EntityAIAttackOnCollide meleeAttack = new EntityAIAttackOnCollide(this, EntityTutMob.class, 1.5D, false);
 
 	private HarvestCrops harvester;
 	private boolean startHarvest;
+	
+	private MineOres miner;
+	
 	private int lastArrowCount;
 
 	public EntityTutMob4(World worldIn) {
@@ -50,6 +55,9 @@ public class EntityTutMob4 extends EntityMob {
 		
 		harvester = new HarvestCrops(this, 10);
 		startHarvest = false;
+		
+		miner = new MineOres(this,10);
+		
 		this.setCurrentItemOrArmor(0, new ItemStack(Items.wooden_hoe));
 		this.setCurrentItemOrArmor(1, new ItemStack(Items.leather_boots));
 		this.setCurrentItemOrArmor(2, new ItemStack(Items.leather_leggings));
@@ -83,6 +91,9 @@ public class EntityTutMob4 extends EntityMob {
 		if (startHarvest) {
 			harvester.nextStep();
 		}
+		
+		miner.nextStep();
+		
 		lastArrowCount = this.getArrowCountInEntity();
 	}
 	
