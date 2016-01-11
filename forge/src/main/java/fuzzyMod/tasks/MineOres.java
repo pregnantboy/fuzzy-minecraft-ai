@@ -34,6 +34,8 @@ public class MineOres extends SearchTaskGeneric {
 		Block currBlock = currBlockState.getBlock();
 		if (currBlock instanceof BlockOre) {
 			isMiningOre = true;
+			System.out.println("moving to ore");
+			setCurrentItem(Items.diamond_pickaxe);
 			return true;
 		} 
 		return false;
@@ -43,6 +45,7 @@ public class MineOres extends SearchTaskGeneric {
 		// probably set the number of ticks equal to the block hardness
 		mob.swingItem();
 		world.destroyBlock(nextBlock, true);
+		setCurrentItem(Items.wooden_pickaxe);
 		isMiningOre= false;
 	}
 	

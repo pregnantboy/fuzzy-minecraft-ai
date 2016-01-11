@@ -23,7 +23,8 @@ public abstract class SearchTaskGeneric {
 	}
 	protected boolean reachedBlock() {
 		Vec3 destination = new Vec3(nextBlock.getX(), nextBlock.getY(), nextBlock.getZ());
-		return mob.getPositionVector().distanceTo(destination) < 2.0;
+		System.out.println("destination" + mob.getPositionVector().distanceTo(destination));
+		return mob.getPositionVector().distanceTo(destination) < 3.0;
 	}
 
 	protected void moveToBlock() {
