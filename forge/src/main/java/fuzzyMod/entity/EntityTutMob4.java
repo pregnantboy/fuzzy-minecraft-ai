@@ -86,13 +86,18 @@ public class EntityTutMob4 extends EntityMob {
 		if (this.getArrowCountInEntity() > lastArrowCount) {
 			if (!startHarvest) {
 				startHarvest = true;
+				System.out.println("Harvesting!");
+			} else {
+				startHarvest = false;
+				System.out.println("Mining!");
+
 			}
 		}
 		if (startHarvest) {
 			harvester.nextStep();
+		} else {
+			miner.nextStep();
 		}
-		
-		miner.nextStep();
 		
 		lastArrowCount = this.getArrowCountInEntity();
 	}

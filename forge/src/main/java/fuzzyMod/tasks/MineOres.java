@@ -6,9 +6,12 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.init.Items;
 import net.minecraft.util.BlockPos;
+import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.event.world.BlockEvent;
 
 public class MineOres extends SearchTaskGeneric {
 	private boolean isMiningOre; 
+	private int numberOfTicksToDestroy;
 	public MineOres(EntityMob mob, int range) {
 		super(mob, range);
 		isMiningOre = false;
@@ -34,8 +37,8 @@ public class MineOres extends SearchTaskGeneric {
 		Block currBlock = currBlockState.getBlock();
 		if (currBlock instanceof BlockOre) {
 			isMiningOre = true;
-			System.out.println("moving to ore");
 			setCurrentItem(Items.diamond_pickaxe);
+			numberOfTicksToDestroy = (int)(currBlock.getBlockHardness(world, pos) * 6);
 			return true;
 		} 
 		return false;
@@ -43,10 +46,13 @@ public class MineOres extends SearchTaskGeneric {
 	
 	private void destroyBlockOre () {
 		// probably set the number of ticks equal to the block hardness
-		mob.swingItem();
-		world.destroyBlock(nextBlock, true);
-		setCurrentItem(Items.wooden_pickaxe);
-		isMiningOre= false;
+		mob.swingItem(); 
+		numberOfTicksToDestroy --;
+		if (numberOfTicksToDestroy < 1) {
+			world.destroyBlock(nextBlock, true);
+			setCurrentItem(Items.wooden_pickaxe);
+			isMiningOre= false;
+		}
 	}
 	
 }
