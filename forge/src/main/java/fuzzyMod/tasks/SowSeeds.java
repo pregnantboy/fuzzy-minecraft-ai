@@ -1,5 +1,6 @@
 package fuzzyMod.tasks;
 
+import fuzzyMod.entity.EntityMobWithInventory;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.monster.EntityMob;
@@ -18,7 +19,7 @@ public class SowSeeds extends SearchTaskGeneric{
 	IBlockState wheatBlock = Blocks.wheat.getDefaultState();
 	IBlockState farmlandBlock = Blocks.farmland.getDefaultState();
 
-	public SowSeeds(EntityMob mob, int range) {
+	public SowSeeds(EntityMobWithInventory mob, int range) {
 		super (mob, range);
 		sowingSeeds = false;
 		tillingSoil = false;
@@ -42,7 +43,6 @@ public class SowSeeds extends SearchTaskGeneric{
 					System.out.println("soil tilled");
 				}
 			} else {
-				System.out.println("moving to block");
 				moveToBlock();
 			}
 		}

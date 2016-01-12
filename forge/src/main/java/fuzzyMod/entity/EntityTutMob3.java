@@ -32,7 +32,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityTutMob3 extends EntityMob {
+public class EntityTutMob3 extends EntityMobWithInventory {
 	// planter
 	
 	private EntityAIAttackOnCollide meleeAttack = new EntityAIAttackOnCollide(this, EntityTutMob.class, 1.5D, false);

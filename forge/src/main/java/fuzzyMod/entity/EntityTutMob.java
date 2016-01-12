@@ -32,7 +32,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
-public class EntityTutMob extends EntityMob {
+public class EntityTutMob extends EntityMobWithInventory {
 	// house builder
 	
 	private EntityAIBase runAway = new EntityAIAvoidEntity(this, EntityTutMob2.mobSelector, 5.0F, 2.0, 0.2);

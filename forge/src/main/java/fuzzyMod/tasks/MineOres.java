@@ -1,18 +1,26 @@
 package fuzzyMod.tasks;
 
+import java.util.Random;
+
+import fuzzyMod.entity.EntityMobWithInventory;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockOre;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.EffectRenderer;
+import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.event.world.BlockEvent;
 
 public class MineOres extends SearchTaskGeneric {
 	private boolean isMiningOre; 
 	private int numberOfTicksToDestroy;
-	public MineOres(EntityMob mob, int range) {
+	public MineOres(EntityMobWithInventory mob, int range) {
 		super(mob, range);
 		isMiningOre = false;
 		setCurrentItem(Items.iron_pickaxe);
@@ -21,6 +29,7 @@ public class MineOres extends SearchTaskGeneric {
 	public void nextStep() {
 		if (!isMiningOre){
 			nextBlock = getNextBlock(0);
+			storeItemDroppedDetails();
 		} else {
 			if (reachedBlock()) {
 				destroyBlockOre();
@@ -48,10 +57,13 @@ public class MineOres extends SearchTaskGeneric {
 		// probably set the number of ticks equal to the block hardness
 		mob.swingItem(); 
 		numberOfTicksToDestroy --;
+		EffectRenderer effectRender = new EffectRenderer(world, new TextureManager(null));
+		Minecraft.getMinecraft().effectRenderer.addBlockHitEffects(nextBlock, EnumFacing.UP);
 		if (numberOfTicksToDestroy < 1) {
-			world.destroyBlock(nextBlock, true);
+			world.destroyBlock(nextBlock, false);
 			setCurrentItem(Items.wooden_pickaxe);
 			isMiningOre= false;
+			obtainItems();
 		}
 	}
 	

@@ -1,5 +1,6 @@
 package fuzzyMod.tasks;
 
+import fuzzyMod.entity.EntityMobWithInventory;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.state.IBlockState;
@@ -17,7 +18,7 @@ public class HarvestCrops extends SearchTaskGeneric {
 	IBlockState wheatBlock = Blocks.wheat.getDefaultState();
 	IBlockState farmlandBlock = Blocks.farmland.getDefaultState();
 
-	public HarvestCrops(EntityMob mob, int range) {
+	public HarvestCrops(EntityMobWithInventory mob, int range) {
 		super(mob, range);
 		harvestingCrop = false;
 	}
@@ -26,6 +27,7 @@ public class HarvestCrops extends SearchTaskGeneric {
 	public void nextStep() {
 		if (!harvestingCrop) {
 			nextBlock = getNextBlock(0);
+			storeItemDroppedDetails();
 		} else {
 			if (reachedBlock()) {
 				harvestCrop();
@@ -43,7 +45,8 @@ public class HarvestCrops extends SearchTaskGeneric {
 	
 	private void harvestCrop () {
 		mob.swingItem();
-		world.destroyBlock(nextBlock, true);
+		world.destroyBlock(nextBlock, false);
+		obtainItems();
 		harvestingCrop = false;
 	}
 	

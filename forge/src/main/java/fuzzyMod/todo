@@ -1,0 +1,21 @@
+To do list
+1) create mine with randomly spawning blocks
+2) change destroy blocks to give the bot the farmed item
+    - check how to create inventory
+    - make bots go to a treasure chest to deposit
+3) make bots attack or run away dynamically
+    - attack a certain class (move to attack other house)
+    - run away from a certain class (move back to safe house maybe)
+4) fuzzy logic
+    - have certain environment factors (weather, time, sun brightness, thunder strength, rain strength, etc.. affects the strength)
+        fire, water, lightning
+    - external mob factors (no. of enemies, strength of enemies)
+    - self factors (hp, attack strength, armor)?
+5) AI editor 
+    - OSX app to change values 
+    - maybe give in XML file
+6) AI marketplace
+                    
+                    
+                    BlockPos blockpos = Minecraft.getMinecraft().objectMouseOver.getBlockPos();
+ItemStack itemstack = Minecraft.getMinecraft().thePlayer.inventory.getCurrentItem();

@@ -1,5 +1,9 @@
 package fuzzyMod.tasks;
 
+import java.util.Random;
+
+import fuzzyMod.entity.EntityMobWithInventory;
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.init.Blocks;
@@ -11,12 +15,13 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
 public abstract class SearchTaskGeneric {
-	protected EntityMob mob;
+	protected EntityMobWithInventory mob;
 	protected int range;
 	protected World world;
 	protected BlockPos nextBlock; // next block to move to
-	
-	public SearchTaskGeneric (EntityMob mob, int range) {
+	protected Item itemDropped;
+	protected int itemQuantity;
+	public SearchTaskGeneric (EntityMobWithInventory mob, int range) {
 		this.mob = mob;
 		this.range = range;
 		this.world = mob.getEntityWorld();
@@ -71,5 +76,19 @@ public abstract class SearchTaskGeneric {
 	
 	protected void setCurrentItem (Item item) {
 		this.mob.setCurrentItemOrArmor(0, new ItemStack(item));
+	}
+	
+	protected void storeItemDroppedDetails() {
+		if (nextBlock != null && !world.isAirBlock(nextBlock)) {
+			Block blockToDestroy = world.getBlockState(nextBlock).getBlock();
+			itemDropped = blockToDestroy.getItemDropped(world.getBlockState(nextBlock), new Random(), 2);
+			itemQuantity = blockToDestroy.quantityDropped(world.getBlockState(nextBlock),2, new Random());
+			System.out.println(itemDropped.getUnlocalizedName() + " x"+ itemQuantity) ;
+		}
+	}
+	
+	protected void obtainItems() {
+		mob.getMobIventory().addItem(itemDropped, itemQuantity);
+		mob.getMobIventory().printInventory();
 	}
 }
