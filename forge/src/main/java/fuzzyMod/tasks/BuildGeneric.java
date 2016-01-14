@@ -42,9 +42,13 @@ public abstract class BuildGeneric {
 		if (blockPosQueue.size() < 1 || blocksQueue.size() < 1) {
 			finishingTouches();
 			isBuildingDone = true;
+			hasBuildingInit = false;
 		} else {
+			isBuildingDone = false;
 			for (int i = 0; i < buildSpeed; i ++) {
-				world.setBlockState(blockPosQueue.remove(), blocksQueue.remove());
+				if (blockPosQueue.size() > 0 || blocksQueue.size() > 0) {
+					world.setBlockState(blockPosQueue.remove(), blocksQueue.remove());
+				}
 			}
 		}
 	}

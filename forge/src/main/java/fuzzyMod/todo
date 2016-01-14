@@ -1,6 +1,6 @@
 To do list
 1) create mine with randomly spawning blocks
-2) change destroy blocks to give the bot the farmed item (done)
+2) change destroy blocks to give the bot the farmed item [DONE]
     - check how to create inventory
     - make bots go to a treasure chest to deposit
 3) make bots attack or run away dynamically

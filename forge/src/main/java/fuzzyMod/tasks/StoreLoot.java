@@ -25,9 +25,11 @@ public class StoreLoot extends SearchTaskGeneric{
 	public void nextStep() {
 		if (!storingLoot) {
 			nextBlock = getNextBlock(0);
-			itemStacks = mob.getMobIventory().getItemStacks();
-			currIndex = 0;
-			tileEntity = (TileEntityChest)world.getTileEntity(nextBlock);
+			if (storingLoot) {
+				itemStacks = mob.getMobIventory().getItemStacks();
+				currIndex = 0;
+				tileEntity = (TileEntityChest)world.getTileEntity(nextBlock);
+			}
 		} else {
 			if (reachedBlock()) {
 				dumpLoot(); 
