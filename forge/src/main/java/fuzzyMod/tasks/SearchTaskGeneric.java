@@ -27,13 +27,13 @@ public abstract class SearchTaskGeneric {
 		this.world = mob.getEntityWorld();
 	}
 	protected boolean reachedBlock() {
-		Vec3 destination = new Vec3(nextBlock.getX(), nextBlock.getY(), nextBlock.getZ());
+		Vec3 destination = new Vec3(nextBlock.getX(), mob.posY, nextBlock.getZ());
 //		System.out.println("destination" + mob.getPositionVector().distanceTo(destination));
-		return mob.getPositionVector().distanceTo(destination) < 3.0;
+		return mob.getPositionVector().distanceTo(destination) < 2.5;
 	}
 
 	protected void moveToBlock() {
-		mob.getNavigator().tryMoveToXYZ(nextBlock.getX(), nextBlock.getY(), nextBlock.getZ(), 1.0D);
+		mob.getNavigator().tryMoveToXYZ(nextBlock.getX(), mob.posY, nextBlock.getZ(), 1.0D);
 	}	
 	
 	// most important step, determines the action in each tick

@@ -92,7 +92,7 @@ public class EntityTutMob2 extends EntityMobWithInventory {
 		if (isBuildingFarm) {
 			isBuildingFarm = !buildFarm.attemptBuildBlock(1);
 		} else if (isBuildingHouse) {
-			isBuildingHouse = !buildHouse.attemptBuildBlock(10);
+			isBuildingHouse = !buildHouse.attemptBuildBlock(5);
 		}
 		lastArrowCount = this.getArrowCountInEntity();
 	}

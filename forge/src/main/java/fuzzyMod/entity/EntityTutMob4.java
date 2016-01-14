@@ -7,6 +7,7 @@ import fuzzyMod.inventory.MobInventory;
 import fuzzyMod.tasks.HarvestCrops;
 import fuzzyMod.tasks.MineOres;
 import fuzzyMod.tasks.SowSeeds;
+import fuzzyMod.tasks.StoreLoot;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -39,7 +40,7 @@ public class EntityTutMob4 extends EntityMobWithInventory {
 	// harvester (but currently miner)
 	
 	private EntityAIAttackOnCollide meleeAttack = new EntityAIAttackOnCollide(this, EntityTutMob.class, 1.5D, false);
-
+	private StoreLoot looter;
 	private HarvestCrops harvester;
 	private boolean startHarvest;
 	private MineOres miner;
@@ -55,8 +56,9 @@ public class EntityTutMob4 extends EntityMobWithInventory {
 		
 		harvester = new HarvestCrops(this, 10);
 		startHarvest = false;
-		
 		miner = new MineOres(this,10);
+		
+		looter = new StoreLoot(this, 20);
 		
 		this.setCurrentItemOrArmor(0, new ItemStack(Items.wooden_hoe));
 		this.setCurrentItemOrArmor(1, new ItemStack(Items.leather_boots));
@@ -82,22 +84,24 @@ public class EntityTutMob4 extends EntityMobWithInventory {
 	public void onUpdate()
 	{
 		super.onUpdate();
-		if (this.getArrowCountInEntity() > lastArrowCount) {
-			if (!startHarvest) {
-				startHarvest = true;
-				System.out.println("Harvesting!");
+		if (this.inventory.isFull()) {
+			looter.nextStep();
+		} else {
+			if (this.getArrowCountInEntity() > lastArrowCount) {
+				if (!startHarvest) {
+					startHarvest = true;
+					System.out.println("Harvesting!");
+				} else {
+					startHarvest = false;
+					System.out.println("Mining!");
+				}
+			}
+			if (startHarvest) {
+				harvester.nextStep();
 			} else {
-				startHarvest = false;
-				System.out.println("Mining!");
-
+				miner.nextStep();
 			}
 		}
-		if (startHarvest) {
-			harvester.nextStep();
-		} else {
-			miner.nextStep();
-		}
-		
 		lastArrowCount = this.getArrowCountInEntity();
 	}
 }

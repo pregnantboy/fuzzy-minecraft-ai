@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 public class MobInventory {
 	private int limit, count;
@@ -33,6 +34,16 @@ public class MobInventory {
 	public void dumpAll () {
 		count = 0;
 		invMap.clear();
+	}
+	
+	public ItemStack[] getItemStacks () {
+		ItemStack [] itemStacks = new ItemStack [invMap.size()];
+		int index = 0;
+		for (Item i: invMap.keySet()) {
+			itemStacks[index] = new ItemStack (i, invMap.get(i));
+			index ++;
+		}
+		return itemStacks;
 	}
 	
 	public void printInventory () {

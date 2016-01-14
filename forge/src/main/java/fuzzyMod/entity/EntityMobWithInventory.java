@@ -6,7 +6,7 @@ import net.minecraft.world.World;
 
 public abstract class EntityMobWithInventory extends EntityMob {
 
-	private MobInventory inventory;
+	protected MobInventory inventory;
 	public EntityMobWithInventory(World worldIn) {
 		super(worldIn);
 		// TODO Auto-generated constructor stub
