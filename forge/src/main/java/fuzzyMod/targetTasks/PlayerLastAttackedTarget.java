@@ -6,7 +6,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAITarget;
-import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.util.MovingObjectPosition;
@@ -14,17 +13,17 @@ import net.minecraft.world.World;
 
 public class PlayerLastAttackedTarget extends EntityAITarget
 {
-    EntityMobWithInventory mob;
-    EntityLivingBase theTarget;
-    Item signalItem;
-    private static final String __OBFID = "CL_00001625";
+    private EntityMobWithInventory mob;
+    private EntityLivingBase theTarget;
+    private Item signalItem;
+    private static final String __OBFID = "CL_00003012";
 
     public PlayerLastAttackedTarget(EntityMobWithInventory mob, Item signalItem)
     {
         super(mob, false);
         this.mob = mob;
-        this.setMutexBits(1);
         this.signalItem = signalItem;
+        this.setMutexBits(1);
     }
 
     /**
@@ -40,18 +39,16 @@ public class PlayerLastAttackedTarget extends EntityAITarget
         }
         else 
         {
-        	Minecraft mc = Minecraft.getMinecraft();
-        	
+        	Minecraft mc = Minecraft.getMinecraft();       	
         	if (player.getHeldItem()!= null) {
         		if (player.getHeldItem().getItem() == signalItem && player.isSwingInProgress) {
 		        	MovingObjectPosition objectMouseOver = mc.objectMouseOver;
-		        	// makes a variable for where you look
-		        	if(mc.objectMouseOver != null && mc.objectMouseOver.entityHit != null) {
+		        	if(objectMouseOver != null && objectMouseOver.entityHit != null) {
 		        		Entity targetCandidate = mc.objectMouseOver.entityHit;
-		        		if (targetCandidate instanceof EntityLivingBase) {
-		        			theTarget = (EntityLivingBase)targetCandidate;
+		        		if (mc.objectMouseOver.typeOfHit ==MovingObjectPosition.MovingObjectType.ENTITY && targetCandidate instanceof EntityLivingBase) {
+		        			theTarget = (EntityLivingBase)this.mob.getEntityWorld().getEntityByID(targetCandidate.getEntityId());
 		        			System.out.println("trying to set target " + theTarget);
-		        			return theTarget != null && this.isSuitableTarget(theTarget, false) && theTarget.isEntityAlive();
+		        			return true;
 		        		}
 		        	}
         		}
@@ -66,8 +63,8 @@ public class PlayerLastAttackedTarget extends EntityAITarget
      */
     public void startExecuting()
     {
-        this.taskOwner.setAttackTarget(this.theTarget);
-		System.out.println("target set as " + theTarget);
+   	 	this.taskOwner.setAttackTarget(this.theTarget);
         super.startExecuting();
     }
+  
 }

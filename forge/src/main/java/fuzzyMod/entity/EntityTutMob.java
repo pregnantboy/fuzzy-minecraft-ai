@@ -10,6 +10,7 @@ import fuzzyMod.tasks.FireballAttack;
 import fuzzyMod.tasks.MeleeAttack;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
@@ -63,7 +64,7 @@ public class EntityTutMob extends EntityMobWithInventory {
 	MeleeAttack melee;
 	FireballAttack fireball;
 	
-	private PlayerLastAttackedTarget playerLastAttackedTarget = new PlayerLastAttackedTarget(this, Items.wooden_sword);
+	//private PlayerLastAttackedTarget playerLastAttackedTarget = new PlayerLastAttackedTarget(this, Items.wooden_sword);
 	boolean isBuildingHouse, isBuildingFarm;
 	private int lastArrowCount;
 	
@@ -74,11 +75,9 @@ public class EntityTutMob extends EntityMobWithInventory {
 		this.setSize(0.9F, 2.0F);
 		this.setCanPickUpLoot(true);
 //		this.tasks.addTask(2, new EntityAIArrowAttack(this, 1.0D, 40, 20.0F));
-		
-		// first false is callsForHelp
 		this.targetTasks.addTask(1, new PlayerLastAttackedTarget(this, Items.wooden_sword));
 		// first false is checkSight, second false is isNearby
-		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityLiving.class, false, false));
+//		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityLiving.class, false, false));
 		isBuildingHouse = false;
 		
 		fireball = new FireballAttack(this, 30, 3);
@@ -89,7 +88,7 @@ public class EntityTutMob extends EntityMobWithInventory {
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(3);
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(16.0);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.3D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.3);
 	}
 
 	public boolean isAIEnabled() {
@@ -103,7 +102,6 @@ public class EntityTutMob extends EntityMobWithInventory {
 	}
 	
 	public boolean attackEntityAsMob(Entity p_70652_1_) { 
-		
 		return super.attackEntityAsMob(p_70652_1_);
 	}
 	
@@ -116,6 +114,7 @@ public class EntityTutMob extends EntityMobWithInventory {
 	}
 
 	
+}
 	// second parameter is the velocity
 //	public void attackEntityWithRangedAttack(EntityLivingBase p_82196_1_, float p_82196_2_) {
 //		
@@ -145,4 +144,4 @@ public class EntityTutMob extends EntityMobWithInventory {
 //	    this.worldObj.spawnEntityInWorld(entitysnowball);
 //	}
 
-}
+

@@ -3,6 +3,8 @@ package fuzzyMod.tasks;
 import com.sun.prism.impl.Disposer.Target;
 
 import fuzzyMod.entity.EntityMobWithInventory;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.util.DamageSource;
 
 public class MeleeAttack extends GenericAttack{
 	
@@ -28,12 +30,12 @@ public class MeleeAttack extends GenericAttack{
 			if (this.currCooldown <= 0)
 		    {
 		        this.currCooldown = cooldown;
-		        this.mob.attackEntityAsMob(attackTarget);
-		        System.out.println("attacking "+ attackTarget);
+		        boolean attack = this.mob.attackEntityAsMob(attackTarget);
 		        this.mob.swingItem();
+		        this.mob.playSound("game.hostile.hurt", 1.0F, 1.0F / (this.mob.getRNG().nextFloat() * 0.4F + 0.8F));
 		    }
 		}
 		
-	    this.mob.getMoveHelper().setMoveTo(attackTarget.posX, attackTarget.posY, attackTarget.posZ, 1.0D);
+	    this.mob.getNavigator().tryMoveToEntityLiving(attackTarget, 1.0D);
 	}
 }
