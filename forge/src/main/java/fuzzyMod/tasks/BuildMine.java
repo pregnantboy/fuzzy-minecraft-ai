@@ -23,8 +23,7 @@ public class BuildMine extends BuildGeneric{
 	IBlockState torchBlockFacingWest = Blocks.torch.getStateFromMeta(2);
 	IBlockState [] ores = {Blocks.coal_ore.getDefaultState(), Blocks.diamond_ore.getDefaultState(),
 			Blocks.emerald_ore.getDefaultState(), Blocks.diamond_ore.getDefaultState(), Blocks.gold_ore.getDefaultState(),
-			Blocks.iron_ore.getDefaultState(), Blocks.lapis_ore.getDefaultState(), Blocks.lit_redstone_ore.getDefaultState(),
-			Blocks.quartz_ore.getDefaultState(), Blocks.redstone_ore.getDefaultState()};
+			Blocks.iron_ore.getDefaultState(), Blocks.lapis_ore.getDefaultState()};
 	
 	public BuildMine(EntityMob mob, int length) {
 		super(mob);
