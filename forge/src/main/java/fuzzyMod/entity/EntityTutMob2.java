@@ -3,9 +3,11 @@ package fuzzyMod.entity;
 import com.mojang.authlib.GameProfile;
 
 import fuzzyMod.Reference;
+import fuzzyMod.targetTasks.PlayerTarget;
 import fuzzyMod.tasks.BuildFarm;
 import fuzzyMod.tasks.BuildHouse;
 import fuzzyMod.tasks.BuildMine;
+import fuzzyMod.tasks.MeleeAttack;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -47,14 +49,15 @@ public class EntityTutMob2 extends EntityMobWithInventory {
 	private boolean isBuildingHouse, isBuildingFarm, isBuildingMine;
 	private boolean isUnderPotion;
 	private int lastArrowCount;
+	MeleeAttack melee;
 	
 	public EntityTutMob2(World worldIn) {
 		super(worldIn);
 		// TODO Auto-generated constructor stub
 		
-		//this.targetTasks.addTask(0, new EntityAINearestAttackableTarget(this, EntityTutMob.class, false));
+		this.targetTasks.addTask(0, new PlayerTarget(this, Items.bone));
 		
-		//this.tasks.addTask(0,  meleeAttack);
+		this.tasks.addTask(0,  meleeAttack);
 		
 		this.setCurrentItemOrArmor(0, new ItemStack(Items.iron_hoe));
 		Potion p;
@@ -73,6 +76,8 @@ public class EntityTutMob2 extends EntityMobWithInventory {
 		buildHouse = new BuildHouse(this, 10, 10, 10);
 		buildMine = new BuildMine(this, 10);
 		buildFarm = new BuildFarm (this, 10, 10);
+		melee = new MeleeAttack(this);
+
 	}
 	
 	protected void applyEntityAttributes() {
@@ -93,6 +98,9 @@ public class EntityTutMob2 extends EntityMobWithInventory {
 	
 	public void onUpdate() {
 		super.onUpdate();
+		if (!isBuildingFarm && !isBuildingHouse && !isBuildingMine) {
+			melee.nextStep();
+		}
 		if (this.getArrowCountInEntity() > lastArrowCount) {
 			if (!isBuildingHouse) {
 				System.out.println("building House");

@@ -36,6 +36,6 @@ public class MeleeAttack extends GenericAttack{
 		    }
 		}
 		
-	    this.mob.getNavigator().tryMoveToEntityLiving(attackTarget, 1.0D);
+	    this.moveToTarget(1.0D);
 	}
 }

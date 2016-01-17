@@ -4,6 +4,8 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 
 import fuzzyMod.targetTasks.PlayerLastAttackedTarget;
+import fuzzyMod.targetTasks.PlayerLastAttackerTarget;
+import fuzzyMod.tasks.ArrowAttack;
 import fuzzyMod.tasks.BuildFarm;
 import fuzzyMod.tasks.BuildHouse;
 import fuzzyMod.tasks.FireballAttack;
@@ -21,6 +23,7 @@ import net.minecraft.entity.ai.EntityAIArrowAttack;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAIBase;
+import net.minecraft.entity.ai.EntityAIFindEntityNearestPlayer;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
@@ -63,6 +66,7 @@ public class EntityTutMob extends EntityMobWithInventory {
 	BuildFarm buildFarm;
 	MeleeAttack melee;
 	FireballAttack fireball;
+	ArrowAttack arrow;
 	
 	//private PlayerLastAttackedTarget playerLastAttackedTarget = new PlayerLastAttackedTarget(this, Items.wooden_sword);
 	boolean isBuildingHouse, isBuildingFarm;
@@ -74,14 +78,15 @@ public class EntityTutMob extends EntityMobWithInventory {
 		this.tasks.addTask(1, new EntityAITempt(this, 1.2D, Items.apple, false));
 		this.setSize(0.9F, 2.0F);
 		this.setCanPickUpLoot(true);
-//		this.tasks.addTask(2, new EntityAIArrowAttack(this, 1.0D, 40, 20.0F));
+		this.targetTasks.addTask(0, new PlayerLastAttackerTarget(this));
 		this.targetTasks.addTask(1, new PlayerLastAttackedTarget(this, Items.wooden_sword));
+		
 		// first false is checkSight, second false is isNearby
-//		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityLiving.class, false, false));
 		isBuildingHouse = false;
 		
 		fireball = new FireballAttack(this, 30, 3);
 		melee = new MeleeAttack(this);
+		arrow = new ArrowAttack (this, 30);
 	}
 
 	protected void applyEntityAttributes() {
@@ -97,8 +102,9 @@ public class EntityTutMob extends EntityMobWithInventory {
 	
 	public void onUpdate() {
 		super.onUpdate();
-		melee.nextStep();
+//		melee.nextStep();
 //		fireball.nextStep();
+		arrow.nextStep();
 	}
 	
 	public boolean attackEntityAsMob(Entity p_70652_1_) { 

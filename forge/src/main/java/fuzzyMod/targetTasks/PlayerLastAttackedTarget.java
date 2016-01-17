@@ -48,7 +48,7 @@ public class PlayerLastAttackedTarget extends EntityAITarget
 		        		if (mc.objectMouseOver.typeOfHit ==MovingObjectPosition.MovingObjectType.ENTITY && targetCandidate instanceof EntityLivingBase) {
 		        			theTarget = (EntityLivingBase)this.mob.getEntityWorld().getEntityByID(targetCandidate.getEntityId());
 		        			System.out.println("trying to set target " + theTarget);
-		        			return true;
+		        			return theTarget.getEntityId() != this.mob.getEntityId();
 		        		}
 		        	}
         		}

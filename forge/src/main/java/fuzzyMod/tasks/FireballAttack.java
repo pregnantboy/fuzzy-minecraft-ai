@@ -72,8 +72,7 @@ public class FireballAttack extends GenericAttack {
         }
         else
         {
-            this.mob.getNavigator().clearPathEntity();
-            this.mob.getMoveHelper().setMoveTo(attackTarget.posX, attackTarget.posY, attackTarget.posZ, 1.0D);
+    	    this.moveToTarget(1.0D);
         }
     }
 }
