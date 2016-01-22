@@ -75,7 +75,7 @@ public class EntityTutMob2 extends EntityMobWithInventory {
 		
 		buildHouse = new BuildHouse(this, 10, 10, 10);
 		buildMine = new BuildMine(this, 10);
-		buildFarm = new BuildFarm (this, 10, 10);
+		buildFarm = new BuildFarm (this, 20, 20);
 		melee = new MeleeAttack(this);
 
 	}

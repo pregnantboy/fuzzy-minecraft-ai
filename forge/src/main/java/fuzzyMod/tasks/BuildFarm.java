@@ -61,6 +61,9 @@ public class BuildFarm extends BuildGeneric {
 					currBlock = acaciaFenceBlock;
 				} else if (w % 4 == 0) {
 					currBlock = waterBlock;
+					if (l == (int)length/2) {
+						currBlock = farmBlock;
+					}
 				}
 				enqueue(pos, currBlock);
 			}
