@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3CCFB9C41C53B3E10053F7BD"
-               BuildableName = "MinecraftAIBuilder.app"
-               BlueprintName = "MinecraftAIBuilder"
-               ReferencedContainer = "container:MinecraftAIBuilder.xcodeproj">
+               BlueprintIdentifier = "3C35C7A61C549BC900D2F1D6"
+               BuildableName = "FuzzyAIBuilder.app"
+               BlueprintName = "FuzzyAIBuilder"
+               ReferencedContainer = "container:FuzzyAIBuilder.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,30 +32,30 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3CCFB9DD1C53B3E10053F7BD"
-               BuildableName = "MinecraftAIBuilderTests.xctest"
-               BlueprintName = "MinecraftAIBuilderTests"
-               ReferencedContainer = "container:MinecraftAIBuilder.xcodeproj">
+               BlueprintIdentifier = "3C35C7BC1C549BC900D2F1D6"
+               BuildableName = "FuzzyAIBuilderTests.xctest"
+               BlueprintName = "FuzzyAIBuilderTests"
+               ReferencedContainer = "container:FuzzyAIBuilder.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3CCFB9E81C53B3E10053F7BD"
-               BuildableName = "MinecraftAIBuilderUITests.xctest"
-               BlueprintName = "MinecraftAIBuilderUITests"
-               ReferencedContainer = "container:MinecraftAIBuilder.xcodeproj">
+               BlueprintIdentifier = "3C35C7C71C549BC900D2F1D6"
+               BuildableName = "FuzzyAIBuilderUITests.xctest"
+               BlueprintName = "FuzzyAIBuilderUITests"
+               ReferencedContainer = "container:FuzzyAIBuilder.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3CCFB9C41C53B3E10053F7BD"
-            BuildableName = "MinecraftAIBuilder.app"
-            BlueprintName = "MinecraftAIBuilder"
-            ReferencedContainer = "container:MinecraftAIBuilder.xcodeproj">
+            BlueprintIdentifier = "3C35C7A61C549BC900D2F1D6"
+            BuildableName = "FuzzyAIBuilder.app"
+            BlueprintName = "FuzzyAIBuilder"
+            ReferencedContainer = "container:FuzzyAIBuilder.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -75,10 +75,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3CCFB9C41C53B3E10053F7BD"
-            BuildableName = "MinecraftAIBuilder.app"
-            BlueprintName = "MinecraftAIBuilder"
-            ReferencedContainer = "container:MinecraftAIBuilder.xcodeproj">
+            BlueprintIdentifier = "3C35C7A61C549BC900D2F1D6"
+            BuildableName = "FuzzyAIBuilder.app"
+            BlueprintName = "FuzzyAIBuilder"
+            ReferencedContainer = "container:FuzzyAIBuilder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,10 +94,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3CCFB9C41C53B3E10053F7BD"
-            BuildableName = "MinecraftAIBuilder.app"
-            BlueprintName = "MinecraftAIBuilder"
-            ReferencedContainer = "container:MinecraftAIBuilder.xcodeproj">
+            BlueprintIdentifier = "3C35C7A61C549BC900D2F1D6"
+            BuildableName = "FuzzyAIBuilder.app"
+            BlueprintName = "FuzzyAIBuilder"
+            ReferencedContainer = "container:FuzzyAIBuilder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

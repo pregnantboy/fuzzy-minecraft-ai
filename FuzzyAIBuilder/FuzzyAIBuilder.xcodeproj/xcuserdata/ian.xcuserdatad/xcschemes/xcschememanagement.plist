@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>MinecraftAIBuilder.xcscheme</key>
+		<key>FuzzyAIBuilder.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,17 +12,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3CCFB9C41C53B3E10053F7BD</key>
+		<key>3C35C7A61C549BC900D2F1D6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3CCFB9DD1C53B3E10053F7BD</key>
+		<key>3C35C7BC1C549BC900D2F1D6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3CCFB9E81C53B3E10053F7BD</key>
+		<key>3C35C7C71C549BC900D2F1D6</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -1,18 +1,18 @@
 //
-//  MinecraftAIBuilderTests.m
-//  MinecraftAIBuilderTests
+//  FuzzyAIBuilderTests.m
+//  FuzzyAIBuilderTests
 //
-//  Created by Ian Chen on 23/1/16.
+//  Created by Ian Chen on 24/1/16.
 //  Copyright © 2016 Ian Chen. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface MinecraftAIBuilderTests : XCTestCase
+@interface FuzzyAIBuilderTests : XCTestCase
 
 @end
 
-@implementation MinecraftAIBuilderTests
+@implementation FuzzyAIBuilderTests
 
 - (void)setUp {
     [super setUp];
