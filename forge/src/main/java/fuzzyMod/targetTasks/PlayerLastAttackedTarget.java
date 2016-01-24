@@ -4,12 +4,9 @@ import fuzzyMod.entity.EntityMobWithInventory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAITarget;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.world.World;
 
 public class PlayerLastAttackedTarget extends EntityAITarget
 {

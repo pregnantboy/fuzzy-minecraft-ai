@@ -4,7 +4,6 @@ import fuzzyMod.entity.EntityTutMob;
 import fuzzyMod.entity.EntityTutMob2;
 import fuzzyMod.entity.EntityTutMob3;
 import fuzzyMod.entity.EntityTutMob4;
-import fuzzyMod.entity.TestEntity;
 import fuzzyMod.init.TutorialItems;
 import fuzzyMod.render.RenderTestEntity;
 import fuzzyMod.render.RenderTestEntity2;

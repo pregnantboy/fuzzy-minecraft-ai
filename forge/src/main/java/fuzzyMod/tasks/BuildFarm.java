@@ -1,16 +1,11 @@
 package fuzzyMod.tasks;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.Vec3;
-import net.minecraft.world.World;
 
 public class BuildFarm extends BuildGeneric {
 

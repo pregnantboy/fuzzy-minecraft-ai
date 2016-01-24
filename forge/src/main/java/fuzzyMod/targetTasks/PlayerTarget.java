@@ -2,7 +2,6 @@ package fuzzyMod.targetTasks;
 
 import fuzzyMod.entity.EntityMobWithInventory;
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAITarget;
 import net.minecraft.item.Item;

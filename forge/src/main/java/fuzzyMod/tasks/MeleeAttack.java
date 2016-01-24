@@ -1,10 +1,6 @@
 package fuzzyMod.tasks;
 
-import com.sun.prism.impl.Disposer.Target;
-
 import fuzzyMod.entity.EntityMobWithInventory;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.util.DamageSource;
 
 public class MeleeAttack extends GenericAttack{
 	

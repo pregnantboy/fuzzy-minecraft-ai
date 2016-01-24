@@ -9,8 +9,6 @@ package fuzzyMod.entity;
 
 import fuzzyMod.MainRegistry;
 import net.minecraft.entity.EntityList;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.ModClassLoader;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 public class TestEntity {

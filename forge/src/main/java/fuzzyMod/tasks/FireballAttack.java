@@ -1,11 +1,7 @@
 package fuzzyMod.tasks;
 
 import fuzzyMod.entity.EntityMobWithInventory;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.ai.EntityAIBase;
-import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityLargeFireball;
 import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;

@@ -1,9 +1,5 @@
 package fuzzyMod.tasks;
 
-import java.time.Duration;
-import java.util.LinkedList;
-import java.util.Queue;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.monster.EntityMob;
@@ -13,9 +9,6 @@ import net.minecraft.item.ItemDoor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.Vec3;
-import net.minecraft.world.World;
-import scala.math.Ordering.FloatOrdering;
 
 public class BuildHouse extends BuildGeneric{
 

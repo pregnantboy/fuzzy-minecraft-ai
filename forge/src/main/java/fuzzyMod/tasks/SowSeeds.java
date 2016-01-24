@@ -3,16 +3,9 @@ package fuzzyMod.tasks;
 import fuzzyMod.entity.EntityMobWithInventory;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.ItemSeeds;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.Vec3;
-import net.minecraft.world.World;
-import net.minecraftforge.common.IPlantable;
 
 public class SowSeeds extends SearchTaskGeneric{
 	private boolean sowingSeeds, tillingSoil; // actually means moving to block to sow/till

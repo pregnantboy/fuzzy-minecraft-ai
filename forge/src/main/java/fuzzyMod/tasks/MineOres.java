@@ -1,7 +1,5 @@
 package fuzzyMod.tasks;
 
-import java.util.Random;
-
 import fuzzyMod.entity.EntityMobWithInventory;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockOre;
@@ -9,13 +7,9 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EffectRenderer;
 import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.event.world.BlockEvent;
 
 public class MineOres extends SearchTaskGeneric {
 	private boolean isMiningOre; 

@@ -1,15 +1,8 @@
 package fuzzyMod.tasks;
 
-import java.util.Random;
-
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockRailBase.Rail;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.passive.EntityVillager.ItemAndEmeraldToItem;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemHangingEntity;
-import net.minecraft.item.ItemMinecart;
 import net.minecraft.util.BlockPos;
 
 public class BuildMine extends BuildGeneric{
