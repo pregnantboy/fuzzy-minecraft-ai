@@ -19,6 +19,7 @@
     [super viewDidLoad];
     [self.background setAlphaValue:0.90];
     [self.backButton setAction:@selector(goToCreatePage)];
+    [self.nextButton setAction:@selector(goToRulesListPage)];
     [MainMenuViewController addShadow:self.backButton];
     [MainMenuViewController addShadow:self.nextButton];
 }
@@ -30,11 +31,12 @@
     [[NSApp mainWindow] setContentViewController:mainMenuVc];
 }
 
-- (IBAction)goToEditorPage {
+- (IBAction)goToRulesListPage {
     NSStoryboard *mainsb = [NSStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    NSViewController *createAIVc = [mainsb instantiateControllerWithIdentifier:@"CreateAIViewController"];
-    [[createAIVc view] setFrame:self.view.frame]; 
-    [[NSApp mainWindow] setContentViewController:createAIVc];
+    NSViewController *vc = [mainsb instantiateControllerWithIdentifier:@"RulesListViewController"];
+    [[vc view] setFrame:self.view.frame];
+    [[NSApp mainWindow] setContentViewController:vc];
 }
+
 
 @end

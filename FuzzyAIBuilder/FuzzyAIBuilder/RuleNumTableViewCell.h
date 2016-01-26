@@ -11,7 +11,7 @@
 @interface RuleNumTableViewCell : NSTableCellView
 @property (weak) IBOutlet NSTextField *number;
 
-- (void)setNum:(NSNumber *)num;
-- (NSNumber *)getNum;
+- (void)setNum:(NSInteger)num;
+- (NSInteger)getNum;
 
 @end

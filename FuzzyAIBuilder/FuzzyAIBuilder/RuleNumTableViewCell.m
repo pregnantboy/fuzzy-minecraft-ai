@@ -16,9 +16,9 @@
     // Drawing code here.
 }
 
-- (void)setNum:(NSNumber *)num {
-    NSString* numString = [NSString stringWithFormat:@"%ld", (long)[num integerValue]];
-    NSFont *txtFont = [NSFont fontWithName:@"DK Prince Frog" size:12];
+- (void)setNum:(NSInteger)num {
+    NSString* numString = [NSString stringWithFormat:@"%ld", (long)num];
+    NSFont *txtFont = [NSFont fontWithName:@"DK Prince Frog" size:22];
     NSColor *txtColor = [NSColor whiteColor];
     NSMutableParagraphStyle *centredStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [centredStyle setAlignment:NSCenterTextAlignment];
@@ -31,8 +31,8 @@
     [self.number setAttributedStringValue:attrStr];
 }
 
-- (NSNumber *)getNum {
-    return [NSNumber numberWithInt:(int)[[self.number stringValue] integerValue]];
+- (NSInteger)getNum {
+    return [self.number integerValue];
 }
 
 @end

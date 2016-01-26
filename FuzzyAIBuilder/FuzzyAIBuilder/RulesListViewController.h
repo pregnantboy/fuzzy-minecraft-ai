@@ -12,5 +12,10 @@
 @property (weak) IBOutlet NSTableView *tableView;
 @property (weak) IBOutlet NSButton *backButton;
 @property (weak) IBOutlet NSImageView *background;
+@property (weak) IBOutlet NSButton *modifyButton;
+@property (weak) IBOutlet NSButton *saveButton;
+@property (weak) IBOutlet NSButton *moveUpButton;
+@property (weak) IBOutlet NSButton *moveDownButton;
+@property (weak) IBOutlet NSButton *addNewButton;
 
 @end

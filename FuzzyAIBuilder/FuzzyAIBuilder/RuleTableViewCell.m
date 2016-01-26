@@ -15,7 +15,7 @@
 }
 
 - (void)setRuleString:(NSString *)ruleString {
-    NSFont *txtFont = [NSFont fontWithName:@"DK Prince Frog" size:12];
+    NSFont *txtFont = [NSFont fontWithName:@"DK Prince Frog" size:18];
     NSColor *txtColor = [NSColor whiteColor];
     NSMutableParagraphStyle *leftAligned = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [leftAligned setAlignment:NSLeftTextAlignment];
