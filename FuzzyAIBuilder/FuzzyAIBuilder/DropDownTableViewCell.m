@@ -69,6 +69,10 @@
     return [self.popUp selectedItem].title;
 }
 
+- (NSInteger)getRow {
+    return self.popUp.tag;
+}
+
 - (void)disableValueButton {
     NSMenu *menu = [[NSMenu alloc] init];
     NSMenuItem *placeholderItem = [[NSMenuItem alloc] initWithTitle:@"Select Value" action:nil keyEquivalent:@""];
@@ -98,7 +102,7 @@
 }
 
 - (IBAction)onValueChanged:(id)sender {
-    NSLog(@"%@",[self getString]);
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ConditionChanged" object:self];
 }
 
 + (NSAttributedString *)changeToWhiteText:(NSString *)text withSize:(int)size {

@@ -16,6 +16,7 @@
 @property (weak) IBOutlet RulePopUpButton *popUp;
 
 - (NSInteger)type;
+- (NSInteger)getRow;
 - (void)setType:(NSInteger)column;
 - (void)setString:(NSString *)string;
 - (NSString *)getString;

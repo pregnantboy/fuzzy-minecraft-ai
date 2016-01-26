@@ -40,6 +40,9 @@
 
 - (void)deleteRuleInput:(NSInteger)index {
     [inputs removeObjectAtIndex:index];
+    if (index == 0) {
+        [self setOperator:@"IF" atIndex:0];
+    }
 }
 
 

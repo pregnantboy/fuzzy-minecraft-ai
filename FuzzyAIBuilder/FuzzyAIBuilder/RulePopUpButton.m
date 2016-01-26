@@ -21,7 +21,8 @@
     CGFloat iconSize = 30.0;
     CGFloat iconYLoc = (dirtyRect.size.height - iconSize) / 2.0;
     CGFloat iconXLoc = (dirtyRect.size.width - (iconSize));
-    
+    [self.cell setArrowPosition:NSPopUpNoArrow];
+
     CGRect triRect = {iconXLoc, iconYLoc, iconSize, iconSize};
     NSImage *arrowdown = [NSImage imageNamed:@"chevrondownwithblackshadow"];
     [arrowdown drawInRect:triRect];

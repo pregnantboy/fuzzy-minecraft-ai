@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Rule.h"
+#import "RulePopUpButton.h"
 
 @interface EditorViewController : NSViewController
 @property (weak) IBOutlet NSButton *backButton;
@@ -15,5 +16,7 @@
 @property (weak) IBOutlet NSImageView *background;
 @property (weak) IBOutlet NSButton *addButton;
 @property (weak) IBOutlet NSButton *deleteButton;
+@property (weak) IBOutlet RulePopUpButton *outcome1;
+@property (weak) IBOutlet RulePopUpButton *outcome2;
 
 @end

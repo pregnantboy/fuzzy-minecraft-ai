@@ -56,7 +56,7 @@
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return 20;
+    return 7;
 }
 
 - (CGFloat)tableView:(NSTableView *)tableView
@@ -70,7 +70,6 @@
     
     // Retrieve to get the @"MyView" from the pool or,
     // if no version is available in the pool, load the Interface Builder version
-    NSLog(@"%@", tableColumn.identifier);
     if ([tableColumn.identifier isEqual: @"priority"]) {
         RuleNumTableViewCell *result = (RuleNumTableViewCell*)[tableView makeViewWithIdentifier:@"RuleNumTableViewCell" owner:self];
         [result setNum:row];
@@ -78,7 +77,7 @@
     }
     
     RuleTableViewCell *result = (RuleTableViewCell *) [tableView makeViewWithIdentifier:@"RuleTableViewCell" owner:self];
-    [result setRuleString:@"Hello 123"];
+    [result setRuleString:@"IF condition IS something AND condition IS NOT something THEN do this action."];
     return result;
 }
 

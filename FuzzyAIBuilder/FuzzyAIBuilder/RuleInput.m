@@ -78,4 +78,8 @@
     equality = eq;
 }
 
+- (BOOL)isSet {
+    return [cond isSet];
+}
+
 @end

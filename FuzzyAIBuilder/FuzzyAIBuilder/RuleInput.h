@@ -23,4 +23,6 @@
 - (NSString *)equality;
 - (NSString *)condValue;
 - (void)setEquality:(NSString *)eq;
+- (BOOL)
+isSet;
 @end

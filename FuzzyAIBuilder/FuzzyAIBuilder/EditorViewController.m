@@ -30,6 +30,12 @@
     [self.backButton setAction:@selector(goToRulesListPage)];
     [self.addButton setAction: @selector(addNewRule)];
     [self.deleteButton setAction: @selector(removeRule)];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onConditionChanged:)
+                                                 name:@"ConditionChanged"
+                                               object:nil];
+    [self tempOutcome1];
+    [self tempOutcome2];
 }
 
 - (void)loadRule:(Rule *)ruleToLoad {
@@ -72,6 +78,7 @@
     else if ([tableColumn.identifier isEqualToString:@"second"]) {
         DropDownTableViewCell *result = (DropDownTableViewCell *) [tableView makeViewWithIdentifier:@"DropDownTableViewCell" owner:self];
         [result setType:2];
+        [[result popUp] setTag:row];
         NSString *condition = [rule getCondAtIndex:row];
         if (condition != nil) {
             [result setString:condition];
@@ -89,6 +96,7 @@
     else{
         DropDownTableViewCell *result = (DropDownTableViewCell *) [tableView makeViewWithIdentifier:@"DropDownTableViewCell" owner:self];
         [result setType:4];
+        [[result popUp] setTag:row];
         NSString *condition = [rule getCondAtIndex:row];
         if (condition != nil) {
             [result enableValueButtonForCond:condition];
@@ -111,18 +119,69 @@
 }
 
 - (IBAction)addNewRule {
-    [rule createNewRuleInput];
-    [self.inputTableView reloadData];
-}
-
-- (IBAction)removeRule {
-    if ([rule getNumInputs] >1) {
-        
-        // do something here to remove selected row data
+    if ([[rule getRuleAtIndex:[rule getNumInputs] -1] isSet]){
+        [rule createNewRuleInput];
         [self.inputTableView reloadData];
     }
 }
 
+- (IBAction)removeRule {
+    if ([rule getNumInputs] >1) {
+        if ([self.inputTableView selectedRow] >= 0) {
+            [rule deleteRuleInput:[self.inputTableView selectedRow]];
+           
+        } else {
+            [rule deleteRuleInput:[rule getNumInputs] -1];
+        }
+        [self.inputTableView reloadData];
+    }
+}
+
+#pragma mark - Event Handlers
+- (void) onConditionChanged:(NSNotification *) notification {
+    DropDownTableViewCell *object = (DropDownTableViewCell*) [notification object];
+    if ([object type] == 2) {
+        [rule setCond:[object getString] atIndex:[object getRow]];
+        [rule setValue:nil atIndex:[object getRow]];
+    } else {
+        [rule setValue:[object getString] atIndex:[object getRow]];
+    }
+    [self.inputTableView reloadData];
+}
+
+- (void)tempOutcome1 {
+    NSMenu *menu = [[NSMenu alloc] init];
+    NSMenuItem *placeholderItem = [[NSMenuItem alloc] initWithTitle:@"Select Action" action:nil keyEquivalent:@""];
+    [placeholderItem setAttributedTitle:[DropDownTableViewCell changeToWhiteText:@"Select Action" withSize:26]];
+    [placeholderItem setHidden:YES];
+    [menu addItem:placeholderItem];
+    NSArray *values = @[@"Attack Nearest Enemy", @"Attack Player's Target", @"Run Away", @"Sow Seeds", @"Build House", @"Mine Ores"];
+    for (NSString *val in values) {
+        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:val action:nil keyEquivalent:@""];
+        [item setAttributedTitle:[DropDownTableViewCell changeToWhiteText:val withSize:26]];
+        [menu addItem:item];
+    }
+    [self.outcome1 setEnabled:YES];
+    [self.outcome1 setMenu:menu];
+    [self.outcome1 selectItemWithTitle:@"Select Action"];
+}
+
+- (void)tempOutcome2 {
+    NSMenu *menu = [[NSMenu alloc] init];
+    NSMenuItem *placeholderItem = [[NSMenuItem alloc] initWithTitle:@"Select Action Modifier" action:nil keyEquivalent:@""];
+    [placeholderItem setAttributedTitle:[DropDownTableViewCell changeToWhiteText:@"Select Action Modifier" withSize:26]];
+    [placeholderItem setHidden:YES];
+    [menu addItem:placeholderItem];
+    NSArray *values = @[@"", @"With Melee Weapon", @"With Arrow", @"With Fireballs", @"of Wheat"];
+    for (NSString *val in values) {
+        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:val action:nil keyEquivalent:@""];
+        [item setAttributedTitle:[DropDownTableViewCell changeToWhiteText:val withSize:26]];
+        [menu addItem:item];
+    }
+    [self.outcome2 setEnabled:YES];
+    [self.outcome2 setMenu:menu];
+    [self.outcome2 selectItemWithTitle:@"Select Action Modifier"];
+}
 
 
 @end

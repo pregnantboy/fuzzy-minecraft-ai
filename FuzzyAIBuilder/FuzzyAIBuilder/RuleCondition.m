@@ -26,18 +26,18 @@
                        @"Health": @[@"Low", @"Medium", @"High"],
                        @"Mana": @[@"Low", @"Medium", @"High"],
                        @"ArrowCount" : @[@"Low", @"Medium", @"High"],
-                       @"NumEnemies": @[@"None", @"Few" , @"OutNumbered"],
-                       @"NumAllies" : @[@"None", @"Few" , @"OutNumbered"],
+                       @"NumEnemies": @[@"None", @"Few" ,@"Many" ,@"OutNumbered"],
+                       @"NumAllies" : @[@"None", @"Few" , @"Many" ,@"OutNumbered"],
                        @"PlayerHealth":@[@"Low", @"Medium", @"High"],
-                       @"Brightness": @[@"Bright" , @"Dark"],
-                       @"PlayerHunger": @[@"Starving", @"Hungry", @"Bloated"],
+                       @"Sky": @[@"Bright" , @"Dark"],
+                       @"PlayerHunger": @[@"Starving", @"Satisfied", @"Bloated"],
                        @"OreCount": @[@"Depleting", @"Healthy"],
                        @"BuildingBlockCount": @[@"Depleting", @"Healthy"],
-                       @"Rain": @[@"Clear", @"Rain", @"Thunderstorms"],
-                       @"NearestEnemyStrength": @[@"Noob", @"AverageJoe", @"Boss-level"],
-                       @"PlayerTargetStrength": @[@"Noob", @"AverageJoe", @"Boss-level"],
-                       @"PlayerAttackerStrength": @[@"Noob", @"AverageJoe", @"Boss-level"],
-                       @"AttackerStrength" :@[@"Noob", @"AverageJoe", @"Boss-level"]  // applies only when currently attacked
+                       @"Weather": @[@"Clear", @"Rain", @"Thunderstorms"],
+                       @"NearestEnemyStrength": @[@"Noob", @"AverageJoe", @"EpicBoss"],
+                       @"PlayerTargetStrength": @[@"Noob", @"AverageJoe", @"EpicBoss"],
+                       @"PlayerAttackerStrength": @[@"Noob", @"AverageJoe", @"EpicBoss"],
+                       @"AttackerStrength" :@[@"Noob", @"AverageJoe", @"EpicBoss"]  // applies only when currently attacked
                        };
     });
     return conditions;
@@ -107,7 +107,6 @@
 }
 
 + (NSArray *)getPossibleConditions {
-    NSLog(@"%@", [RuleCondition conditions]);
     return [[RuleCondition conditions] allKeys];
 }
 
