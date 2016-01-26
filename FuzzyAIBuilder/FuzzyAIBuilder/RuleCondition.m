@@ -8,12 +8,17 @@
 
 #import "RuleCondition.h"
 
+@interface RuleCondition() {
+    NSString* condCode;
+    NSString* valueCode;
+}
+@end
+
+
 @implementation RuleCondition
 
-
-
 + (NSDictionary *)conditions {
-    static NSDictionary *conditions;
+    static NSDictionary *conditions = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         conditions = @{
@@ -41,59 +46,68 @@
 - (instancetype) init {
     self = [super init];
     if (self) {
-        self.condCode = nil;
+        condCode = nil;
     }
     return self;
 }
 
-- (instancetype) initWithCode:(NSString *)code {
+- (instancetype) initWithCond:(NSString *)cond {
     self = [super init];
     if (self) {
-        self.condCode = code;
+        condCode = cond;
     }
     return self;
 }
 
-- (instancetype) initWithCode:(NSString *)code value:(NSString *)valueCode {
+- (instancetype) initWithCond:(NSString *)cond value:(NSString *)valCode {
     self = [super init];
     if (self) {
-        self.condCode = code;
-        self.valueCode = valueCode;
+        condCode = cond;
+        valueCode = valCode;
     }
     return self;
 }
 
-- (void)setCond:(NSString *)condCode {
-    if ([[RuleCondition getPossibleConditions] containsObject:condCode]) {
-        self.condCode = condCode;
-        self.valueCode = nil;
+- (void)setCondCode:(NSString *)cond {
+    if ([[RuleCondition getPossibleConditions] containsObject:cond]) {
+        condCode = cond;
+        valueCode = nil;
     }
 }
 
 - (void)setCondValue: (NSString *)value {
     if ([[self getPossibleValues] containsObject:value]) {
-        self.valueCode = value;
+        valueCode = value;
     }
 }
 
+- (NSString *)value {
+    return valueCode;
+}
+
 - (BOOL)isSet {
-    if (self.condCode != nil && self.valueCode != nil ) {
-        if ([[RuleCondition getPossibleConditions] containsObject:self.condCode] && [[RuleCondition getPossibleValueForCond:self.condCode] containsObject:self.valueCode]) {
+    if (condCode != nil && valueCode != nil ) {
+        if ([[RuleCondition getPossibleConditions] containsObject:condCode] && [[RuleCondition getPossibleValueForCond:condCode] containsObject:valueCode]) {
             return YES;
         }
     }
     return NO;
 }
 
+- (NSString *)cond {
+    return condCode;
+}
+
 - (NSArray *)getPossibleValues {
-    if (self.condCode != nil) {
-        return (NSArray *)[[self conditions] valueForKey:self.condCode];
+    if (condCode != nil) {
+        return (NSArray *)[[RuleCondition conditions] valueForKey:condCode];
     } else {
         return nil;
     }
 }
 
 + (NSArray *)getPossibleConditions {
+    NSLog(@"%@", [RuleCondition conditions]);
     return [[RuleCondition conditions] allKeys];
 }
 

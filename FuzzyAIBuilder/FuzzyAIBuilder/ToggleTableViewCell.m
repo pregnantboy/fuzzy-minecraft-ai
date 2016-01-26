@@ -8,6 +8,12 @@
 
 #import "ToggleTableViewCell.h"
 #import "MainMenuViewController.h"
+@interface ToggleTableViewCell (){
+    NSInteger type;
+    NSInteger currIndex;
+    NSArray *operators;
+}
+@end
 
 @implementation ToggleTableViewCell
 
@@ -15,35 +21,37 @@
     [super drawRect:dirtyRect];
 }
 
-- (void)setMode:(NSInteger) mode {
-    self.currIndex = 0;
-    switch (mode){
+- (void)setType:(NSInteger)column {
+    currIndex = 0;
+    switch (column){
         case 0:
-            self.type = 0;
-            self.operators = [[NSArray alloc] initWithObjects:@"IF", nil];
+            type = 0;
+            operators = [[NSArray alloc] initWithObjects:@"IF", nil];
             break;
         case 1:
-            self.type = 1;
-            self.operators = [[NSArray alloc] initWithObjects:@
-                         "AND", @"OR", nil];
+            type = 1;
+            operators = [[NSArray alloc] initWithObjects:@"AND", @"OR", nil];
             break;
         default:
-            self.type = 2;
-            self.operators = [[NSArray alloc] initWithObjects:@
-                         "IS", @"IS NOT", nil];
+            type = 3;
+            operators = [[NSArray alloc] initWithObjects:@"IS", @"IS NOT", nil];
     }
     
     [self updateButtonString];
     
 }
 
+- (NSInteger)type {
+    return type;
+}
+
 - (void)setString:(NSString *)string {
-    self.currIndex = [self.operators indexOfObject:string];
+    currIndex = [operators indexOfObject:string];
     [self updateButtonString];
 }
 
 - (void) updateButtonString {
-    if (self.type == 0) {
+    if (type == 0) {
          [MainMenuViewController addWhiteMenuText:self.toggleButton withSize:30 withText:[self getString]];
         NSImage  *newImg = [NSImage imageNamed:@"arrow right"];
         [self.toggleButton setImage:newImg];
@@ -55,13 +63,16 @@
 }
 
 - (NSString *)getString {
-    return [self.operators objectAtIndex:self.currIndex];
+    if (currIndex < [operators count]) {
+        return [operators objectAtIndex:currIndex];
+    }
+    return @"";
 }
 
 - (IBAction)onButtonPressed:(id)sender {
-    self.currIndex = [self.operators indexOfObject:self.toggleButton.title];
-    self.currIndex++;
-    self.currIndex = self.currIndex % ([self.operators count]);
+    currIndex = [operators indexOfObject:self.toggleButton.title];
+    currIndex++;
+    currIndex = currIndex % ([operators count]);
     [self updateButtonString];
     
 }

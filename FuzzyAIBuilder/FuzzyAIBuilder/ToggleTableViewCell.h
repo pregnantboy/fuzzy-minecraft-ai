@@ -10,12 +10,11 @@
 
 @interface ToggleTableViewCell : NSTableCellView
 
-@property NSInteger type;
-@property NSInteger currIndex;
-@property NSArray *operators;
 @property (weak) IBOutlet NSButton *toggleButton;
 
-- (void)setMode:(NSInteger) mode;
+- (void)setType:(NSInteger)type;
+- (NSInteger) type;
 - (NSString *)getString;
+- (void)setString:(NSString *)string;
 
 @end

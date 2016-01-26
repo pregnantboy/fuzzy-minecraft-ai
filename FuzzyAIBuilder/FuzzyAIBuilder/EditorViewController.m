@@ -11,7 +11,9 @@
 #import "MainMenuViewController.h"
 #import "ToggleTableViewCell.h"
 
-@interface EditorViewController ()
+@interface EditorViewController () {
+    Rule *rule;
+}
 
 @end
 
@@ -24,10 +26,14 @@
     [MainMenuViewController addShadow:self.backButton];
     [MainMenuViewController addShadow:self.addButton];
     [MainMenuViewController addShadow:self.deleteButton];
-    self.numRules = 1;
+    rule = [[Rule alloc] init];
     [self.backButton setAction:@selector(goToRulesListPage)];
     [self.addButton setAction: @selector(addNewRule)];
     [self.deleteButton setAction: @selector(removeRule)];
+}
+
+- (void)loadRule:(Rule *)ruleToLoad {
+    rule = ruleToLoad;
 }
 
 #pragma mark - NSTableView delegates
@@ -38,7 +44,7 @@
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return self.numRules;
+    return [rule getNumInputs];
 }
 
 - (CGFloat)tableView:(NSTableView *)tableView
@@ -55,20 +61,44 @@
     if ([tableColumn.identifier isEqualToString:@"first"]) {
         ToggleTableViewCell *result = (ToggleTableViewCell *) [tableView makeViewWithIdentifier:@"ToggleTableViewCell" owner:self];
         if (row == 0) {
-            [result setMode:0];
+            [result setType:0];
         } else {
-            [result setMode:1];
+            [result setType:1];
+            [result setString:[rule getOperatorAtIndex:row]];
         }
         return result;
     }
     
-    if ([tableColumn.identifier isEqualToString:@"third"]) {
-        ToggleTableViewCell *result = (ToggleTableViewCell *) [tableView makeViewWithIdentifier:@"ToggleTableViewCell" owner:self];
-        [result setMode:2];
+    else if ([tableColumn.identifier isEqualToString:@"second"]) {
+        DropDownTableViewCell *result = (DropDownTableViewCell *) [tableView makeViewWithIdentifier:@"DropDownTableViewCell" owner:self];
+        [result setType:2];
+        NSString *condition = [rule getCondAtIndex:row];
+        if (condition != nil) {
+            [result setString:condition];
+        }
         return result;
     }
-    DropDownTableViewCell *result = (DropDownTableViewCell *) [tableView makeViewWithIdentifier:@"DropDownTableViewCell" owner:self];
-    return result;
+    
+    else if ([tableColumn.identifier isEqualToString:@"third"]) {
+        ToggleTableViewCell *result = (ToggleTableViewCell *) [tableView makeViewWithIdentifier:@"ToggleTableViewCell" owner:self];
+        [result setType:3];
+        NSString *eq = [rule getEqualityAtIndex:row];
+        [result setString: eq];
+        return result;
+    }
+    else{
+        DropDownTableViewCell *result = (DropDownTableViewCell *) [tableView makeViewWithIdentifier:@"DropDownTableViewCell" owner:self];
+        [result setType:4];
+        NSString *condition = [rule getCondAtIndex:row];
+        if (condition != nil) {
+            [result enableValueButtonForCond:condition];
+            NSString *value = [rule getValueAtIndex:row];
+            if (value != nil) {
+                [result setString: value];
+            }
+        }
+        return result;
+    }
 }
 
 #pragma mark - IBAction 
@@ -81,13 +111,13 @@
 }
 
 - (IBAction)addNewRule {
-    self.numRules ++;
+    [rule createNewRuleInput];
     [self.inputTableView reloadData];
 }
 
 - (IBAction)removeRule {
-    if (self.numRules >0) {
-        self.numRules --;
+    if ([rule getNumInputs] >1) {
+        
         // do something here to remove selected row data
         [self.inputTableView reloadData];
     }

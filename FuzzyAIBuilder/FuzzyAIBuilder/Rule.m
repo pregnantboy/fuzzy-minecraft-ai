@@ -7,30 +7,87 @@
 //
 
 #import "Rule.h"
-#import "RuleInput.h"
+@interface Rule() {
+    NSMutableArray *inputs;
+}
+@end
 
 @implementation Rule
-
 
 
 - (instancetype) init {
     self = [super init];
     if (self) {
-        self.inputs = [[NSMutableArray alloc] init];
+        inputs = [[NSMutableArray alloc] init];
+        [inputs addObject:[[RuleInput alloc] initForFirstInput]];
     }
     return self;
 }
 
-- (RuleInput *) getRuleAtIndex:(NSInteger) index {
-    if (index < [self.inputs count]) {
-        return [self.inputs objectAtIndex:index];
+- (RuleInput *)getRuleAtIndex:(NSInteger) index {
+    if (index < [inputs count]) {
+        return [inputs objectAtIndex:index];
     } else {
         NSLog(@"Rule Input out of range");
         return nil;
     }
 }
 
+- (void)createNewRuleInput {
+    RuleInput* newRuleInput = [[RuleInput alloc] init];
+    [inputs addObject: newRuleInput];
+}
+
+- (void)deleteRuleInput:(NSInteger)index {
+    [inputs removeObjectAtIndex:index];
+}
 
 
+- (void)setOperator:(NSString *)operator atIndex:(NSInteger)index {
+    [(RuleInput *)[inputs objectAtIndex:index] setOperator:operator];
+}
+
+- (void)setEquality:(NSString *)equality atIndex:(NSInteger)index {
+    [(RuleInput *)[inputs objectAtIndex:index] setEquality:equality];
+}
+
+- (void)setCond:(NSString *)cond atIndex:(NSInteger) index {
+    RuleInput *input = [self getRuleAtIndex:index];
+    [input setCondition:cond];
+}
+
+- (void)setValue:(NSString *)value atIndex:(NSInteger) index {
+    RuleInput *input = [self getRuleAtIndex:index];
+    [input setCondValue:value];
+}
+
+- (NSString *)getCondAtIndex:(NSInteger)index {
+    RuleInput *input = [self getRuleAtIndex:index];
+    return [input condition];
+}
+
+- (NSString *)getValueAtIndex:(NSInteger)index {
+    RuleInput *input = [self getRuleAtIndex:index];
+    return [input condValue];
+}
+
+- (NSString *)getOperatorAtIndex:(NSInteger)index {
+    RuleInput *input = [self getRuleAtIndex:index];
+    return [input operator];
+}
+
+- (NSString *)getEqualityAtIndex:(NSInteger)index {
+    RuleInput *input = [self getRuleAtIndex:index];
+    return [input equality];
+}
+
+- (NSArray *)getPossibleValuesAtIndex:(NSInteger) index {
+    RuleInput *input = [self getRuleAtIndex:index];
+    return [(RuleCondition *)[input condition] getPossibleValues];
+}
+
+- (NSInteger)getNumInputs {
+    return [inputs count];
+}
 
 @end

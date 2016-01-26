@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "Rule.h"
 
 @interface EditorViewController : NSViewController
 @property (weak) IBOutlet NSButton *backButton;
@@ -14,5 +15,5 @@
 @property (weak) IBOutlet NSImageView *background;
 @property (weak) IBOutlet NSButton *addButton;
 @property (weak) IBOutlet NSButton *deleteButton;
-@property NSInteger numRules;
+
 @end

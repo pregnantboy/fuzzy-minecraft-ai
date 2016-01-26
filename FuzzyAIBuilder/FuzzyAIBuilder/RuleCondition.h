@@ -10,20 +10,17 @@
 
 @interface RuleCondition : NSObject
 
-@property (strong, nonatomic, readonly) NSDictionary* conditions;
-
-//@property NSString* condString;
-@property NSString* condCode;
-//@property NSString* valueString;
-@property NSString* valueCode;
-
 - (instancetype) init;
-- (instancetype) initWithCode:(NSString *)code;
-- (instancetype) initWithCode:(NSString *)code value:(NSString *)valueCode;
+- (instancetype) initWithCond:(NSString *)cond;
+- (instancetype) initWithCond:(NSString *)cond value:(NSString *)valCode;
 - (void)setCondValue: (NSString *)value;
 - (BOOL)isSet;
+- (void)setCondCode:(NSString *)cond;
+- (NSString *)cond;
+- (NSString *)value;
 - (NSArray *)getPossibleValues;
 + (NSArray *)getPossibleConditions;
 + (NSArray *)getPossibleValueForCond:(NSString *)cond;
++ (NSDictionary *)conditions;
 
 @end

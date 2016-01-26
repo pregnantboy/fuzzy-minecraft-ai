@@ -20,7 +20,7 @@
 
     CGFloat iconSize = 30.0;
     CGFloat iconYLoc = (dirtyRect.size.height - iconSize) / 2.0;
-    CGFloat iconXLoc = (dirtyRect.size.width - (iconSize + 8));
+    CGFloat iconXLoc = (dirtyRect.size.width - (iconSize));
     
     CGRect triRect = {iconXLoc, iconYLoc, iconSize, iconSize};
     NSImage *arrowdown = [NSImage imageNamed:@"chevrondownwithblackshadow"];
