@@ -34,8 +34,8 @@
                                              selector:@selector(onConditionChanged:)
                                                  name:@"ConditionChanged"
                                                object:nil];
-    [self tempOutcome1];
-    [self tempOutcome2];
+    [self populateActions];
+    [self disableModifierMenu];
 }
 
 - (void)loadRule:(Rule *)ruleToLoad {
@@ -137,6 +137,16 @@
     }
 }
 
+- (IBAction)setAction:(id)sender {
+    [rule setAction:[self.outcome1 selectedItem].title];
+    [self populateActionModifier];
+}
+
+- (IBAction)setModifier:(id)sender {
+    [rule setModifier:[self.outcome2 selectedItem].title];
+}
+
+
 #pragma mark - Event Handlers
 - (void) onConditionChanged:(NSNotification *) notification {
     DropDownTableViewCell *object = (DropDownTableViewCell*) [notification object];
@@ -149,13 +159,13 @@
     [self.inputTableView reloadData];
 }
 
-- (void)tempOutcome1 {
+- (void)populateActions {
     NSMenu *menu = [[NSMenu alloc] init];
     NSMenuItem *placeholderItem = [[NSMenuItem alloc] initWithTitle:@"Select Action" action:nil keyEquivalent:@""];
     [placeholderItem setAttributedTitle:[DropDownTableViewCell changeToWhiteText:@"Select Action" withSize:26]];
     [placeholderItem setHidden:YES];
     [menu addItem:placeholderItem];
-    NSArray *values = @[@"Attack Nearest Enemy", @"Attack Player's Target", @"Run Away", @"Sow Seeds", @"Build House", @"Mine Ores"];
+    NSArray *values = [RuleOutput getPossibleActions];
     for (NSString *val in values) {
         NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:val action:nil keyEquivalent:@""];
         [item setAttributedTitle:[DropDownTableViewCell changeToWhiteText:val withSize:26]];
@@ -166,13 +176,14 @@
     [self.outcome1 selectItemWithTitle:@"Select Action"];
 }
 
-- (void)tempOutcome2 {
+- (void)populateActionModifier {
+    [self.outcome2 setEnabled:YES];
     NSMenu *menu = [[NSMenu alloc] init];
     NSMenuItem *placeholderItem = [[NSMenuItem alloc] initWithTitle:@"Select Action Modifier" action:nil keyEquivalent:@""];
     [placeholderItem setAttributedTitle:[DropDownTableViewCell changeToWhiteText:@"Select Action Modifier" withSize:26]];
     [placeholderItem setHidden:YES];
     [menu addItem:placeholderItem];
-    NSArray *values = @[@"", @"With Melee Weapon", @"With Arrow", @"With Fireballs", @"of Wheat"];
+    NSArray *values = [rule getPossibleModifiers];
     for (NSString *val in values) {
         NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:val action:nil keyEquivalent:@""];
         [item setAttributedTitle:[DropDownTableViewCell changeToWhiteText:val withSize:26]];
@@ -181,6 +192,17 @@
     [self.outcome2 setEnabled:YES];
     [self.outcome2 setMenu:menu];
     [self.outcome2 selectItemWithTitle:@"Select Action Modifier"];
+}
+
+- (void)disableModifierMenu {
+    NSMenu *menu = [[NSMenu alloc] init];
+    NSMenuItem *placeholderItem = [[NSMenuItem alloc] initWithTitle:@"Select Action Modifier" action:nil keyEquivalent:@""];
+    [placeholderItem setAttributedTitle:[DropDownTableViewCell changeToWhiteText:@"Select Action Modifier" withSize:26]];
+    [placeholderItem setHidden:YES];
+    [menu addItem:placeholderItem];
+    [self.outcome2 setMenu:menu];
+    [self.outcome2 selectItemWithTitle:@"Select Action Modifier"];
+    [self.outcome2 setEnabled:NO];
 }
 
 

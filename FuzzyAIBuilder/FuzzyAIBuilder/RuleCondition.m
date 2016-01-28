@@ -107,7 +107,7 @@
 }
 
 + (NSArray *)getPossibleConditions {
-    return [[RuleCondition conditions] allKeys];
+    return [[[RuleCondition conditions] allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
 }
 
 + (NSArray *)getPossibleValueForCond:(NSString *)cond {

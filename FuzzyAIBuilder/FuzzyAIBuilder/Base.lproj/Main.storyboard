@@ -911,7 +911,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="P0O-jB-kBa">
-                                            <rect key="frame" x="0.0" y="0.0" width="1161" height="290"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1161" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
@@ -942,7 +942,7 @@
                                                                     <rect key="frame" x="30" y="13" width="212" height="22"/>
                                                                     <popUpButtonCell key="cell" type="smallSquare" bezelStyle="smallSquare" alignment="center" lineBreakMode="truncatingTail" imageScaling="proportionallyDown" inset="2" id="te9-1r-L41">
                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                        <font key="font" metaFont="system"/>
+                                                                        <font key="font" metaFont="menu"/>
                                                                         <menu key="menu" id="w8q-1D-3zr">
                                                                             <items>
                                                                                 <menuItem title="Item 1" id="762-qU-GaX"/>
@@ -1144,20 +1144,26 @@
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <connections>
+                                    <action selector="setAction:" target="SaW-6z-8wW" id="8vb-yt-2QV"/>
+                                </connections>
                             </popUpButton>
                             <popUpButton misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="74z-Fg-w5d" customClass="RulePopUpButton">
                                 <rect key="frame" x="718" y="80" width="436" height="60"/>
-                                <popUpButtonCell key="cell" type="smallSquare" title="Item 1" bezelStyle="smallSquare" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" sound="click" inset="2" id="um8-Aj-kts">
+                                <popUpButtonCell key="cell" type="smallSquare" bezelStyle="smallSquare" alignment="center" lineBreakMode="truncatingTail" imageScaling="proportionallyDown" sound="click" inset="2" id="um8-Aj-kts">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="G3f-X9-7bi">
                                         <items>
-                                            <menuItem title="Item 1" state="on" id="dP4-ZV-x8X"/>
+                                            <menuItem title="Item 1" id="dP4-ZV-x8X"/>
                                             <menuItem title="Item 2" id="nyF-sa-YBv"/>
                                             <menuItem title="Item 3" id="X03-rG-yWA"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <connections>
+                                    <action selector="setModifier:" target="SaW-6z-8wW" id="BaO-kF-Dz0"/>
+                                </connections>
                             </popUpButton>
                         </subviews>
                         <constraints>
@@ -1261,7 +1267,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="231" rowSizeStyle="automatic" viewBased="YES" id="oJy-HG-3vb">
-                                            <rect key="frame" x="0.0" y="0.0" width="880" height="314"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="880" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="6" height="2"/>
                                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
@@ -1409,7 +1415,7 @@
                                 </buttonCell>
                             </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="83u-q3-zv6">
-                                <rect key="frame" x="733" y="144" width="68" height="60"/>
+                                <rect key="frame" x="733" y="90" width="68" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="83u-q3-zv6" secondAttribute="height" multiplier="17:15" id="jZO-kx-89s"/>
                                 </constraints>
@@ -1419,7 +1425,7 @@
                                 </buttonCell>
                             </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="lzi-2r-HQd">
-                                <rect key="frame" x="733" y="344" width="68" height="60"/>
+                                <rect key="frame" x="733" y="364" width="68" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="lzi-2r-HQd" secondAttribute="height" multiplier="17:15" id="5f1-GB-7Dd"/>
                                     <constraint firstAttribute="width" constant="68" id="SEh-pF-tIy"/>
@@ -1430,11 +1436,21 @@
                                 </buttonCell>
                             </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="gIv-3a-oWq">
-                                <rect key="frame" x="733" y="244" width="68" height="60"/>
+                                <rect key="frame" x="733" y="264" width="68" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gIv-3a-oWq" secondAttribute="height" multiplier="17:15" id="ZBH-JF-Njt"/>
                                 </constraints>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="plus" imagePosition="overlaps" alignment="center" imageScaling="axesIndependently" sound="click" inset="2" id="ETY-X7-L2L">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pif-Ok-YuT">
+                                <rect key="frame" x="741" y="190" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Pif-Ok-YuT" secondAttribute="height" multiplier="2:1" id="dqv-xw-lHM"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="rectangle1" imagePosition="only" alignment="center" imageScaling="axesIndependently" inset="2" id="mgc-N5-o5g">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -1459,16 +1475,19 @@
                             <constraint firstAttribute="bottom" secondItem="IUM-5D-dTg" secondAttribute="bottom" constant="110" id="TG0-wm-bLq"/>
                             <constraint firstItem="83u-q3-zv6" firstAttribute="width" secondItem="lzi-2r-HQd" secondAttribute="width" id="U9e-N7-kCf"/>
                             <constraint firstAttribute="bottom" secondItem="WLh-Fo-Bo1" secondAttribute="bottom" constant="30" id="Vhn-XF-u7r"/>
-                            <constraint firstItem="lzi-2r-HQd" firstAttribute="top" secondItem="IUM-5D-dTg" secondAttribute="top" constant="20" id="WVM-b5-kQV"/>
+                            <constraint firstItem="Pif-Ok-YuT" firstAttribute="width" secondItem="gIv-3a-oWq" secondAttribute="width" id="VuS-K0-Cro"/>
+                            <constraint firstItem="Pif-Ok-YuT" firstAttribute="centerX" secondItem="gIv-3a-oWq" secondAttribute="centerX" id="WBj-0x-21V"/>
+                            <constraint firstItem="lzi-2r-HQd" firstAttribute="top" secondItem="IUM-5D-dTg" secondAttribute="top" id="WVM-b5-kQV"/>
                             <constraint firstItem="CVL-0x-4FA" firstAttribute="centerX" secondItem="4qp-SN-cU3" secondAttribute="centerX" id="Xng-P7-9fb"/>
                             <constraint firstItem="ep9-ib-0Rx" firstAttribute="centerY" secondItem="6uj-Cq-gds" secondAttribute="centerY" constant="-5" id="YlL-QH-bxu"/>
                             <constraint firstItem="gIv-3a-oWq" firstAttribute="width" secondItem="lzi-2r-HQd" secondAttribute="width" id="Zwj-W1-XGP"/>
+                            <constraint firstItem="Pif-Ok-YuT" firstAttribute="top" secondItem="gIv-3a-oWq" secondAttribute="bottom" constant="40" id="iL8-C2-f9F"/>
                             <constraint firstItem="Mv5-D3-1xK" firstAttribute="height" secondItem="6uj-Cq-gds" secondAttribute="height" id="nUR-vd-mOL"/>
                             <constraint firstItem="gIv-3a-oWq" firstAttribute="centerX" secondItem="lzi-2r-HQd" secondAttribute="centerX" id="oDA-kL-hDa"/>
                             <constraint firstItem="CVL-0x-4FA" firstAttribute="height" secondItem="4qp-SN-cU3" secondAttribute="height" id="qga-SN-zqe"/>
                             <constraint firstItem="CVL-0x-4FA" firstAttribute="width" secondItem="4qp-SN-cU3" secondAttribute="width" id="sR2-gJ-eXI"/>
                             <constraint firstItem="WLh-Fo-Bo1" firstAttribute="centerX" secondItem="4qp-SN-cU3" secondAttribute="centerX" multiplier="0.7" id="tfr-jN-aEU"/>
-                            <constraint firstItem="83u-q3-zv6" firstAttribute="top" secondItem="gIv-3a-oWq" secondAttribute="bottom" constant="40" id="zMI-DC-BrT"/>
+                            <constraint firstItem="83u-q3-zv6" firstAttribute="top" secondItem="Pif-Ok-YuT" secondAttribute="bottom" constant="40" id="vbZ-Za-9JM"/>
                         </constraints>
                     </view>
                     <connections>

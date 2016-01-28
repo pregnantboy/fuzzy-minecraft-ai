@@ -9,6 +9,8 @@
 #import "Rule.h"
 @interface Rule() {
     NSMutableArray *inputs;
+    NSString *action;
+    NSString *modifier;
 }
 @end
 
@@ -64,6 +66,14 @@
     [input setCondValue:value];
 }
 
+- (void)setAction:(NSString *)act {
+    action =act;
+}
+
+- (void)setModifier:(NSString *)mod {
+    modifier = mod;
+}
+
 - (NSString *)getCondAtIndex:(NSInteger)index {
     RuleInput *input = [self getRuleAtIndex:index];
     return [input condition];
@@ -84,9 +94,27 @@
     return [input equality];
 }
 
+- (NSString *)getAction {
+    return action;
+}
+
+- (NSString *)getModifier  {
+    return modifier;
+}
+
 - (NSArray *)getPossibleValuesAtIndex:(NSInteger) index {
+    if (index >= [inputs count]) {
+        return nil;
+    }
     RuleInput *input = [self getRuleAtIndex:index];
     return [(RuleCondition *)[input condition] getPossibleValues];
+}
+
+- (NSArray *)getPossibleModifiers {
+    if (action == nil) {
+        return nil;
+    }
+    return [RuleOutput getPossibleModifiersForAction:action];
 }
 
 - (NSInteger)getNumInputs {
