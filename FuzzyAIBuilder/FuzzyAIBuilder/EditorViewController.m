@@ -10,9 +10,12 @@
 #import "DropDownTableViewCell.h"
 #import "MainMenuViewController.h"
 #import "ToggleTableViewCell.h"
+#import "RulesListViewController.h"
 
 @interface EditorViewController () {
     Rule *rule;
+    NSInteger index;
+    AIObject *AI;
 }
 
 @end
@@ -38,8 +41,19 @@
     [self disableModifierMenu];
 }
 
-- (void)loadRule:(Rule *)ruleToLoad {
-    rule = ruleToLoad;
+- (void)createNewRuleForAI:(AIObject *)ai {
+    AI = ai;
+    index = [ai getNumRules];
+    [self.nameLabel setStringValue:[AI getName]];
+}
+
+- (void)modifyRuleAt:(NSInteger)indexToMod forAI:(AIObject *)ai{
+    AI = ai;
+    index = indexToMod;
+    rule = [ai getRuleAtIndex:indexToMod];
+    [self.inputTableView reloadData];
+    [self.nameLabel setStringValue:[AI getName]];
+    [self loadActionAndModifier];
 }
 
 #pragma mark - NSTableView delegates
@@ -113,13 +127,20 @@
 
 - (IBAction)goToRulesListPage {
     NSStoryboard *mainsb = [NSStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    NSViewController *vc = [mainsb instantiateControllerWithIdentifier:@"RulesListViewController"];
+    RulesListViewController *vc = (RulesListViewController *)[mainsb instantiateControllerWithIdentifier:@"RulesListViewController"];
+    if (index >= [AI getNumRules]) {
+        [AI saveNewRule:rule];
+    } else {
+        [AI replaceExistingRule:index withRule:rule];
+    }
     [[vc view] setFrame:self.view.frame];
     [[NSApp mainWindow] setContentViewController:vc];
+    NSLog(@"%@", [rule getRuleString]);
+    [vc loadAI:AI];
 }
 
 - (IBAction)addNewRule {
-    if ([[rule getRuleAtIndex:[rule getNumInputs] -1] isSet]){
+    if ([[rule getRuleInputAtIndex:[rule getNumInputs] -1] isSet]){
         [rule createNewRuleInput];
         [self.inputTableView reloadData];
     }
@@ -139,11 +160,14 @@
 
 - (IBAction)setAction:(id)sender {
     [rule setAction:[self.outcome1 selectedItem].title];
+    [rule setModifier:nil];
     [self populateActionModifier];
+   
 }
 
 - (IBAction)setModifier:(id)sender {
     [rule setModifier:[self.outcome2 selectedItem].title];
+    NSLog(@"%@", [rule getRuleString]);
 }
 
 
@@ -203,6 +227,16 @@
     [self.outcome2 setMenu:menu];
     [self.outcome2 selectItemWithTitle:@"Select Action Modifier"];
     [self.outcome2 setEnabled:NO];
+}
+
+- (void)loadActionAndModifier {
+    if ([rule getAction] != nil) {
+        [self.outcome1 selectItemWithTitle:[rule getAction]];
+        [self populateActionModifier];
+        if ([rule getModifier] != nil ) {
+            [self.outcome2 selectItemWithTitle:[rule getModifier]];
+        }
+    }
 }
 
 

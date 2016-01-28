@@ -12,7 +12,7 @@
 @interface Rule : NSObject
 
 - (instancetype) init;
-- (RuleInput *)getRuleAtIndex:(NSInteger) index;
+- (RuleInput *)getRuleInputAtIndex:(NSInteger) index;
 - (void)createNewRuleInput;
 - (void)deleteRuleInput:(NSInteger)index;
 - (void)setOperator:(NSString *)operator atIndex:(NSInteger)index;
@@ -32,4 +32,8 @@
 - (NSArray *)getPossibleValuesAtIndex:(NSInteger) index;
 - (NSArray *)getPossibleModifiers;
 - (NSInteger)getNumInputs;
+
+- (BOOL)isComplete;
+- (NSString *)getRuleString;
+
 @end

@@ -8,6 +8,8 @@
 
 #import "CreateAIViewController.h"
 #import "MainMenuViewController.h"
+#import "RulesListViewController.h"
+#import "AIObject.h"
 
 @interface CreateAIViewController ()
 
@@ -19,7 +21,7 @@
     [super viewDidLoad];
     [self.background setAlphaValue:0.90];
     [self.backButton setAction:@selector(goToCreatePage)];
-    [self.nextButton setAction:@selector(goToRulesListPage)];
+    [self.nextButton setAction:@selector(createNewAI)];
     [MainMenuViewController addShadow:self.backButton];
     [MainMenuViewController addShadow:self.nextButton];
 }
@@ -31,11 +33,18 @@
     [[NSApp mainWindow] setContentViewController:mainMenuVc];
 }
 
-- (IBAction)goToRulesListPage {
+- (IBAction)createNewAI {
+    AIObject *newAI;
+    if ([self.name.stringValue length] > 0) {
+         newAI = [[AIObject alloc] initWithAIName:self.name.stringValue];
+    } else {
+        return;
+    }
     NSStoryboard *mainsb = [NSStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    NSViewController *vc = [mainsb instantiateControllerWithIdentifier:@"RulesListViewController"];
+    RulesListViewController *vc = (RulesListViewController *)[mainsb instantiateControllerWithIdentifier:@"RulesListViewController"];
     [[vc view] setFrame:self.view.frame];
     [[NSApp mainWindow] setContentViewController:vc];
+    [vc loadAI:newAI];
 }
 
 

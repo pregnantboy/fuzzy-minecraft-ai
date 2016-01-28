@@ -10,8 +10,11 @@
 #import "MainMenuViewController.h"
 #import "RuleTableViewCell.h"
 #import "RuleNumTableViewCell.h"
+#import "EditorViewController.h"
 
-@interface RulesListViewController ()
+@interface RulesListViewController () {
+    AIObject *AI;
+}
 
 @end
 
@@ -34,8 +37,8 @@
     
     [self.backButton setAction:@selector(goToMainMenu)];
     [self.background setTarget:self];
-    [self.addNewButton setAction:
-     @selector(goToEditorPage)];
+    [self.addNewButton setAction:@selector(createNewRule)];
+    [self.modifyButton setAction:@selector(modifyRule)];
 }
 
 - (void)viewDidAppear {
@@ -44,6 +47,12 @@
     [bgButton setTransparent:YES];
     [self.background addSubview:bgButton];
     [bgButton setAction:@selector(clearSelection)];
+}
+
+- (void)loadAI:(AIObject *)aiObject {
+    AI = aiObject;
+    [self.aiName setStringValue:[aiObject getName]];
+    [self.tableView reloadData];
 }
 
 #pragma mark - NSTableView delegates
@@ -56,7 +65,7 @@
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return 7;
+    return [AI getNumRules];
 }
 
 - (CGFloat)tableView:(NSTableView *)tableView
@@ -77,7 +86,7 @@
     }
     
     RuleTableViewCell *result = (RuleTableViewCell *) [tableView makeViewWithIdentifier:@"RuleTableViewCell" owner:self];
-    [result setRuleString:@"IF condition IS something AND condition IS NOT something THEN do this action."];
+    [result setRuleString:[[AI getRuleAtIndex:row] getRuleString]];
     return result;
 }
 
@@ -90,11 +99,21 @@
     [[NSApp mainWindow] setContentViewController:mainMenuVc];
 }
 
-- (IBAction)goToEditorPage {
+- (IBAction)createNewRule {
     NSStoryboard *mainsb = [NSStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    NSViewController *vc = [mainsb instantiateControllerWithIdentifier:@"EditorViewController"];
+    EditorViewController *vc = (EditorViewController *)[mainsb instantiateControllerWithIdentifier:@"EditorViewController"];
     [[vc view] setFrame:self.view.frame];
     [[NSApp mainWindow] setContentViewController:vc];
+    [vc createNewRuleForAI:AI];
+}
+
+- (IBAction)modifyRule {
+    NSStoryboard *mainsb = [NSStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    EditorViewController *vc = (EditorViewController *)[mainsb instantiateControllerWithIdentifier:@"EditorViewController"];
+    [[vc view] setFrame:self.view.frame];
+    [[NSApp mainWindow] setContentViewController:vc];
+    NSInteger index =[self.tableView selectedRow];
+    [vc modifyRuleAt:index forAI:AI];
 }
 
 - (void)clearSelection {

@@ -56,6 +56,7 @@
 		3C60B27D1C54DFE50096E476 /* shablagoo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3C60B27A1C54DFE50096E476 /* shablagoo.ttf */; };
 		3C60B27E1C54DFE50096E476 /* theminion.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3C60B27B1C54DFE50096E476 /* theminion.otf */; };
 		3CB2CDFF1C5A5D3E00C08DED /* RuleOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB2CDFE1C5A5D3E00C08DED /* RuleOutput.m */; };
+		3CB2CE051C5A829000C08DED /* AIObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB2CE041C5A829000C08DED /* AIObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +146,8 @@
 		3C60B27B1C54DFE50096E476 /* theminion.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = theminion.otf; path = fonts/theminion.otf; sourceTree = "<group>"; };
 		3CB2CDFD1C5A5D3E00C08DED /* RuleOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleOutput.h; sourceTree = "<group>"; };
 		3CB2CDFE1C5A5D3E00C08DED /* RuleOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RuleOutput.m; sourceTree = "<group>"; };
+		3CB2CE031C5A829000C08DED /* AIObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIObject.h; sourceTree = "<group>"; };
+		3CB2CE041C5A829000C08DED /* AIObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +198,8 @@
 		3C35C7A91C549BC900D2F1D6 /* FuzzyAIBuilder */ = {
 			isa = PBXGroup;
 			children = (
+				3CB2CE031C5A829000C08DED /* AIObject.h */,
+				3CB2CE041C5A829000C08DED /* AIObject.m */,
 				3C35C7AA1C549BC900D2F1D6 /* AppDelegate.h */,
 				3C35C7AB1C549BC900D2F1D6 /* AppDelegate.m */,
 				3C1CEDB91C55068A000DE873 /* CreateAIViewController.h */,
@@ -452,6 +457,7 @@
 				3C0363791C55555300071090 /* RulesListViewController.m in Sources */,
 				3C35C7B21C549BC900D2F1D6 /* MainMenuViewController.m in Sources */,
 				3CB2CDFF1C5A5D3E00C08DED /* RuleOutput.m in Sources */,
+				3CB2CE051C5A829000C08DED /* AIObject.m in Sources */,
 				3C03637F1C5568D500071090 /* RuleNumTableViewCell.m in Sources */,
 				3C0363A01C568DCC00071090 /* Rule.m in Sources */,
 				3C03639A1C56605B00071090 /* ToggleTableViewCell.m in Sources */,

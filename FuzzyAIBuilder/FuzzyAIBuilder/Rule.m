@@ -26,7 +26,7 @@
     return self;
 }
 
-- (RuleInput *)getRuleAtIndex:(NSInteger) index {
+- (RuleInput *)getRuleInputAtIndex:(NSInteger) index {
     if (index < [inputs count]) {
         return [inputs objectAtIndex:index];
     } else {
@@ -57,12 +57,12 @@
 }
 
 - (void)setCond:(NSString *)cond atIndex:(NSInteger) index {
-    RuleInput *input = [self getRuleAtIndex:index];
+    RuleInput *input = [self getRuleInputAtIndex:index];
     [input setCondition:cond];
 }
 
 - (void)setValue:(NSString *)value atIndex:(NSInteger) index {
-    RuleInput *input = [self getRuleAtIndex:index];
+    RuleInput *input = [self getRuleInputAtIndex:index];
     [input setCondValue:value];
 }
 
@@ -75,22 +75,22 @@
 }
 
 - (NSString *)getCondAtIndex:(NSInteger)index {
-    RuleInput *input = [self getRuleAtIndex:index];
+    RuleInput *input = [self getRuleInputAtIndex:index];
     return [input condition];
 }
 
 - (NSString *)getValueAtIndex:(NSInteger)index {
-    RuleInput *input = [self getRuleAtIndex:index];
+    RuleInput *input = [self getRuleInputAtIndex:index];
     return [input condValue];
 }
 
 - (NSString *)getOperatorAtIndex:(NSInteger)index {
-    RuleInput *input = [self getRuleAtIndex:index];
+    RuleInput *input = [self getRuleInputAtIndex:index];
     return [input operator];
 }
 
 - (NSString *)getEqualityAtIndex:(NSInteger)index {
-    RuleInput *input = [self getRuleAtIndex:index];
+    RuleInput *input = [self getRuleInputAtIndex:index];
     return [input equality];
 }
 
@@ -106,7 +106,7 @@
     if (index >= [inputs count]) {
         return nil;
     }
-    RuleInput *input = [self getRuleAtIndex:index];
+    RuleInput *input = [self getRuleInputAtIndex:index];
     return [(RuleCondition *)[input condition] getPossibleValues];
 }
 
@@ -119,6 +119,32 @@
 
 - (NSInteger)getNumInputs {
     return [inputs count];
+}
+
+- (NSString *)getRuleString {
+    if (![self isComplete]) {
+        return @"Incomplete Rule";
+    }
+    NSMutableString *resultString = [[NSMutableString alloc]init];
+    for (RuleInput *input in inputs) {
+        if ([input isKindOfClass:[RuleInput class]] &&[input isSet]) {
+            [resultString appendString:[input getRuleInputString]];
+        }
+    }
+    [resultString appendString:[NSString stringWithFormat:@"THEN %@ %@.", action, modifier]];
+    return resultString;
+}
+
+- (BOOL)isComplete {
+    for (RuleInput *input in inputs) {
+        if (![input isSet]) {
+            return NO;
+        }
+    }
+    if (modifier == nil) {
+        return NO;
+    }
+    return YES;
 }
 
 @end

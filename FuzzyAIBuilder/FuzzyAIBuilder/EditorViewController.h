@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "Rule.h"
 #import "RulePopUpButton.h"
+#import "AIObject.h"
 
 @interface EditorViewController : NSViewController
 @property (weak) IBOutlet NSButton *backButton;
@@ -18,5 +19,9 @@
 @property (weak) IBOutlet NSButton *deleteButton;
 @property (weak) IBOutlet RulePopUpButton *outcome1;
 @property (weak) IBOutlet RulePopUpButton *outcome2;
+@property (weak) IBOutlet NSTextField *nameLabel;
+
+- (void)createNewRuleForAI:(AIObject *)ai;
+- (void)modifyRuleAt:(NSInteger)indexToMod forAI:(AIObject *)ai;
 
 @end

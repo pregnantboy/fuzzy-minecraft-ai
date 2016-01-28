@@ -23,6 +23,7 @@
 - (NSString *)equality;
 - (NSString *)condValue;
 - (void)setEquality:(NSString *)eq;
-- (BOOL)
-isSet;
+- (BOOL)isSet;
+- (NSString *)getRuleInputString;
+
 @end

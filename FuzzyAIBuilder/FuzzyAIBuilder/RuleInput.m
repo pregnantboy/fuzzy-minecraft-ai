@@ -82,4 +82,8 @@
     return [cond isSet];
 }
 
+- (NSString *)getRuleInputString {
+    return [NSString stringWithFormat:@"%@ %@ %@ %@ ", operator, [cond cond], equality, [cond value]];
+}
+
 @end
