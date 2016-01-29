@@ -155,7 +155,7 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     if (self) {
-        inputs = [aDecoder decodeObjectForKey:inputsKey];
+        inputs = [[aDecoder decodeObjectForKey:inputsKey] mutableCopy];
         action = [aDecoder decodeObjectForKey:actionKey];
         modifier = [aDecoder decodeObjectForKey:modifierKey];
     }

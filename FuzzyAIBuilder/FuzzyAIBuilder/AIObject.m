@@ -63,7 +63,7 @@
 
 #pragma mark - NSCoding
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    return [self initWithAIName:[aDecoder decodeObjectForKey:nameKey] andRuleList:[aDecoder decodeObjectForKey:ruleListKey]];
+    return [self initWithAIName:[aDecoder decodeObjectForKey:nameKey] andRuleList:[[aDecoder decodeObjectForKey:ruleListKey] mutableCopy]];
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
