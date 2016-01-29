@@ -7,6 +7,10 @@
 //
 
 #import "Rule.h"
+#define inputsKey @"inputsKey"
+#define actionKey @"actionKey"
+#define modifierKey @"modifierKey"
+
 @interface Rule() {
     NSMutableArray *inputs;
     NSString *action;
@@ -145,6 +149,23 @@
         return NO;
     }
     return YES;
+}
+
+#pragma mark - NSCoding 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    if (self) {
+        inputs = [aDecoder decodeObjectForKey:inputsKey];
+        action = [aDecoder decodeObjectForKey:actionKey];
+        modifier = [aDecoder decodeObjectForKey:modifierKey];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:inputs forKey:inputsKey];
+    [aCoder encodeObject:action forKey:actionKey];
+    [aCoder encodeObject:modifier forKey:modifierKey];
 }
 
 @end

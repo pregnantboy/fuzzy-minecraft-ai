@@ -37,6 +37,10 @@
                                              selector:@selector(onConditionChanged:)
                                                  name:@"ConditionChanged"
                                                object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onParamChanged:)
+                                                 name:@"ParamChanged"
+                                               object:nil];
     [self populateActions];
     [self disableModifierMenu];
 }
@@ -82,8 +86,10 @@
         ToggleTableViewCell *result = (ToggleTableViewCell *) [tableView makeViewWithIdentifier:@"ToggleTableViewCell" owner:self];
         if (row == 0) {
             [result setType:0];
+            [result.toggleButton setTag:row];
         } else {
             [result setType:1];
+            [result.toggleButton setTag:row];
             [result setString:[rule getOperatorAtIndex:row]];
         }
         return result;
@@ -103,6 +109,7 @@
     else if ([tableColumn.identifier isEqualToString:@"third"]) {
         ToggleTableViewCell *result = (ToggleTableViewCell *) [tableView makeViewWithIdentifier:@"ToggleTableViewCell" owner:self];
         [result setType:3];
+        [result.toggleButton setTag:row];
         NSString *eq = [rule getEqualityAtIndex:row];
         [result setString: eq];
         return result;
@@ -183,6 +190,17 @@
     [self.inputTableView reloadData];
 }
 
+- (void)onParamChanged:(NSNotification *) notification {
+    ToggleTableViewCell *object = (ToggleTableViewCell*) [notification object];
+    if ([object type] == 1) {
+        [rule setOperator:[object getString] atIndex:[object getRow]];
+    } else {
+        [rule setEquality:[object getString] atIndex:[object getRow]];
+    }
+    [self.inputTableView reloadData];
+}
+
+#pragma mark - NSMenu methods
 - (void)populateActions {
     NSMenu *menu = [[NSMenu alloc] init];
     NSMenuItem *placeholderItem = [[NSMenuItem alloc] initWithTitle:@"Select Action" action:nil keyEquivalent:@""];

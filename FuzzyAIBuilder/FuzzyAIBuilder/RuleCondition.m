@@ -7,6 +7,8 @@
 //
 
 #import "RuleCondition.h"
+#define condKey @"condKey"
+#define valueKey @"valueKey"
 
 @interface RuleCondition() {
     NSString* condCode;
@@ -51,6 +53,10 @@
     return self;
 }
 
+- (instancetype)initWithCoder:(NSCoder *)decoder {
+    return [self initWithCond:[decoder decodeObjectForKey:condKey] value:[decoder decodeObjectForKey:valueCode]];
+}
+
 - (instancetype) initWithCond:(NSString *)cond {
     self = [super init];
     if (self) {
@@ -73,6 +79,11 @@
         condCode = cond;
         valueCode = nil;
     }
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:condCode forKey:condKey];
+    [aCoder encodeObject:valueCode forKey:valueKey];
 }
 
 - (void)setCondValue: (NSString *)value {

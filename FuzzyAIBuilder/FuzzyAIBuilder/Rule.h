@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "RuleInput.h"
 #import "RuleOutput.h"
-@interface Rule : NSObject
+@interface Rule : NSObject <NSCoding>
 
 - (instancetype) init;
 - (RuleInput *)getRuleInputAtIndex:(NSInteger) index;
@@ -35,5 +35,8 @@
 
 - (BOOL)isComplete;
 - (NSString *)getRuleString;
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder;
+- (void)encodeWithCoder:(NSCoder *)aCoder;
 
 @end

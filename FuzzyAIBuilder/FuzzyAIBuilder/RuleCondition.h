@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RuleCondition : NSObject
+@interface RuleCondition : NSObject <NSCoding>
 
 - (instancetype) init;
 - (instancetype) initWithCond:(NSString *)cond;
@@ -22,5 +22,6 @@
 + (NSArray *)getPossibleConditions;
 + (NSArray *)getPossibleValueForCond:(NSString *)cond;
 + (NSDictionary *)conditions;
+- (void)encodeWithCoder:(NSCoder *)aCoder;
 
 @end

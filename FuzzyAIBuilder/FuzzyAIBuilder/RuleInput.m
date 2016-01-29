@@ -7,6 +7,9 @@
 //
 
 #import "RuleInput.h"
+#define operatorKey @"operatorKey"
+#define equalityKey @"equalityKey"
+#define conditionKey @"conditionKey"
 
 @interface RuleInput () {
     NSString *operator;
@@ -32,6 +35,16 @@
         cond = [[RuleCondition alloc] init];
         operator = @"IF";
         equality = @"IS";
+    }
+    return self;
+}
+
+- (instancetype)initWithOperator:(NSString *)op cond:(RuleCondition *)condObj equality:(NSString *)isnot {
+    self = [super init];
+    if (self) {
+        operator = op;
+        cond = condObj;
+        equality =isnot;
     }
     return self;
 }
@@ -84,6 +97,17 @@
 
 - (NSString *)getRuleInputString {
     return [NSString stringWithFormat:@"%@ %@ %@ %@ ", operator, [cond cond], equality, [cond value]];
+}
+
+#pragma mark - NSCoding 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    return [self initWithOperator:[aDecoder decodeObjectForKey:operatorKey] cond:[aDecoder decodeObjectForKey:conditionKey] equality:[aDecoder decodeObjectForKey:equalityKey]];
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:operator forKey:operatorKey];
+    [aCoder encodeObject:cond forKey: conditionKey];
+    [aCoder encodeObject:equality forKey:equalityKey];
 }
 
 @end

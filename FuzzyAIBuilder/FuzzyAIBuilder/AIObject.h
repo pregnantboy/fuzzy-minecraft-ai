@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Rule.h"
 
-@interface AIObject : NSObject
+@interface AIObject : NSObject <NSCoding>
 - (instancetype)initWithAIName:(NSString *)AIName;
 - (void)saveNewRule:(Rule*)newRule;
 - (Rule *)getRuleAtIndex:(NSInteger) index;
@@ -17,5 +17,8 @@
 - (NSArray *)ruleList;
 - (NSInteger)getNumRules;
 - (NSString *)getName;
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder;
+- (void)encodeWithCoder:(NSCoder *)aCoder;
 
 @end

@@ -16,5 +16,6 @@
 - (NSInteger) type;
 - (NSString *)getString;
 - (void)setString:(NSString *)string;
+- (NSInteger)getRow;
 
 @end

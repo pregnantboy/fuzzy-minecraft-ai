@@ -7,6 +7,8 @@
 //
 
 #import "AIObject.h"
+#define ruleListKey @"ruleListKey"
+#define nameKey @"nameKey"
 
 @interface AIObject () {
     NSMutableArray *ruleList;
@@ -22,6 +24,15 @@
     if (self) {
         name = AIName;
         ruleList = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
+- (instancetype)initWithAIName:(NSString *)AIName andRuleList:(NSMutableArray *)aRuleList {
+    self = [super init];
+    if (self) {
+        name = AIName;
+        ruleList = aRuleList;
     }
     return self;
 }
@@ -48,6 +59,16 @@
 
 - (NSString *)getName {
     return name;
+}
+
+#pragma mark - NSCoding
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    return [self initWithAIName:[aDecoder decodeObjectForKey:nameKey] andRuleList:[aDecoder decodeObjectForKey:ruleListKey]];
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:name forKey:nameKey];
+    [aCoder encodeObject:ruleList forKey:ruleListKey];
 }
 
 @end

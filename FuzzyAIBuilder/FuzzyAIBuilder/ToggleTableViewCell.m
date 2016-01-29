@@ -50,6 +50,10 @@
     [self updateButtonString];
 }
 
+- (NSInteger)getRow {
+    return self.toggleButton.tag;
+}
+
 - (void) updateButtonString {
     if (type == 0) {
          [MainMenuViewController addWhiteMenuText:self.toggleButton withSize:30 withText:[self getString]];
@@ -74,7 +78,7 @@
     currIndex++;
     currIndex = currIndex % ([operators count]);
     [self updateButtonString];
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ParamChanged" object:self];
 }
 
 
