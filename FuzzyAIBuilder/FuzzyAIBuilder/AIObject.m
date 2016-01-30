@@ -49,7 +49,31 @@
     [ruleList replaceObjectAtIndex:index withObject:modifiedRule];
 }
 
-- (NSArray *)ruleList {
+- (void)deleteRuleAtIndex:(NSInteger) index {
+    [ruleList removeObjectAtIndex:index];
+}
+
+- (BOOL)moveUpRule:(NSInteger)index {
+    if (index < [ruleList count] && index >0) {
+        Rule *temp = [ruleList objectAtIndex:index];
+        [ruleList removeObjectAtIndex:index];
+        [ruleList insertObject:temp atIndex:index-1];
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL)moveDownRule:(NSInteger)index {
+    if (index>=0 && index< ([ruleList count]-1)) {
+        Rule *temp = [ruleList objectAtIndex:index];
+        [ruleList removeObjectAtIndex:index];
+        [ruleList insertObject:temp atIndex:index+1];
+        return YES;
+    }
+    return NO;
+}
+
+- (NSMutableArray *)ruleList {
     return ruleList;
 }
 

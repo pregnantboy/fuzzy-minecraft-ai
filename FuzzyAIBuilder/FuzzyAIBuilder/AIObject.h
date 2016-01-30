@@ -14,7 +14,10 @@
 - (void)saveNewRule:(Rule*)newRule;
 - (Rule *)getRuleAtIndex:(NSInteger) index;
 - (void)replaceExistingRule:(NSInteger) index withRule: (Rule*)modifiedRule;
-- (NSArray *)ruleList;
+- (void)deleteRuleAtIndex:(NSInteger) index;
+- (BOOL)moveUpRule:(NSInteger)index;
+- (BOOL)moveDownRule:(NSInteger)index;
+- (NSMutableArray *)ruleList;
 - (NSInteger)getNumRules;
 - (NSString *)getName;
 

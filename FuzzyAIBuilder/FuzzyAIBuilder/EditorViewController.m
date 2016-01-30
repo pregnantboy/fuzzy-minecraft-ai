@@ -11,11 +11,14 @@
 #import "MainMenuViewController.h"
 #import "ToggleTableViewCell.h"
 #import "RulesListViewController.h"
+#import "AIDatabase.h"
 
 @interface EditorViewController () {
     Rule *rule;
     NSInteger index;
     AIObject *AI;
+    NSInteger AIindex;
+    NSMutableArray *AIarray;
 }
 
 @end
@@ -45,16 +48,28 @@
     [self disableModifierMenu];
 }
 
-- (void)createNewRuleForAI:(AIObject *)ai {
-    AI = ai;
-    index = [ai getNumRules];
+- (void)viewDidAppear {
+    [super viewDidAppear];
+    NSButton *bgButton = [[NSButton alloc] initWithFrame:self.view.frame];
+    [bgButton setTransparent:YES];
+    [self.background addSubview:bgButton];
+    [bgButton setAction:@selector(clearSelection)];
+}
+
+- (void)createNewRuleForAI:(NSMutableArray *)array atIndex:(NSInteger)aiIndex {
+    AIarray = array;
+    AIindex = aiIndex;
+    AI = [AIarray objectAtIndex:AIindex];
+    index = [AI getNumRules];
     [self.nameLabel setStringValue:[AI getName]];
 }
 
-- (void)modifyRuleAt:(NSInteger)indexToMod forAI:(AIObject *)ai{
-    AI = ai;
+- (void)modifyRuleAt:(NSInteger)indexToMod forAI:(NSMutableArray *)array atIndex:(NSInteger)aiIndex {
+    AIarray = array;
+    AIindex = aiIndex;
+    AI = [AIarray objectAtIndex:AIindex];
     index = indexToMod;
-    rule = [ai getRuleAtIndex:indexToMod];
+    rule = [AI getRuleAtIndex:indexToMod];
     [self.inputTableView reloadData];
     [self.nameLabel setStringValue:[AI getName]];
     [self loadActionAndModifier];
@@ -143,7 +158,9 @@
     [[vc view] setFrame:self.view.frame];
     [[NSApp mainWindow] setContentViewController:vc];
     NSLog(@"%@", [rule getRuleString]);
-    [vc loadAI:AI];
+    [AIarray replaceObjectAtIndex:AIindex withObject:AI];
+    [vc loadAI:AIarray atIndex:AIindex];
+//    [AIDatabase saveData:AIarray];
 }
 
 - (IBAction)addNewRule {
@@ -175,6 +192,10 @@
 - (IBAction)setModifier:(id)sender {
     [rule setModifier:[self.outcome2 selectedItem].title];
     NSLog(@"%@", [rule getRuleString]);
+}
+
+- (void)clearSelection {
+    [self.inputTableView deselectAll: nil];
 }
 
 

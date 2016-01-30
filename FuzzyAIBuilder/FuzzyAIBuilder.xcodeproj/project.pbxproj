@@ -55,8 +55,11 @@
 		3C60B27C1C54DFE50096E476 /* DK Prince Frog.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3C60B2791C54DFE50096E476 /* DK Prince Frog.otf */; };
 		3C60B27D1C54DFE50096E476 /* shablagoo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3C60B27A1C54DFE50096E476 /* shablagoo.ttf */; };
 		3C60B27E1C54DFE50096E476 /* theminion.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3C60B27B1C54DFE50096E476 /* theminion.otf */; };
+		3C7198FC1C5CC55300568263 /* SelectAIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7198FB1C5CC55300568263 /* SelectAIViewController.m */; };
+		3C7199031C5D3B0D00568263 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C7199021C5D3B0D00568263 /* icon.png */; };
 		3CB2CDFF1C5A5D3E00C08DED /* RuleOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB2CDFE1C5A5D3E00C08DED /* RuleOutput.m */; };
 		3CB2CE051C5A829000C08DED /* AIObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB2CE041C5A829000C08DED /* AIObject.m */; };
+		3CB2CE081C5B5A2400C08DED /* AIDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB2CE071C5B5A2400C08DED /* AIDatabase.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,10 +147,15 @@
 		3C60B2791C54DFE50096E476 /* DK Prince Frog.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DK Prince Frog.otf"; path = "fonts/DK Prince Frog.otf"; sourceTree = "<group>"; };
 		3C60B27A1C54DFE50096E476 /* shablagoo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shablagoo.ttf; path = fonts/shablagoo.ttf; sourceTree = "<group>"; };
 		3C60B27B1C54DFE50096E476 /* theminion.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = theminion.otf; path = fonts/theminion.otf; sourceTree = "<group>"; };
+		3C7198FA1C5CC55300568263 /* SelectAIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAIViewController.h; sourceTree = "<group>"; };
+		3C7198FB1C5CC55300568263 /* SelectAIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAIViewController.m; sourceTree = "<group>"; };
+		3C7199021C5D3B0D00568263 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		3CB2CDFD1C5A5D3E00C08DED /* RuleOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleOutput.h; sourceTree = "<group>"; };
 		3CB2CDFE1C5A5D3E00C08DED /* RuleOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RuleOutput.m; sourceTree = "<group>"; };
 		3CB2CE031C5A829000C08DED /* AIObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIObject.h; sourceTree = "<group>"; };
 		3CB2CE041C5A829000C08DED /* AIObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIObject.m; sourceTree = "<group>"; };
+		3CB2CE061C5B5A2400C08DED /* AIDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIDatabase.h; sourceTree = "<group>"; };
+		3CB2CE071C5B5A2400C08DED /* AIDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIDatabase.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,37 +206,13 @@
 		3C35C7A91C549BC900D2F1D6 /* FuzzyAIBuilder */ = {
 			isa = PBXGroup;
 			children = (
-				3CB2CE031C5A829000C08DED /* AIObject.h */,
-				3CB2CE041C5A829000C08DED /* AIObject.m */,
 				3C35C7AA1C549BC900D2F1D6 /* AppDelegate.h */,
 				3C35C7AB1C549BC900D2F1D6 /* AppDelegate.m */,
-				3C1CEDB91C55068A000DE873 /* CreateAIViewController.h */,
-				3C1CEDBA1C55068A000DE873 /* CreateAIViewController.m */,
-				3C03638B1C560F1500071090 /* DropDownTableViewCell.h */,
-				3C03638C1C560F1500071090 /* DropDownTableViewCell.m */,
-				3C0363881C560D7700071090 /* EditorViewController.h */,
-				3C0363891C560D7700071090 /* EditorViewController.m */,
 				3C35C7B51C549BC900D2F1D6 /* Main.storyboard */,
-				3C35C7B01C549BC900D2F1D6 /* MainMenuViewController.h */,
-				3C35C7B11C549BC900D2F1D6 /* MainMenuViewController.m */,
-				3C03639E1C568DCC00071090 /* Rule.h */,
-				3C03639F1C568DCC00071090 /* Rule.m */,
-				3CB2CDFD1C5A5D3E00C08DED /* RuleOutput.h */,
-				3CB2CDFE1C5A5D3E00C08DED /* RuleOutput.m */,
-				3C0363A41C569C0B00071090 /* RuleCondition.h */,
-				3C0363A51C569C0B00071090 /* RuleCondition.m */,
-				3C0363A11C56988500071090 /* RuleInput.h */,
-				3C0363A21C56988500071090 /* RuleInput.m */,
-				3C03637D1C5568D500071090 /* RuleNumTableViewCell.h */,
-				3C03637E1C5568D500071090 /* RuleNumTableViewCell.m */,
-				3C03638E1C5611F400071090 /* RulePopUpButton.h */,
-				3C03638F1C5611F400071090 /* RulePopUpButton.m */,
-				3C0363771C55555300071090 /* RulesListViewController.h */,
-				3C0363781C55555300071090 /* RulesListViewController.m */,
-				3C03637A1C55557C00071090 /* RuleTableViewCell.h */,
-				3C03637B1C55557C00071090 /* RuleTableViewCell.m */,
-				3C0363981C56605B00071090 /* ToggleTableViewCell.h */,
-				3C0363991C56605B00071090 /* ToggleTableViewCell.m */,
+				3C7199001C5CC5AC00568263 /* Objects */,
+				3C7198FF1C5CC59600568263 /* TableViewCells */,
+				3C7198FE1C5CC55E00568263 /* ViewControllers */,
+				3C7199011C5CC5EC00568263 /* UI */,
 				3C35C7AD1C549BC900D2F1D6 /* Supporting Files */,
 			);
 			path = FuzzyAIBuilder;
@@ -252,6 +236,7 @@
 				3C35C7E31C54CE5900D2F1D6 /* chevronright.png */,
 				3C0363801C55768800071090 /* chevronup.png */,
 				3C35C7E41C54CE5900D2F1D6 /* circle.png */,
+				3C7199021C5D3B0D00568263 /* icon.png */,
 				3C35C7E51C54CE5900D2F1D6 /* cross.png */,
 				3C35C7DC1C549F4C00D2F1D6 /* logo.png */,
 				3C35C7DE1C54C6C900D2F1D6 /* logo2.png */,
@@ -290,6 +275,66 @@
 				3C35C7CE1C549BC900D2F1D6 /* Info.plist */,
 			);
 			path = FuzzyAIBuilderUITests;
+			sourceTree = "<group>";
+		};
+		3C7198FE1C5CC55E00568263 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3C1CEDB91C55068A000DE873 /* CreateAIViewController.h */,
+				3C1CEDBA1C55068A000DE873 /* CreateAIViewController.m */,
+				3C0363881C560D7700071090 /* EditorViewController.h */,
+				3C0363891C560D7700071090 /* EditorViewController.m */,
+				3C35C7B01C549BC900D2F1D6 /* MainMenuViewController.h */,
+				3C35C7B11C549BC900D2F1D6 /* MainMenuViewController.m */,
+				3C0363771C55555300071090 /* RulesListViewController.h */,
+				3C0363781C55555300071090 /* RulesListViewController.m */,
+				3C7198FA1C5CC55300568263 /* SelectAIViewController.h */,
+				3C7198FB1C5CC55300568263 /* SelectAIViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3C7198FF1C5CC59600568263 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				3C03638B1C560F1500071090 /* DropDownTableViewCell.h */,
+				3C03638C1C560F1500071090 /* DropDownTableViewCell.m */,
+				3C03637D1C5568D500071090 /* RuleNumTableViewCell.h */,
+				3C03637E1C5568D500071090 /* RuleNumTableViewCell.m */,
+				3C03637A1C55557C00071090 /* RuleTableViewCell.h */,
+				3C03637B1C55557C00071090 /* RuleTableViewCell.m */,
+				3C0363981C56605B00071090 /* ToggleTableViewCell.h */,
+				3C0363991C56605B00071090 /* ToggleTableViewCell.m */,
+			);
+			name = TableViewCells;
+			sourceTree = "<group>";
+		};
+		3C7199001C5CC5AC00568263 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				3CB2CE061C5B5A2400C08DED /* AIDatabase.h */,
+				3CB2CE071C5B5A2400C08DED /* AIDatabase.m */,
+				3CB2CE031C5A829000C08DED /* AIObject.h */,
+				3CB2CE041C5A829000C08DED /* AIObject.m */,
+				3C03639E1C568DCC00071090 /* Rule.h */,
+				3C03639F1C568DCC00071090 /* Rule.m */,
+				3C0363A41C569C0B00071090 /* RuleCondition.h */,
+				3C0363A51C569C0B00071090 /* RuleCondition.m */,
+				3C0363A11C56988500071090 /* RuleInput.h */,
+				3C0363A21C56988500071090 /* RuleInput.m */,
+				3CB2CDFD1C5A5D3E00C08DED /* RuleOutput.h */,
+				3CB2CDFE1C5A5D3E00C08DED /* RuleOutput.m */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		3C7199011C5CC5EC00568263 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				3C03638E1C5611F400071090 /* RulePopUpButton.h */,
+				3C03638F1C5611F400071090 /* RulePopUpButton.m */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -412,6 +457,7 @@
 				3C35C7F51C54CE5900D2F1D6 /* chevronright.png in Resources */,
 				3C0363811C55768800071090 /* chevronup.png in Resources */,
 				3C60B27D1C54DFE50096E476 /* shablagoo.ttf in Resources */,
+				3C7199031C5D3B0D00568263 /* icon.png in Resources */,
 				3C35C7FB1C54CE5900D2F1D6 /* rectangle1.png in Resources */,
 				3C0363831C55769100071090 /* chevrondown.png in Resources */,
 				3C35C7DB1C549E0B00D2F1D6 /* background.png in Resources */,
@@ -457,12 +503,14 @@
 				3C0363791C55555300071090 /* RulesListViewController.m in Sources */,
 				3C35C7B21C549BC900D2F1D6 /* MainMenuViewController.m in Sources */,
 				3CB2CDFF1C5A5D3E00C08DED /* RuleOutput.m in Sources */,
+				3C7198FC1C5CC55300568263 /* SelectAIViewController.m in Sources */,
 				3CB2CE051C5A829000C08DED /* AIObject.m in Sources */,
 				3C03637F1C5568D500071090 /* RuleNumTableViewCell.m in Sources */,
 				3C0363A01C568DCC00071090 /* Rule.m in Sources */,
 				3C03639A1C56605B00071090 /* ToggleTableViewCell.m in Sources */,
 				3C35C7AF1C549BC900D2F1D6 /* main.m in Sources */,
 				3C0363A61C569C0B00071090 /* RuleCondition.m in Sources */,
+				3CB2CE081C5B5A2400C08DED /* AIDatabase.m in Sources */,
 				3C35C7AC1C549BC900D2F1D6 /* AppDelegate.m in Sources */,
 				3C03638A1C560D7700071090 /* EditorViewController.m in Sources */,
 				3C0363901C5611F400071090 /* RulePopUpButton.m in Sources */,
@@ -597,6 +645,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"PROJECT_DIR=@\\\"\"$PROJECT_DIR\"\\\"\n",
+					"BUILD_ROOT=@\\\"\"$(BUILD_ROOT)\"\\\"\n",
+				);
 				INFOPLIST_FILE = FuzzyAIBuilder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ian.FuzzyAIBuilder;
@@ -609,6 +662,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"BUILD_ROOT=@\\\"\"$(BUILD_ROOT)\"\\\"",
+					"PROJECT_DIR=@\\\"\"$PROJECT_DIR\"\\\"\n",
+				);
 				INFOPLIST_FILE = FuzzyAIBuilder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ian.FuzzyAIBuilder;

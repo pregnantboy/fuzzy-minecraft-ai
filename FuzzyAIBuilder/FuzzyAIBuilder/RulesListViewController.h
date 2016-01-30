@@ -19,8 +19,11 @@
 @property (weak) IBOutlet NSButton *moveUpButton;
 @property (weak) IBOutlet NSButton *moveDownButton;
 @property (weak) IBOutlet NSButton *addNewButton;
+@property (weak) IBOutlet NSButton *deleteButton;
 @property (weak) IBOutlet NSTextField *aiName;
 
-- (void)loadAI:(AIObject *)aiObject;
+- (void)loadAI:(NSMutableArray *)aiArray atIndex:(NSInteger)index;
+
+/* chaneed load ai method*/
 
 @end

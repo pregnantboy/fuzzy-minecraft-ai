@@ -27,6 +27,7 @@
     [MainMenuViewController addGreyMenuText:self.exit withSize:27 withText:@"Exit"];
     [self.exit setAction:@selector(quitApp)];
     [self.createNewAI setAction:@selector(goToCreatePage)];
+    [self.modifyAI setAction:@selector(goToSelectAIPage)];
 }
 
 + (void) addShadow:(NSView *) view {
@@ -75,6 +76,13 @@
     NSViewController *createAIVc = [mainsb instantiateControllerWithIdentifier:@"CreateAIViewController"];
     [[createAIVc view] setFrame:self.view.frame];
     [[NSApp mainWindow] setContentViewController:createAIVc];
+}
+
+- (IBAction)goToSelectAIPage {
+    NSStoryboard *mainsb = [NSStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    NSViewController *vc = [mainsb instantiateControllerWithIdentifier:@"SelectAIViewController"];
+    [[vc view] setFrame:self.view.frame];
+    [[NSApp mainWindow] setContentViewController:vc];
 }
 
 @end

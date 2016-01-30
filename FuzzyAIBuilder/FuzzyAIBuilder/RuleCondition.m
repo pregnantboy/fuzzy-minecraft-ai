@@ -54,7 +54,7 @@
 }
 
 - (instancetype)initWithCoder:(NSCoder *)decoder {
-    return [self initWithCond:[decoder decodeObjectForKey:condKey] value:[decoder decodeObjectForKey:valueCode]];
+    return [self initWithCond:[decoder decodeObjectForKey:condKey] value:[decoder decodeObjectForKey:valueKey]];
 }
 
 - (instancetype) initWithCond:(NSString *)cond {

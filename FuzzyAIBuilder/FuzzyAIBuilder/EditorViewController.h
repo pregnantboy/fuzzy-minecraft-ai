@@ -21,7 +21,7 @@
 @property (weak) IBOutlet RulePopUpButton *outcome2;
 @property (weak) IBOutlet NSTextField *nameLabel;
 
-- (void)createNewRuleForAI:(AIObject *)ai;
-- (void)modifyRuleAt:(NSInteger)indexToMod forAI:(AIObject *)ai;
+- (void)createNewRuleForAI:(NSMutableArray *)array atIndex:(NSInteger)aiIndex;
+- (void)modifyRuleAt:(NSInteger)indexToMod forAI:(NSMutableArray *)array atIndex:(NSInteger)aiIndex;
 
 @end

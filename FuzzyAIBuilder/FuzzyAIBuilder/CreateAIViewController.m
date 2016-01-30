@@ -10,6 +10,7 @@
 #import "MainMenuViewController.h"
 #import "RulesListViewController.h"
 #import "AIObject.h"
+#import "AIDatabase.h"
 
 @interface CreateAIViewController ()
 
@@ -20,13 +21,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.background setAlphaValue:0.90];
-    [self.backButton setAction:@selector(goToCreatePage)];
+    [self.backButton setAction:@selector(goToMainPage)];
     [self.nextButton setAction:@selector(createNewAI)];
     [MainMenuViewController addShadow:self.backButton];
     [MainMenuViewController addShadow:self.nextButton];
 }
 
-- (IBAction)goToCreatePage {
+- (IBAction)goToMainPage {
     NSStoryboard *mainsb = [NSStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     NSViewController *mainMenuVc = [mainsb instantiateControllerWithIdentifier:@"MainMenuViewController"];
     [[mainMenuVc view] setFrame:self.view.frame];
@@ -40,11 +41,13 @@
     } else {
         return;
     }
+    NSMutableArray *AIarray = [AIDatabase loadData];
+    [AIarray addObject:newAI];
     NSStoryboard *mainsb = [NSStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     RulesListViewController *vc = (RulesListViewController *)[mainsb instantiateControllerWithIdentifier:@"RulesListViewController"];
     [[vc view] setFrame:self.view.frame];
     [[NSApp mainWindow] setContentViewController:vc];
-    [vc loadAI:newAI];
+    [vc loadAI:AIarray atIndex:[AIarray count] -1];
 }
 
 
