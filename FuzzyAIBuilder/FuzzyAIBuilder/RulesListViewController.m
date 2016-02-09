@@ -70,18 +70,19 @@
 
 #pragma mark - NSTableView delegates
 
-- (BOOL)tableView:(NSTableView *)aTableView shouldSelectRow:(NSInteger)rowIndex {
-    if (rowIndex >= 0) {
+- (void)tableViewSelectionDidChange:(NSNotification *)aNotification {
+    if ([self.tableView selectedRow] < 0) {
+        [self.modifyButton setEnabled:NO];
+        [self.deleteButton setEnabled:NO];
+        [self.moveUpButton setEnabled:NO];
+        [self.moveDownButton setEnabled:NO];
+    } else {
         [self.modifyButton setEnabled:YES];
         [self.deleteButton setEnabled:YES];
         [self.moveUpButton setEnabled:YES];
         [self.moveDownButton setEnabled:YES];
     }
-    return YES;
 }
-
-
-
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
     return [AI getNumRules];
@@ -163,10 +164,6 @@
 
 - (void)clearSelection {
     [self.tableView deselectAll: nil];
-    [self.modifyButton setEnabled:NO];
-    [self.deleteButton setEnabled:NO];
-    [self.moveUpButton setEnabled:NO];
-    [self.moveDownButton setEnabled:NO];
 }
 
 - (void)saveAIObject {

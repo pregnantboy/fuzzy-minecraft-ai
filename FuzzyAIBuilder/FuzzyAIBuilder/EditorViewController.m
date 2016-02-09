@@ -77,9 +77,10 @@
 
 #pragma mark - NSTableView delegates
 
-- (BOOL)tableView:(NSTableView *)aTableView shouldSelectRow:(NSInteger)rowIndex {
-
-    return YES;
+- (void)tableViewSelectionDidChange:(NSNotification *)aNotification {
+    if ([self.inputTableView selectedRow] < 0) {
+        //do nothing
+    }
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {

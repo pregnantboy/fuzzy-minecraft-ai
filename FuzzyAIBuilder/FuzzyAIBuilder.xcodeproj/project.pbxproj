@@ -57,6 +57,8 @@
 		3C60B27E1C54DFE50096E476 /* theminion.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3C60B27B1C54DFE50096E476 /* theminion.otf */; };
 		3C7198FC1C5CC55300568263 /* SelectAIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7198FB1C5CC55300568263 /* SelectAIViewController.m */; };
 		3C7199031C5D3B0D00568263 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C7199021C5D3B0D00568263 /* icon.png */; };
+		3C7199061C5DC15A00568263 /* ExportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7199051C5DC15A00568263 /* ExportViewController.m */; };
+		3C7199081C5DC26D00568263 /* click2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3C7199071C5DC26D00568263 /* click2.mp3 */; };
 		3CB2CDFF1C5A5D3E00C08DED /* RuleOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB2CDFE1C5A5D3E00C08DED /* RuleOutput.m */; };
 		3CB2CE051C5A829000C08DED /* AIObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB2CE041C5A829000C08DED /* AIObject.m */; };
 		3CB2CE081C5B5A2400C08DED /* AIDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB2CE071C5B5A2400C08DED /* AIDatabase.m */; };
@@ -150,6 +152,9 @@
 		3C7198FA1C5CC55300568263 /* SelectAIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAIViewController.h; sourceTree = "<group>"; };
 		3C7198FB1C5CC55300568263 /* SelectAIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAIViewController.m; sourceTree = "<group>"; };
 		3C7199021C5D3B0D00568263 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		3C7199041C5DC15A00568263 /* ExportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportViewController.h; sourceTree = "<group>"; };
+		3C7199051C5DC15A00568263 /* ExportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExportViewController.m; sourceTree = "<group>"; };
+		3C7199071C5DC26D00568263 /* click2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click2.mp3; sourceTree = "<group>"; };
 		3CB2CDFD1C5A5D3E00C08DED /* RuleOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleOutput.h; sourceTree = "<group>"; };
 		3CB2CDFE1C5A5D3E00C08DED /* RuleOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RuleOutput.m; sourceTree = "<group>"; };
 		3CB2CE031C5A829000C08DED /* AIObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIObject.h; sourceTree = "<group>"; };
@@ -223,6 +228,7 @@
 			children = (
 				3C35C7AE1C549BC900D2F1D6 /* main.m */,
 				3C0363861C55F3B800071090 /* click.m4a */,
+				3C7199071C5DC26D00568263 /* click2.mp3 */,
 				3C60B2791C54DFE50096E476 /* DK Prince Frog.otf */,
 				3C60B27B1C54DFE50096E476 /* theminion.otf */,
 				3C35C7B81C549BC900D2F1D6 /* Info.plist */,
@@ -290,6 +296,8 @@
 				3C0363781C55555300071090 /* RulesListViewController.m */,
 				3C7198FA1C5CC55300568263 /* SelectAIViewController.h */,
 				3C7198FB1C5CC55300568263 /* SelectAIViewController.m */,
+				3C7199041C5DC15A00568263 /* ExportViewController.h */,
+				3C7199051C5DC15A00568263 /* ExportViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -470,6 +478,7 @@
 				3C35C7F61C54CE5900D2F1D6 /* circle.png in Resources */,
 				3C35C8001C54CE5900D2F1D6 /* triangleright.png in Resources */,
 				3C35C7B71C549BC900D2F1D6 /* Main.storyboard in Resources */,
+				3C7199081C5DC26D00568263 /* click2.mp3 in Resources */,
 				3C35C7F71C54CE5900D2F1D6 /* cross.png in Resources */,
 				3C35C7F21C54CE5900D2F1D6 /* arrow right.png in Resources */,
 				3C60B27C1C54DFE50096E476 /* DK Prince Frog.otf in Resources */,
@@ -500,6 +509,7 @@
 				3C0363A31C56988500071090 /* RuleInput.m in Sources */,
 				3C1CEDBB1C55068A000DE873 /* CreateAIViewController.m in Sources */,
 				3C03637C1C55557C00071090 /* RuleTableViewCell.m in Sources */,
+				3C7199061C5DC15A00568263 /* ExportViewController.m in Sources */,
 				3C0363791C55555300071090 /* RulesListViewController.m in Sources */,
 				3C35C7B21C549BC900D2F1D6 /* MainMenuViewController.m in Sources */,
 				3CB2CDFF1C5A5D3E00C08DED /* RuleOutput.m in Sources */,

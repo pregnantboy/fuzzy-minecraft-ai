@@ -11,7 +11,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAITarget;
 
 public class PlayerLastAttackerTarget extends EntityAITarget{
-	private EntityLivingBase theTarget;
+	private static EntityLivingBase theTarget;
 	public PlayerLastAttackerTarget(EntityMobWithInventory mob) {
 		super(mob, false);
 	}
@@ -25,7 +25,6 @@ public class PlayerLastAttackerTarget extends EntityAITarget{
             return false;
         } 
         else { 
-        	theTarget = getPlayerAttacker();
         	if (theTarget != null) {
         		return true;
         	}
@@ -38,15 +37,17 @@ public class PlayerLastAttackerTarget extends EntityAITarget{
         super.startExecuting();
 	}
 	
-	public EntityLivingBase getPlayerAttacker() {
+	
+	
+	public static void updatePlayerAttacker() {
 		Minecraft mc = Minecraft.getMinecraft();
 //		System.out.println("tring to get entities");
 		List entities;
 		if (mc.thePlayer.getEntityBoundingBox() != null) {
-			entities = this.taskOwner.getEntityWorld().getEntitiesWithinAABBExcludingEntity(mc.thePlayer, mc.thePlayer.getEntityBoundingBox().expand(10.0D, 10.0D, 10.0D));
+			entities = mc.theWorld.getEntitiesWithinAABBExcludingEntity(mc.thePlayer, mc.thePlayer.getEntityBoundingBox().expand(16.0D, 4.0D, 16.0D));
 //			System.out.println("found entities");
 		} else {
-			return null;
+			return;
 		}
 		Entity entity;
 		Iterator<Entity> iterator = entities.iterator();
@@ -58,11 +59,17 @@ public class PlayerLastAttackerTarget extends EntityAITarget{
 			
 					if (((EntityCreature) entity).getAttackTarget().getUniqueID() == mc.thePlayer.getUniqueID()) {
 //						System.out.println("found target");
-						return (EntityCreature) entity;
+						theTarget = (EntityCreature) entity;
 					}
 				}
 			}
 		}
-		return null;
+	}
+	
+	public static EntityMobWithInventory getPlayerAttacker() {
+		if (theTarget != null && theTarget instanceof EntityMobWithInventory) {
+			return (EntityMobWithInventory)theTarget;
+		}
+		return null;	
 	}
 }

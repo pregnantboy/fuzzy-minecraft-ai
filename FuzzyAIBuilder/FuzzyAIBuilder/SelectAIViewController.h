@@ -14,5 +14,6 @@
 @property (weak) IBOutlet NSTableView *tableView;
 @property (weak) IBOutlet NSButton *modifyButton;
 @property (weak) IBOutlet NSButton *deleteButton;
+@property (weak) IBOutlet NSButton *exportButton;
 
 @end

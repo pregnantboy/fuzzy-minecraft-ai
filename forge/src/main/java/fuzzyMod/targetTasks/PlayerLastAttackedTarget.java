@@ -11,7 +11,8 @@ import net.minecraft.util.MovingObjectPosition;
 public class PlayerLastAttackedTarget extends EntityAITarget
 {
     private EntityMobWithInventory mob;
-    private EntityLivingBase theTarget;
+    private static EntityLivingBase theTarget;
+    private static Item lastAttackedItem;
     private Item signalItem;
     private static final String __OBFID = "CL_00003012";
 
@@ -28,33 +29,53 @@ public class PlayerLastAttackedTarget extends EntityAITarget
      */
     public boolean shouldExecute()
     {
-       EntityLivingBase player = Minecraft.getMinecraft().thePlayer;
+    	if (theTarget == null) {
+    		return false;
+    	} if (signalItem != lastAttackedItem) {
+    		return false;
+    	}
+    	if (theTarget.getEntityId() == this.mob.getEntityId()) {  
+    		this.taskOwner.setAttackTarget(null);
+    		return false;
+    	}
+    	if (this.mob.getDistanceToEntity(theTarget) > 30.0D) {
+    		return false;
+    	}
+    	return true;
+    }
+    
+    public static void updateLastTarget (EntityMobWithInventory mob) {
+    	EntityLivingBase player = Minecraft.getMinecraft().thePlayer;
 
         if (player == null)
         {
-            return false;
+            return;
         }
         else 
         {
         	Minecraft mc = Minecraft.getMinecraft();       	
         	if (player.getHeldItem()!= null) {
-        		if (player.getHeldItem().getItem() == signalItem && player.isSwingInProgress) {
+        		if (player.isSwingInProgress) {
 		        	MovingObjectPosition objectMouseOver = mc.objectMouseOver;
 		        	if(objectMouseOver != null && objectMouseOver.entityHit != null) {
 		        		Entity targetCandidate = mc.objectMouseOver.entityHit;
 		        		if (mc.objectMouseOver.typeOfHit ==MovingObjectPosition.MovingObjectType.ENTITY && targetCandidate instanceof EntityLivingBase) {
-		        			theTarget = (EntityLivingBase)this.mob.getEntityWorld().getEntityByID(targetCandidate.getEntityId());
-		        			System.out.println("trying to set target " + theTarget);
-		        			return theTarget.getEntityId() != this.mob.getEntityId();
+		        			theTarget = (EntityLivingBase)mob.getEntityWorld().getEntityByID(targetCandidate.getEntityId());
+		        			lastAttackedItem = player.getHeldItem().getItem();
 		        		}
 		        	}
         		}
         	}
-        	return false;
         }
-   
     }
-
+    
+    public static EntityMobWithInventory getLastTarget() {
+    	 if (theTarget != null && theTarget instanceof EntityMobWithInventory) {
+    		 return (EntityMobWithInventory)theTarget;
+    	 }
+    	 return null;
+    }
+    
     /**
      * Execute a one shot task or start executing a continuous task
      */

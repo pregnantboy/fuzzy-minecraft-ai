@@ -24,7 +24,7 @@
     [MainMenuViewController addWhiteMenuText:self.modifyAI withSize:27 withText:@"Modify AI"];
     
     [MainMenuViewController addShadow:self.exit];
-    [MainMenuViewController addGreyMenuText:self.exit withSize:27 withText:@"Exit"];
+    [MainMenuViewController addWhiteMenuText:self.exit withSize:27 withText:@"Exit"];
     [self.exit setAction:@selector(quitApp)];
     [self.createNewAI setAction:@selector(goToCreatePage)];
     [self.modifyAI setAction:@selector(goToSelectAIPage)];

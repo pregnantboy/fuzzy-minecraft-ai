@@ -1,0 +1,3 @@
+IF Health IS High AND PlayerAttackerStrength IS Noob THEN Attack Nearest Enemy With Melee Weapon.
+IF Sky IS Dark AND Health IS Low THEN Seek Shelter -.
+IF Health IS Medium AND Mana IS High AND AttackerStrength IS EpicBoss THEN Attack Nearest Enemy With Fireballs.

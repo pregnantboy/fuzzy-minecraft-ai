@@ -1,5 +1,6 @@
 package fuzzyMod.entity;
 
+import fuzzyMod.targetTasks.NearestTarget;
 import fuzzyMod.targetTasks.PlayerLastAttackedTarget;
 import fuzzyMod.targetTasks.PlayerLastAttackerTarget;
 import fuzzyMod.tasks.ArrowAttack;
@@ -7,10 +8,12 @@ import fuzzyMod.tasks.BuildFarm;
 import fuzzyMod.tasks.BuildHouse;
 import fuzzyMod.tasks.FireballAttack;
 import fuzzyMod.tasks.MeleeAttack;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAIBase;
+import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.init.Items;
 import net.minecraft.world.World;
@@ -25,7 +28,6 @@ public class EntityTutMob extends EntityMobWithInventory {
 	FireballAttack fireball;
 	ArrowAttack arrow;
 	
-	//private PlayerLastAttackedTarget playerLastAttackedTarget = new PlayerLastAttackedTarget(this, Items.wooden_sword);
 	boolean isBuildingHouse, isBuildingFarm;
 	private int lastArrowCount;
 	
@@ -36,11 +38,9 @@ public class EntityTutMob extends EntityMobWithInventory {
 		this.setSize(0.9F, 2.0F);
 		this.setCanPickUpLoot(true);
 		this.targetTasks.addTask(0, new PlayerLastAttackerTarget(this));
-		this.targetTasks.addTask(1, new PlayerLastAttackedTarget(this, Items.wooden_sword));
-		
+//		this.targetTasks.addTask(1, new PlayerLastAttackedTarget(this, Items.wooden_sword));
 		// first false is checkSight, second false is isNearby
 		isBuildingHouse = false;
-		
 		fireball = new FireballAttack(this, 30, 3);
 		melee = new MeleeAttack(this);
 		arrow = new ArrowAttack (this, 30);
@@ -58,10 +58,11 @@ public class EntityTutMob extends EntityMobWithInventory {
 	}
 	
 	public void onUpdate() {
+		this.getStrength();
 		super.onUpdate();
 //		melee.nextStep();
-//		fireball.nextStep();
-		arrow.nextStep();
+		fireball.nextStep();
+//		arrow.nextStep();
 	}
 	
 	public boolean attackEntityAsMob(Entity p_70652_1_) { 

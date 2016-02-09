@@ -35,6 +35,7 @@
 
 - (BOOL)isComplete;
 - (NSString *)getRuleString;
+- (NSString *)getExportRuleString;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder;
 - (void)encodeWithCoder:(NSCoder *)aCoder;

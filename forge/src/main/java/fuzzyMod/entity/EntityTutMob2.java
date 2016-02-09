@@ -1,5 +1,6 @@
 package fuzzyMod.entity;
 
+import fuzzyMod.targetTasks.PlayerLastAttackedTarget;
 import fuzzyMod.targetTasks.PlayerTarget;
 import fuzzyMod.tasks.BuildFarm;
 import fuzzyMod.tasks.BuildHouse;
@@ -28,7 +29,7 @@ public class EntityTutMob2 extends EntityMobWithInventory {
 		super(worldIn);
 		// TODO Auto-generated constructor stub
 		
-		this.targetTasks.addTask(0, new PlayerTarget(this, Items.bone));
+		this.targetTasks.addTask(0, new PlayerLastAttackedTarget(this, Items.wooden_sword));
 		
 		this.tasks.addTask(0,  meleeAttack);
 		
@@ -50,7 +51,7 @@ public class EntityTutMob2 extends EntityMobWithInventory {
 		buildMine = new BuildMine(this, 10);
 		buildFarm = new BuildFarm (this, 20, 20);
 		melee = new MeleeAttack(this);
-
+		team = 2;
 	}
 	
 	protected void applyEntityAttributes() {

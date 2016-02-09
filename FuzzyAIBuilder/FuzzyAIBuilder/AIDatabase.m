@@ -12,7 +12,7 @@
 @implementation AIDatabase
 
 + (NSString *)filePath {
-    NSURL *fileURL = [[NSURL URLWithString:PROJECT_DIR] URLByDeletingLastPathComponent];
+    NSURL *fileURL = [NSURL URLWithString:PROJECT_DIR];
     fileURL= [fileURL URLByAppendingPathComponent:fileName];
     return [fileURL absoluteString];
 }

@@ -11,6 +11,7 @@
 #import "AIDatabase.h"
 #import "AIObject.h"
 #import "RulesListViewController.h"
+#import "ExportViewController.h"
 
 @interface SelectAIViewController () {
     NSMutableArray *AIarray;
@@ -28,8 +29,10 @@
     [self.backButton setAction:@selector(goToMainPage)];
     [MainMenuViewController addWhiteMenuText:self.modifyButton withSize:22 withText:@"Modify"];
     [MainMenuViewController addWhiteMenuText:self.deleteButton withSize:22 withText:@"Delete"];
+    [MainMenuViewController addWhiteMenuText:self.exportButton withSize:22 withText:@"Export"];
     [self.modifyButton setAction:@selector (goToRulesListPage)];
     [self.deleteButton setAction:@selector (showAlertToDelete)];
+    [self.exportButton setAction:@selector (goToExportPage)];
 }
 
 - (void)viewDidAppear {
@@ -58,12 +61,16 @@
     return result;
 }
 
-- (BOOL)tableView:(NSTableView *)aTableView shouldSelectRow:(NSInteger)rowIndex {
-    if (rowIndex >= 0) {
+- (void)tableViewSelectionDidChange:(NSNotification *)aNotification {
+    if ([self.tableView selectedRow] < 0) {
+        [self.modifyButton setEnabled:NO];
+        [self.deleteButton setEnabled:NO];
+        [self.exportButton setEnabled:NO];
+    } else {
         [self.modifyButton setEnabled:YES];
         [self.deleteButton setEnabled:YES];
+        [self.exportButton setEnabled:YES];
     }
-    return YES;
 }
 
 - (AIObject *)getAIObjectAtIndex:(NSInteger)index {
@@ -87,8 +94,6 @@
 
 - (void)clearSelection {
     [self.tableView deselectAll: nil];
-    [self.modifyButton setEnabled:NO];
-    [self.deleteButton setEnabled:NO];
 }
 
 
@@ -97,6 +102,14 @@
     NSViewController *mainMenuVc = [mainsb instantiateControllerWithIdentifier:@"MainMenuViewController"];
     [[mainMenuVc view] setFrame:self.view.frame];
     [[NSApp mainWindow] setContentViewController:mainMenuVc];
+}
+
+- (void)goToExportPage {
+    NSStoryboard *mainsb = [NSStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    ExportViewController *vc = (ExportViewController*)[mainsb instantiateControllerWithIdentifier:@"ExportViewController"];
+    [[vc view] setFrame:self.view.frame];
+    [[NSApp mainWindow] setContentViewController:vc];
+    [vc loadAI:[AIarray objectAtIndex:[self.tableView selectedRow]]];
 }
 
 - (void)deleteAIObject {

@@ -139,6 +139,25 @@
     return resultString;
 }
 
+- (NSString *)getExportRuleString {
+    if (![self isComplete]) {
+        return @"Incomplete Rule";
+    }
+    NSMutableString *resultString = [[NSMutableString alloc]init];
+    for (RuleInput *input in inputs) {
+        if ([input isKindOfClass:[RuleInput class]] &&[input isSet]) {
+            [resultString appendString:[[input getRuleInputString] stringByReplacingOccurrencesOfString:@"-" withString:@""]];
+        }
+    }
+    NSString *parsedAction = [action stringByReplacingOccurrencesOfString:@" " withString:@""];
+    parsedAction = [parsedAction stringByReplacingOccurrencesOfString:@"'" withString:@""];
+    NSString *parsedmodifier = [modifier stringByReplacingOccurrencesOfString:@" " withString:@""];
+    parsedmodifier = [parsedmodifier stringByReplacingOccurrencesOfString:@"'" withString:@""];
+    parsedmodifier = [parsedmodifier stringByReplacingOccurrencesOfString:@"-" withString:@""];
+     [resultString appendString:[NSString stringWithFormat:@"THEN %@%@ IS Yes;", parsedAction, parsedmodifier]];
+    return resultString;
+}
+
 - (BOOL)isComplete {
     for (RuleInput *input in inputs) {
         if (![input isSet]) {
