@@ -60,6 +60,7 @@ public class FireballAttack extends GenericAttack {
                         EntitySmallFireball entitysmallfireball = new EntitySmallFireball(this.mob.worldObj, this.mob, d1 , d2, d3);
                         entitysmallfireball.posY = this.mob.posY + (double)(this.mob.height / 2.0F) + 0.5D;
                         this.mob.worldObj.spawnEntityInWorld(entitysmallfireball);
+                        this.mob.useMana(1);
                     }
                 }
             }

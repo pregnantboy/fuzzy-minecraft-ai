@@ -27,6 +27,9 @@ public abstract class GenericAttack {
 	
 	public double getDistanceSqFromTarget () {
 		if (hasAttackTarget()) {
+			if (attackTarget instanceof EntityMobWithInventory) {
+				((EntityMobWithInventory)attackTarget).setAttacker(this.mob);
+			}
 			return this.mob.getDistanceSqToEntity(attackTarget);
 		} else {
 			return -1;

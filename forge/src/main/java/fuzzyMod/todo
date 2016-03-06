@@ -16,12 +16,8 @@ To do list
     - maybe give in XML file
 6) AI marketplace
                     
-                    
-                    BlockPos blockpos = Minecraft.getMinecraft().objectMouseOver.getBlockPos();
-ItemStack itemstack = Minecraft.getMinecraft().thePlayer.inventory.getCurrentItem(); 
-
-ItemStack class:
-public ItemStack useItemRightClick(World worldIn, EntityPlayer playerIn)
-    {
-        return this.getItem().onItemRightClick(this, worldIn, playerIn);
-    }
+/*
+ * to get eggs in survival mode
+ * /give @p minecraft:spawn_egg (number of eggs) (3-6) depending on the id. check id by going to creative mode f3+H and 
+ * mouse over the items in the inventory 343/(3-6)
+ */

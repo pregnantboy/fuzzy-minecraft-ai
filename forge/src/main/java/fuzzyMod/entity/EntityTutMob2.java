@@ -28,17 +28,15 @@ public class EntityTutMob2 extends EntityMobWithInventory {
 	public EntityTutMob2(World worldIn) {
 		super(worldIn);
 		// TODO Auto-generated constructor stub
-		
-		this.targetTasks.addTask(0, new PlayerLastAttackedTarget(this, Items.wooden_sword));
-		
+				
 		this.tasks.addTask(0,  meleeAttack);
 		
-		this.setCurrentItemOrArmor(0, new ItemStack(Items.iron_hoe));
+		this.setCurrentItemOrArmor(0, new ItemStack(Items.golden_hoe));
 		Potion p;
-		this.setCurrentItemOrArmor(1, new ItemStack(Items.diamond_boots));
-		this.setCurrentItemOrArmor(2, new ItemStack(Items.diamond_leggings));
-		this.setCurrentItemOrArmor(4, new ItemStack(Items.diamond_helmet));
-		this.setCurrentItemOrArmor(3, new ItemStack(Items.diamond_chestplate));
+		this.setCurrentItemOrArmor(1, new ItemStack(Items.golden_boots));
+		this.setCurrentItemOrArmor(2, new ItemStack(Items.golden_leggings));
+		this.setCurrentItemOrArmor(4, new ItemStack(Items.golden_helmet));
+		this.setCurrentItemOrArmor(3, new ItemStack(Items.golden_chestplate));
 		
 		this.setSize(0.9F, 2.0F);
 		this.setCanPickUpLoot(true);

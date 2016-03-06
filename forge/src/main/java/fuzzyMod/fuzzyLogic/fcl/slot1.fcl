@@ -1,0 +1,6 @@
+	RULE 0 : IF Mana IS NOT Low THEN AttackNearestEnemyWithFireballs IS Yes;
+	RULE 1 : IF Weather IS Clear THEN AttackNearestEnemyWithFireballs IS Yes;
+	RULE 2 : IF NumEnemies IS None THEN BuildHouseLarge IS Yes;
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK

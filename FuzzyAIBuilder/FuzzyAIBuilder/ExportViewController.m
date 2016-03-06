@@ -28,6 +28,7 @@
     [MainMenuViewController addWhiteMenuText:self.slot3 withSize:24 withText:@"Slot 3"];
     [MainMenuViewController addWhiteMenuText:self.slot4 withSize:24 withText:@"Slot 4"];
     fileUrl = [[NSURL URLWithString:PROJECT_DIR] URLByDeletingLastPathComponent];
+    fileUrl = [fileUrl URLByAppendingPathComponent:@"/forge/src/main/java/fuzzyMod/fuzzyLogic/fcl"];
     [self.slot1 setAction:@selector(saveToSlot:)];
     [self.slot2 setAction:@selector(saveToSlot:)];
     [self.slot3 setAction:@selector(saveToSlot:)];

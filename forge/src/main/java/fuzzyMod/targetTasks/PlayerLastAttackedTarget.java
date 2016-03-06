@@ -8,43 +8,33 @@ import net.minecraft.entity.ai.EntityAITarget;
 import net.minecraft.item.Item;
 import net.minecraft.util.MovingObjectPosition;
 
-public class PlayerLastAttackedTarget extends EntityAITarget
+public class PlayerLastAttackedTarget 
 {
-    private EntityMobWithInventory mob;
     private static EntityLivingBase theTarget;
     private static Item lastAttackedItem;
-    private Item signalItem;
-    private static final String __OBFID = "CL_00003012";
-
-    public PlayerLastAttackedTarget(EntityMobWithInventory mob, Item signalItem)
-    {
-        super(mob, false);
-        this.mob = mob;
-        this.signalItem = signalItem;
-        this.setMutexBits(1);
-    }
+    private static boolean activated;
 
     /**
      * Returns whether the EntityAIBase should begin execution.
      */
-    public boolean shouldExecute()
+    public static boolean shouldExecute(EntityMobWithInventory mob)
     {
+  
     	if (theTarget == null) {
     		return false;
-    	} if (signalItem != lastAttackedItem) {
+    	} 
+    	if (theTarget.getEntityId() == mob.getEntityId()) {  
+    		mob.setAttackTarget(null);
     		return false;
     	}
-    	if (theTarget.getEntityId() == this.mob.getEntityId()) {  
-    		this.taskOwner.setAttackTarget(null);
-    		return false;
-    	}
-    	if (this.mob.getDistanceToEntity(theTarget) > 30.0D) {
+    	if (mob.getDistanceToEntity(theTarget) > 30.0D) {
     		return false;
     	}
     	return true;
     }
     
-    public static void updateLastTarget (EntityMobWithInventory mob) {
+    public static void updateLastTarget () {
+    	
     	EntityLivingBase player = Minecraft.getMinecraft().thePlayer;
 
         if (player == null)
@@ -60,7 +50,7 @@ public class PlayerLastAttackedTarget extends EntityAITarget
 		        	if(objectMouseOver != null && objectMouseOver.entityHit != null) {
 		        		Entity targetCandidate = mc.objectMouseOver.entityHit;
 		        		if (mc.objectMouseOver.typeOfHit ==MovingObjectPosition.MovingObjectType.ENTITY && targetCandidate instanceof EntityLivingBase) {
-		        			theTarget = (EntityLivingBase)mob.getEntityWorld().getEntityByID(targetCandidate.getEntityId());
+		        			theTarget = (EntityLivingBase) player.getEntityWorld().getEntityByID(targetCandidate.getEntityId());
 		        			lastAttackedItem = player.getHeldItem().getItem();
 		        		}
 		        	}
@@ -69,8 +59,14 @@ public class PlayerLastAttackedTarget extends EntityAITarget
         }
     }
     
-    public static EntityMobWithInventory getLastTarget() {
+    public static EntityMobWithInventory getLastTarget(EntityMobWithInventory mob) {
     	 if (theTarget != null && theTarget instanceof EntityMobWithInventory) {
+    		 if (theTarget.getEntityId() == mob.getEntityId()) {  
+    			 return null;
+    		 }
+    		 if (mob.getDistanceToEntity(theTarget) > 50.0D) {
+    	    	return null;
+    	     }
     		 return (EntityMobWithInventory)theTarget;
     	 }
     	 return null;
@@ -79,10 +75,5 @@ public class PlayerLastAttackedTarget extends EntityAITarget
     /**
      * Execute a one shot task or start executing a continuous task
      */
-    public void startExecuting()
-    {
-   	 	this.taskOwner.setAttackTarget(this.theTarget);
-        super.startExecuting();
-    }
   
 }

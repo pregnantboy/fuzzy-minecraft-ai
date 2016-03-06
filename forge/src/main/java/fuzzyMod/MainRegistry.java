@@ -3,6 +3,8 @@ package fuzzyMod;
 import fuzzyMod.entity.TestEntity;
 import fuzzyMod.init.TutorialItems;
 import fuzzyMod.proxy.ServerProxy;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -34,6 +36,15 @@ public class MainRegistry {
 	
 	@EventHandler
 	public void postInit (FMLPostInitializationEvent event) {
-		
+		if ( FMLCommonHandler.instance().getSide().isServer())
+	    {
+	    }
+
+	    if ( FMLCommonHandler.instance().getSide().isClient())
+	    {
+	    	FMLCommonHandler.instance().bus().register(new PlayerTickEvents());
+	        MinecraftForge.EVENT_BUS.register(new PlayerTickEvents());
+	    }
+
 	}
 }

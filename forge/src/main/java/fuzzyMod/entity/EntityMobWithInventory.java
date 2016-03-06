@@ -14,13 +14,17 @@ public abstract class EntityMobWithInventory extends EntityMob {
 	protected int arrows;
 	protected MobInventory inventory;
 	protected int team;
+	protected EntityMobWithInventory attacker;
+	int ticker;
 	public EntityMobWithInventory(World worldIn) {
 		super(worldIn);
 		// TODO Auto-generated constructor stub
+		attacker = null;
 		inventory = new MobInventory(10);
 		mana = 20;
 		arrows = 15;
 		team = 1;
+		ticker = 500;
 	}
 	
 	public MobInventory getMobIventory() {
@@ -43,6 +47,21 @@ public abstract class EntityMobWithInventory extends EntityMob {
 		return this.team;
 	}
 	
+	public void onUpdate() {
+		super.onUpdate();
+		if (ticker> 0) {
+			ticker --;
+			return;
+		} 
+		ticker = 500;
+		if (arrows < 15) {
+			arrows ++;
+		}
+		if (mana < 20) {
+			mana ++;
+		}
+	}
+	
 	public double getStrength() {
 		double attackDamage = 0;
 		if (this.getHeldItem() != null) {
@@ -61,5 +80,23 @@ public abstract class EntityMobWithInventory extends EntityMob {
 
 		return armor + attackDamage;
 	}
+	public void setAttacker(EntityMobWithInventory attacker) {
+		this.attacker = attacker;
+	}
 	
+	public EntityMobWithInventory getAttacker() {
+		if (attacker != null && attacker.isEntityAlive()) {
+			return attacker;
+		} else {
+			return null;
+		}
+	}
+	
+	public void useArrow(int arrow) {
+		this.arrows -= arrow;
+	}
+	
+	public void useMana(int mana) {
+		this.mana -=mana;
+	}
 }

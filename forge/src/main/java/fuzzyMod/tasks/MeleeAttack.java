@@ -19,7 +19,7 @@ public class MeleeAttack extends GenericAttack{
 		}
 		currCooldown--;
 		
-        double d0 = this.mob.getDistanceSqToEntity(attackTarget);
+        double d0 = this.getDistanceSqFromTarget();
         this.mob.getLookHelper().setLookPositionWithEntity(attackTarget, 10.0F, 10.0F);
 		if (d0 < 8.0D){
 	            

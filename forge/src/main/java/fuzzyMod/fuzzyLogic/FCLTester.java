@@ -1,5 +1,7 @@
 package fuzzyMod.fuzzyLogic;
 
+import java.io.InputStream;
+import java.io.SequenceInputStream;
 import java.util.Iterator;
 
 import net.sourceforge.jFuzzyLogic.FIS;
@@ -12,39 +14,43 @@ import net.sourceforge.jFuzzyLogic.rule.Variable;
 
 public class FCLTester {
 	public static void main (String [] args) {
-	 String fileName = FCLTester.class.getResource("fcl/test.fcl").getPath();
-	 
-     FIS fis = FIS.load(fileName,true);
-    
-     // Error while loading?
-     if( fis == null ) { 
-         System.err.println("Can't load file: '" + fileName + "'");
-         return;
-     }
+		 InputStream inputFileStream = FCLTester.class.getResourceAsStream("fcl/test.fcl");
+		 InputStream ruleFileStream = FCLTester.class.getResourceAsStream("fcl/slot1.fcl");
+		 
+		 SequenceInputStream stream = new SequenceInputStream(inputFileStream, ruleFileStream);
+		 
+	     FIS fis = FIS.load(stream,true);
+	    
+	     // Error while loading?
+	     if( fis == null ) { 
+	         System.err.println("Can't load files");
+	         return;
+	     }
 
      // Show 
      FunctionBlock functionBlock = fis.getFunctionBlock(null);
 //     JFuzzyChart.get().chart(functionBlock);
      
      // Set inputs
-     fis.setVariable("Health", 6);
+     fis.setVariable("Health", 12);
      fis.setVariable("PlayerHealth", 20);
      fis.setVariable("ArrowCount", 20);
 //     System.out.println(functionBlock.getRuleBlocks());
      // Evaluate
      fis.evaluate();
 
-     // Show output variable's chart
-     Variable out1 = functionBlock.getVariable("AttackNearestEnemyWithMeleeWeapon");
-     Variable out2 = functionBlock.getVariable("AttackNearestEnemyWithArrows");
-     Variable out3 = functionBlock.getVariable("AttackPlayersTargetWithMeleeWeapon");
-          
+//     // Show output variable's chart
+//     Variable out1 = functionBlock.getVariable("AttackNearestEnemyWithMeleeWeapon");
+//     Variable out2 = functionBlock.getVariable("AttackNearestEnemyWithArrows");
+//     Variable out3 = functionBlock.getVariable("AttackPlayersTargetWithMeleeWeapon");
+     System.out.println(functionBlock.getRuleBlocks());
      Iterator<RuleBlock> it = functionBlock.iterator();
      Iterator<Rule> ruleit;
      if (it.hasNext()) {
     	 ruleit = it.next().iterator();
     	 while (ruleit.hasNext()) {
         	 Rule rule = ruleit.next();
+    		 System.out.println("rule");
         	 Iterator <RuleTerm> termit = rule.getConsequents().iterator();
         	 while (termit.hasNext()) {
         		 RuleTerm outcome = termit.next();

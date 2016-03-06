@@ -115,6 +115,7 @@
 - (void)deleteAIObject {
     [AIarray removeObjectAtIndex:[self.tableView selectedRow]];
     [AIDatabase saveData:AIarray];
+    [self clearSelection];
 }
 
 - (void)showAlertToDelete {
