@@ -29,6 +29,9 @@ VAR_OUTPUT              // Define output variable
     AttackPlayersAttackerWithMeleeWeapon: REAL;
     AttackPlayersAttackerWithArrows: REAL;
     AttackPlayersAttackerWithFireballs: REAL;
+    AttackPlayerWithMeleeWeapon: REAL;
+    AttackPlayerWithArrows: REAL;
+    AttackPlayerWithFireballs: REAL;
     RunAwayFromCurrentTarget: REAL;
     RunAwayFromNearestEnemy: REAL;
     RunAwayFromAttacker: REAL;
@@ -231,6 +234,27 @@ DEFUZZIFY AttackPlayersAttackerWithMeleeWeapon
 END_DEFUZZIFY
 
 DEFUZZIFY AttackPlayersAttackerWithFireballs           
+    TERM No := (0,1) (1,0);
+    TERM Yes := (0,0) (1,1);
+    METHOD : LM;      
+    DEFAULT := 0;          
+END_DEFUZZIFY
+
+DEFUZZIFY AttackPlayerWithMeleeWeapon           
+    TERM No := (0,1) (1,0);
+    TERM Yes := (0,0) (1,1);
+    METHOD : LM;      
+    DEFAULT := 0;         
+END_DEFUZZIFY
+
+DEFUZZIFY AttackPlayerWithArrows      
+    TERM No := (0,1) (1,0);
+    TERM Yes := (0,0) (1,1);
+    METHOD : LM;      
+    DEFAULT := 0;            
+END_DEFUZZIFY
+
+DEFUZZIFY AttackPlayerWithFireballs           
     TERM No := (0,1) (1,0);
     TERM Yes := (0,0) (1,1);
     METHOD : LM;      

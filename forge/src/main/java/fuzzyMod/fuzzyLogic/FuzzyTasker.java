@@ -14,6 +14,9 @@ import fuzzyMod.tasks.MeleeAttack;
 import fuzzyMod.tasks.MineOres;
 import fuzzyMod.tasks.SowSeeds;
 import fuzzyMod.tasks.StoreLoot;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 
 public class FuzzyTasker {
 	private EntityMobWithInventory mob;
@@ -50,8 +53,8 @@ public class FuzzyTasker {
 		buildspeed = 5;
 	}
 	
-	public EntityMobWithInventory targeter (int mode) {
-		EntityMobWithInventory target;
+	public Entity targeter (int mode) {
+		Entity target;
 		switch (mode) {
 			case 0: {
 				// nearest enemy
@@ -60,14 +63,19 @@ public class FuzzyTasker {
 			}
 			case 1: {
 				// player last attacked target
+				
 				target = PlayerLastAttackedTarget.getLastTarget(mob); 
+				System.out.println("targeter"+ target);
+				break;
 			}
 			case 2: {
 				// player last attacker target
 				target = PlayerLastAttackerTarget.getPlayerAttacker();
+				break;
 			}
 			default:{
 				target = null;
+				break;
 			}
 		}
 		return target;
@@ -139,6 +147,7 @@ public class FuzzyTasker {
 			} else {
 				mine.nextStep();
 			}
+			break;
 		}
 		default: {
 			return;

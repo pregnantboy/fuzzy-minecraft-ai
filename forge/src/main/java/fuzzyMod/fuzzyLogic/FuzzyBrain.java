@@ -1,6 +1,7 @@
 package fuzzyMod.fuzzyLogic;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Random;
 
 import fuzzyMod.entity.EntityMobWithInventory;
@@ -8,7 +9,12 @@ import fuzzyMod.targetTasks.NearestTarget;
 import fuzzyMod.targetTasks.PlayerLastAttackedTarget;
 import fuzzyMod.targetTasks.PlayerLastAttackerTarget;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import net.sourceforge.jFuzzyLogic.FIS;
@@ -62,53 +68,74 @@ public class FuzzyBrain {
 			fin.setInput("NearestEnemyStrength", 40);
 			fin.setInput("DistFromNearestEnemy", 999);
 		}
-		EntityMobWithInventory lastTarget = PlayerLastAttackedTarget.getLastTarget(this.mob);
+		EntityLivingBase lastTarget = (EntityLivingBase)PlayerLastAttackedTarget.getLastTarget(this.mob);
 		if (lastTarget != null) {
-			fin.setInput("PlayerTargetStrength", lastTarget.getStrength());
+			if (lastTarget instanceof EntityMobWithInventory) {
+				fin.setInput("PlayerTargetStrength", ((EntityMobWithInventory)lastTarget).getStrength());
+			} else {
+				fin.setInput("PlayerTargetStrength", lastTarget.getMaxHealth()/1.5);
+			}
 		} else {
 			fin.setInput("PlayerTargetStrength", 0);
 		}
-		EntityMobWithInventory playerAttacker =  PlayerLastAttackerTarget.getPlayerAttacker() ;
+		
+		EntityLiving playerAttacker =  PlayerLastAttackerTarget.getPlayerAttacker() ;
 		if (playerAttacker != null) {
-			fin.setInput("PlayerAttackerStrength", playerAttacker.getStrength());
+			if (playerAttacker instanceof EntityMobWithInventory) {
+				fin.setInput("PlayerTargetStrength", ((EntityMobWithInventory)playerAttacker).getStrength());
+			} else {
+				fin.setInput("PlayerTargetStrength", playerAttacker.getMaxHealth()/1.5);
+			}
 		} else {
 			fin.setInput("PlayerAttackerStrength" , 0);
 		}
 		EntityMobWithInventory attacker = this.mob.getAttacker();
-		if (attacker != null) {
+		if (attacker != null && (lastTarget instanceof EntityMobWithInventory)) {
 				fin.setInput("AttackerStrength", attacker.getStrength());
 		} else {
 			fin.setInput("AttackerStrength", 0);
 		}
-		this.setAction();
+		ArrayList<String> action = fin.getActions();
+		for (int i = 0 ; i <action.size(); i ++) {
+			if (setAction(action.get(i))) {
+				break;
+			}
+		}
 	}
 	
 	public void printInputs() {
 		fin.printInputs();
 	}
 	
-	public boolean setAction() {
-		String action = fin.getAction();
-		if (action.startsWith("AttackNearestEnemy")) {
-			EntityMobWithInventory target = futa.targeter(0);
+	public boolean setAction(String action) {
+		if (action.startsWith("AttackNearestEnemyWith")) {
+			Entity target = futa.targeter(0);
 			if (target != null) {
-				mob.setAttackTarget(target);
+				mob.setAttackTarget((EntityLivingBase)target);
 			} else {
 				return false;
 			}
 		}
-		if (action.startsWith("AttackPlayersTarget")) {
-			EntityMobWithInventory target = futa.targeter(1);
+		if (action.startsWith("AttackPlayersTargetWith")) {
+			Entity target = futa.targeter(1);
+			System.out.println("the target" + target);
 			if (target != null) {
-				mob.setAttackTarget(target);
+				mob.setAttackTarget((EntityLivingBase)target);
 			} else {
 				return false;
 			}
 		}
-		if (action.startsWith("AttackPlayersAttacker")) {
-			EntityMobWithInventory target = futa.targeter(2);
+		if (action.startsWith("AttackPlayersAttackerWith")) {
+			Entity target = futa.targeter(2);
 			if (target != null) {
-				mob.setAttackTarget(target);
+				mob.setAttackTarget((EntityLivingBase)target);
+			} else {
+				return false;
+			}
+		}
+		if (action.startsWith("AttackPlayerWith")) {
+			if (mob.getTeamNo() != 1) {
+				mob.setAttackTarget(player);
 			} else {
 				return false;
 			}
@@ -118,6 +145,7 @@ public class FuzzyBrain {
 			return true;
 		}
 		if (action.endsWith("WithMeleeWeapon")) {
+			System.out.println("melee attack");
 			futa.setTask(1);
 			return true;
 		}

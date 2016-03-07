@@ -53,7 +53,7 @@ public abstract class EntityMobWithInventory extends EntityMob {
 			ticker --;
 			return;
 		} 
-		ticker = 500;
+		ticker = 20;
 		if (arrows < 15) {
 			arrows ++;
 		}

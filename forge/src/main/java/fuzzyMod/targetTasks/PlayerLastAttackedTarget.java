@@ -10,7 +10,7 @@ import net.minecraft.util.MovingObjectPosition;
 
 public class PlayerLastAttackedTarget 
 {
-    private static EntityLivingBase theTarget;
+    private static Entity theTarget;
     private static Item lastAttackedItem;
     private static boolean activated;
 
@@ -50,7 +50,9 @@ public class PlayerLastAttackedTarget
 		        	if(objectMouseOver != null && objectMouseOver.entityHit != null) {
 		        		Entity targetCandidate = mc.objectMouseOver.entityHit;
 		        		if (mc.objectMouseOver.typeOfHit ==MovingObjectPosition.MovingObjectType.ENTITY && targetCandidate instanceof EntityLivingBase) {
+		        			// if it still doesnt work just return targetCandidate rather then this indirect way
 		        			theTarget = (EntityLivingBase) player.getEntityWorld().getEntityByID(targetCandidate.getEntityId());
+		        			System.out.println(theTarget);
 		        			lastAttackedItem = player.getHeldItem().getItem();
 		        		}
 		        	}
@@ -59,15 +61,16 @@ public class PlayerLastAttackedTarget
         }
     }
     
-    public static EntityMobWithInventory getLastTarget(EntityMobWithInventory mob) {
-    	 if (theTarget != null && theTarget instanceof EntityMobWithInventory) {
+    public static Entity getLastTarget(EntityMobWithInventory mob) {
+    	 if (theTarget != null ) {
     		 if (theTarget.getEntityId() == mob.getEntityId()) {  
     			 return null;
     		 }
     		 if (mob.getDistanceToEntity(theTarget) > 50.0D) {
     	    	return null;
     	     }
-    		 return (EntityMobWithInventory)theTarget;
+    		 theTarget = mob.worldObj.getEntityByID(theTarget.getEntityId());
+    		 return theTarget;
     	 }
     	 return null;
     }

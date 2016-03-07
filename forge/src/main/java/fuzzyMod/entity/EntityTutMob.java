@@ -33,10 +33,7 @@ public class EntityTutMob extends EntityMobWithInventory {
 	public EntityTutMob(World worldIn) {
 		super(worldIn);
 
-		this.tasks.addTask(0, new EntityAITempt(this, 1.2D, Items.apple, false));
-		this.tasks.addTask(1, new EntityAIWander(this, 1.0D));
-		this.tasks.addTask(2, new EntityAISwimming(this));
-
+	
 		this.setSize(0.9F, 2.0F);
 		this.setCanPickUpLoot(true);
 		team = 1;

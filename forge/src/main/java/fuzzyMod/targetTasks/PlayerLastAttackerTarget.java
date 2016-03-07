@@ -7,11 +7,12 @@ import fuzzyMod.entity.EntityMobWithInventory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAITarget;
 
 public class PlayerLastAttackerTarget {
-	private static EntityLivingBase theTarget;
+	private static EntityLiving theTarget;
 
 	
 	
@@ -30,25 +31,27 @@ public class PlayerLastAttackerTarget {
 			return;
 		}
 		Entity entity;
+		EntityLiving entityLiving;
 		Iterator<Entity> iterator = entities.iterator();
 		while(iterator.hasNext()){
 			entity = (Entity)iterator.next();
-			if (entity instanceof EntityCreature) {
+			if (entity instanceof EntityLiving) {
+				entityLiving = (EntityLiving)entity;
 //				System.out.println("checking: " + entity);
-				if (((EntityCreature) entity).getAttackTarget()!= null){
-			
-					if (((EntityCreature) entity).getAttackTarget().getUniqueID() == mc.thePlayer.getUniqueID()) {
-//						System.out.println("found target");
-						theTarget = (EntityCreature) entity;
+//				System.out.println("target" + entityLiving.getAttackTarget());
+				if (entityLiving.getAttackTarget()!= null){
+					if (entityLiving.getAttackTarget() == mc.thePlayer) {
+						System.out.println("found target");
+						theTarget = entityLiving;
 					}
 				}
 			}
 		}
 	}
 	
-	public static EntityMobWithInventory getPlayerAttacker() {
-		if (theTarget != null && theTarget instanceof EntityMobWithInventory) {
-			return (EntityMobWithInventory)theTarget;
+	public static EntityLiving getPlayerAttacker() {
+		if (theTarget != null) {
+			return theTarget;
 		}
 		return null;	
 	}
