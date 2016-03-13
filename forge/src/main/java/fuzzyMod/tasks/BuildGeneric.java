@@ -18,6 +18,7 @@ public abstract class BuildGeneric {
 	protected EntityMob mob;
 	protected boolean hasBuildingInit, isBuildingDone;
 	protected Vec3 buildingSpot;
+	protected boolean hasBuiltOnce;
 	
 	public BuildGeneric (EntityMob mob) {
 		this.mob = mob;
@@ -26,6 +27,7 @@ public abstract class BuildGeneric {
 		world = mob.getEntityWorld();
 		this.blockPosQueue = new LinkedList<BlockPos>();
 		this.blocksQueue = new LinkedList<IBlockState>();
+		hasBuiltOnce = false;
 	}
 	
 	public boolean attemptBuildBlock(int buildSpeed) {
@@ -71,5 +73,11 @@ public abstract class BuildGeneric {
 		mob.getNavigator().tryMoveToXYZ(buildingSpot.xCoord, buildingSpot.yCoord, buildingSpot.zCoord, 1.0D);
 	}
 	
+	public boolean hasBuiltOnce () {
+		return hasBuiltOnce;
+	}
 	
+	public boolean isBuilding () {
+		return hasBuildingInit;
+	}
 }

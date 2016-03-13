@@ -45,6 +45,11 @@ public class PlayerLastAttackedTarget
         {
         	Minecraft mc = Minecraft.getMinecraft();       	
         	if (player.getHeldItem()!= null) {
+        		if (player.getHeldItem().getUnlocalizedName().contains("monsterPlacer")) {
+        			return;
+        		} else {
+        			System.out.println("held item: "+ player.getHeldItem().getUnlocalizedName());
+        		}
         		if (player.isSwingInProgress) {
 		        	MovingObjectPosition objectMouseOver = mc.objectMouseOver;
 		        	if(objectMouseOver != null && objectMouseOver.entityHit != null) {
@@ -52,7 +57,6 @@ public class PlayerLastAttackedTarget
 		        		if (mc.objectMouseOver.typeOfHit ==MovingObjectPosition.MovingObjectType.ENTITY && targetCandidate instanceof EntityLivingBase) {
 		        			// if it still doesnt work just return targetCandidate rather then this indirect way
 		        			theTarget = (EntityLivingBase) player.getEntityWorld().getEntityByID(targetCandidate.getEntityId());
-		        			System.out.println(theTarget);
 		        			lastAttackedItem = player.getHeldItem().getItem();
 		        		}
 		        	}

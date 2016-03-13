@@ -17,6 +17,9 @@ VAR_INPUT               // Define input variables
     PlayerTargetStrength: REAL;
     PlayerAttackerStrength: REAL;
     AttackerStrength: REAL;
+    FertileSoil:REAL;
+    Ore:REAL;
+    Crop:REAL;
 END_VAR
 
 VAR_OUTPUT              // Define output variable
@@ -168,7 +171,25 @@ END_FUZZIFY
 FUZZIFY  DistFromNearestEnemy      
     TERM Near := (0, 1) (10, 1)(20,0) ; 
     TERM Far := (10, 0) (20,1) (300,1) (400,0);
-    TERM OutOfRange := (300, 0) (400, 1) (9999,0);
+    TERM OutofRange := (300, 0) (400, 1) (9999,1);
+END_FUZZIFY
+
+FUZZIFY FertileSoil      
+    TERM Near := (0, 1) (20, 1)(50,0) ; 
+    TERM Far := (20, 0) (30,1) (100,1) (120,0);
+    TERM OutofRange := (70,0) (120, 1) (9999,1);
+END_FUZZIFY
+
+FUZZIFY  Ore   
+    TERM Near := (0, 1) (20, 1)(50,0) ; 
+    TERM Far := (20, 0) (30,1) (100,1) (120,0);
+    TERM OutofRange := (70, 0) (120, 1) (9999,1);
+END_FUZZIFY
+
+FUZZIFY  Crop    
+    TERM Near := (0, 1) (20, 1)(50,0) ; 
+    TERM Far := (20, 0) (30,1) (100,1) (120,0);
+    TERM OutofRange := (70, 0) (120, 1) (9999,1);
 END_FUZZIFY
 
 /*COG Centre of Gravity (Note 1)

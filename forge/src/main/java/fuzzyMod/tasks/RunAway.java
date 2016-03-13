@@ -16,11 +16,13 @@ public class RunAway {
 	protected boolean destinationSet;
 	protected PathEntity path;
 	protected Vec3 destination;
+	protected int ticker;
 
 	public RunAway(EntityMobWithInventory mob, double speed) {
 		this.mob = mob;
 		this.runSpeed = speed;
 		this.destinationSet = false;
+		ticker = 0;
 	}
 
 	public void setSource(Entity source) {
@@ -32,7 +34,7 @@ public class RunAway {
 			if (this.source.getUniqueID() != mob.getUniqueID()) {
 				Vec3 destination = RandomPositionGenerator.findRandomTargetBlockAwayFrom(this.mob, 16, 7,
 						new Vec3(this.source.posX, this.source.posY, this.source.posZ));
-				System.out.println("destination set:" +destination);
+//				System.out.println("destination set:" +destination);
 				if (destination != null) {
 					if (this.source.getDistanceSq(destination.xCoord, destination.yCoord,
 							destination.zCoord) > this.source.getDistanceSqToEntity(this.mob)) {
@@ -60,11 +62,15 @@ public class RunAway {
 		if (this.mob.getPositionVector().distanceTo(source.getPositionVector()) < 30) {
 			setDestination();
 		}
-		if (this.destinationSet) {
-			moveToBlock();
-		} else {
-			setDestination();
-		}
+		if (ticker < 0) {
+			ticker = 30;
+			if (this.destinationSet) {
+				moveToBlock();
+			} else {
+				setDestination();
+			}
+		} 
+		ticker --;
 	}
 
 	protected void moveToBlock() {

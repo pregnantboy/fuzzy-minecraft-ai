@@ -1,6 +1,6 @@
-	RULE 0 : IF Health IS High THEN AttackNearestEnemyWithMeleeWeapon IS Yes;
-	RULE 1 : IF Health IS Low THEN AttackNearestEnemyWithArrows IS Yes;
-	RULE 2 : IF PlayerHealth IS Low THEN AttackPlayersTargetWithMeleeWeapon IS Yes;
+	RULE 0 : IF Weather IS Rain THEN AttackPlayerWithArrows IS Yes;
+	RULE 1 : IF PlayerHealth IS NOT Low THEN AttackPlayersTargetWithArrows IS Yes;
+	RULE 2 : IF Sky IS Dark THEN BuildHouseSmall IS Yes;
 END_RULEBLOCK
 
 END_FUNCTION_BLOCK

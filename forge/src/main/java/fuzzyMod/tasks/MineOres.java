@@ -23,7 +23,11 @@ public class MineOres extends SearchTaskGeneric {
 	public void nextStep() {
 		if (!isMiningOre){
 			nextBlock = getNextBlock(0);
-			storeItemDroppedDetails();
+			if (nextBlock != null) {
+				storeItemDroppedDetails();
+				isMiningOre = true;
+				setCurrentItem(Items.diamond_pickaxe);
+			}
 		} else {
 			if (reachedBlock()) {
 				destroyBlockOre();
@@ -31,16 +35,14 @@ public class MineOres extends SearchTaskGeneric {
 				moveToBlock();
 			}
 		}
-		
 	}
+	
 	@Override
 	protected boolean isCorrectBlock(int i, int j, int k, int mode) {
 		BlockPos pos = new BlockPos(i, j + 1, k);
 		IBlockState currBlockState = world.getBlockState(pos);
 		Block currBlock = currBlockState.getBlock();
 		if (currBlock instanceof BlockOre) {
-			isMiningOre = true;
-			setCurrentItem(Items.diamond_pickaxe);
 			numberOfTicksToDestroy = (int)(currBlock.getBlockHardness(world, pos) * 6);
 			return true;
 		} 

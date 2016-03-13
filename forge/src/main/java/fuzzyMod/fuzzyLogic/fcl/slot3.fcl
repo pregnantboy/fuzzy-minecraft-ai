@@ -1,0 +1,4 @@
+	RULE 0 : IF Health IS NOT Low THEN RunAwayFromNearestEnemy IS Yes;
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK

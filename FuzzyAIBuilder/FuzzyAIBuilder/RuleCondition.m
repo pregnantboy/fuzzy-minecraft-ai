@@ -39,7 +39,10 @@
                        @"NearestEnemyStrength": @[@"Noob", @"AverageJoe", @"EpicBoss"],
                        @"PlayerTargetStrength": @[@"Noob", @"AverageJoe", @"EpicBoss"],
                        @"PlayerAttackerStrength": @[@"Noob", @"AverageJoe", @"EpicBoss"],
-                       @"AttackerStrength" :@[@"Noob", @"AverageJoe", @"EpicBoss"]  // applies only when currently attacked
+                       @"AttackerStrength" :@[@"Noob", @"AverageJoe", @"EpicBoss"],  // applies only when currently attacked
+                       @"FertileSoil":@[@"Near", @"Far", @"Out-of-Range"],
+                       @"Ore":@[@"Near", @"Far", @"Out-of-Range"],
+                       @"Crop":@[@"Near", @"Far", @"Out-of-Range"]
                        };
     });
     return conditions;

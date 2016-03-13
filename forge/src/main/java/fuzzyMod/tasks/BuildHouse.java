@@ -132,6 +132,7 @@ public class BuildHouse extends BuildGeneric{
 		ItemDoor.placeDoor(world, doorPos12, EnumFacing.NORTH, birchDoorBlock);
 		ItemDoor.placeDoor(world, doorPos21, EnumFacing.SOUTH, birchDoorBlock);
 		ItemDoor.placeDoor(world, doorPos22, EnumFacing.SOUTH, birchDoorBlock);
+		hasBuiltOnce = true;
 	}
 	
 }

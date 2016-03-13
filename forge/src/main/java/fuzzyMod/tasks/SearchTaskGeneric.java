@@ -67,6 +67,16 @@ public abstract class SearchTaskGeneric {
 		return null;
 	}
 	
+	public double distToNearestBlock () {
+		BlockPos foundBlock = getNextBlock(1);
+		if (foundBlock == null) {
+			return 9999;
+		}
+		else {
+			return Math.sqrt(mob.getDistanceSqToCenter(foundBlock));
+		}
+	}
+	
 	// j is the vertical axis and is -1 of altitude of character.
 	protected abstract boolean isCorrectBlock(int i, int j, int k, int mode);
 	

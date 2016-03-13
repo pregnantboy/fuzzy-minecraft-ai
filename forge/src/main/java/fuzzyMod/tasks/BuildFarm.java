@@ -19,7 +19,7 @@ public class BuildFarm extends BuildGeneric {
 	IBlockState grassBlock = Blocks.grass.getDefaultState();
 //	IBlockState grassBlock = Blocks.wheat.getDefaultState();
 	IBlockState currBlock;
-
+	
 	public BuildFarm(EntityMob mob, int length, int width) {
 		super(mob);
 		this.length = length;
@@ -82,7 +82,7 @@ public class BuildFarm extends BuildGeneric {
 	@Override
 	protected void finishingTouches() {
 		// TODO Auto-generated method stub
-
+		hasBuiltOnce = true;
 	}
 
 }

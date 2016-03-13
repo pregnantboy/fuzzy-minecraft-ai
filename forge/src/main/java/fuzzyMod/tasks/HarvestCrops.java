@@ -24,7 +24,11 @@ public class HarvestCrops extends SearchTaskGeneric {
 	public void nextStep() {
 		if (!harvestingCrop) {
 			nextBlock = getNextBlock(0);
-			storeItemDroppedDetails();
+			if (nextBlock != null) {
+				storeItemDroppedDetails();
+				harvestingCrop = true;
+				setCurrentItem(Items.wooden_hoe);
+			}
 		} else {
 			if (reachedBlock()) {
 				harvestCrop();
@@ -55,8 +59,6 @@ public class HarvestCrops extends SearchTaskGeneric {
 			BlockPos cropPos = pos.up();
 			IBlockState cropBlockState = world.getBlockState(cropPos);
 			if (isHarvestReady(cropBlockState)) {
-				harvestingCrop = true;
-				setCurrentItem(Items.wooden_hoe);
 				return true;
 			}
 		}

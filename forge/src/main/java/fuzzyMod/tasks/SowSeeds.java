@@ -22,8 +22,16 @@ public class SowSeeds extends SearchTaskGeneric{
 	public void nextStep() {
 		if (!sowingSeeds && !tillingSoil) {
 			nextBlock = getNextBlock(1);
+			if (nextBlock != null) {
+				sowingSeeds = true;
+				setCurrentItem(Items.wheat_seeds);
+			}
 			if (!sowingSeeds) {
 				nextBlock = getNextBlock(2);
+				if (nextBlock != null) {
+					tillingSoil = true;
+					setCurrentItem(Items.iron_hoe);
+				}
 			}
 		} else {
 			if (reachedBlock()) {
@@ -58,9 +66,7 @@ public class SowSeeds extends SearchTaskGeneric{
 		IBlockState currBlockState = world.getBlockState(pos);
 		Block currBlock = currBlockState.getBlock();
 		if (currBlock.isFertile(world, pos) && notPlanted(pos)) {
-			setCurrentItem(Items.wheat_seeds);
 			System.out.println("found fertile block");
-			sowingSeeds = true;
 			return true;
 		}
 		return false;
@@ -72,8 +78,6 @@ public class SowSeeds extends SearchTaskGeneric{
 		IBlockState currBlockState = world.getBlockState(pos);
 		Block currBlock = currBlockState.getBlock();
 		if (currBlock == Blocks.dirt) {
-			setCurrentItem(Items.iron_hoe);
-			tillingSoil = true;
 			return true;
 		}
 		return false;

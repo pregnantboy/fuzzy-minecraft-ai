@@ -25,7 +25,7 @@ public class EntityTutMob3 extends EntityMobWithInventory {
 		this.tasks.addTask(1, new EntityAIWander(this, 1.0D));
 		this.tasks.addTask(2, new EntityAISwimming(this));
 
-		brain = new FuzzyBrain (this,2);
+		brain = new FuzzyBrain (this,3);
 		this.setCurrentItemOrArmor(0, new ItemStack(Items.iron_hoe));
 		this.setCurrentItemOrArmor(1, new ItemStack(Items.iron_boots));
 		this.setCurrentItemOrArmor(2, new ItemStack(Items.iron_leggings));

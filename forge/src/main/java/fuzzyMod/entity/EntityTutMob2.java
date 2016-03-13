@@ -1,5 +1,6 @@
 package fuzzyMod.entity;
 
+import fuzzyMod.fuzzyLogic.FuzzyBrain;
 import fuzzyMod.targetTasks.PlayerLastAttackedTarget;
 import fuzzyMod.targetTasks.PlayerTarget;
 import fuzzyMod.tasks.BuildFarm;
@@ -18,7 +19,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.world.World;
 
 public class EntityTutMob2 extends EntityMobWithInventory {
-
+	FuzzyBrain brain;
 	private RunAway runaway;
 	int ticker;
 	public EntityTutMob2(World worldIn) {
@@ -34,6 +35,7 @@ public class EntityTutMob2 extends EntityMobWithInventory {
 		this.setSize(0.9F, 2.0F);
 		this.setCanPickUpLoot(true);
 		team = 2;
+		brain = new FuzzyBrain (this,2);
 	}
 	
 	protected void applyEntityAttributes() {
@@ -54,14 +56,17 @@ public class EntityTutMob2 extends EntityMobWithInventory {
 	
 	public void onUpdate() {
 		super.onUpdate();
-		if (ticker < 0) {
-			ticker = 20;
-		} else {
-			ticker --;
-			return;
-		}
-		this.runaway.setSource(Minecraft.getMinecraft().thePlayer);
-		this.runaway.nextStep();
+//		if (ticker < 0) {
+//			ticker = 20;
+//		} else {
+//			ticker --;
+//			return;
+//		}
+//		this.runaway.setSource(Minecraft.getMinecraft().thePlayer);
+//		this.runaway.nextStep();
+		
+		brain.setInputs();
+		brain.nextStep();
 
 	}
 	

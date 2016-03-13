@@ -8,6 +8,7 @@ import net.minecraft.util.BlockPos;
 public class BuildMine extends BuildGeneric{
 
 	private int length, width, height;
+	private boolean buildCompletion;
 	
 	IBlockState cobblestoneBlockState = Blocks.cobblestone.getDefaultState();
 	IBlockState coarseDirtBlockState = Blocks.dirt.getStateFromMeta(1);
@@ -93,7 +94,7 @@ public class BuildMine extends BuildGeneric{
 				}
 			}			
 		}
-		
+		buildCompletion = true;
 	}
 	
 	private IBlockState getRandomOre () {

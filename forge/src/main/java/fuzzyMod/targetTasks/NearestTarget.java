@@ -25,6 +25,20 @@ public class NearestTarget {
 		return enemylist.get(0);
 	}
 	
+	public static EntityMobWithInventory nearestAttacker (EntityMobWithInventory mob) {
+		List <EntityMobWithInventory> enemylist = NearestTarget.enemylist(mob);
+		if (enemylist.size() == 0) {
+			return null;
+		}
+		Collections.sort(enemylist, new NearestTarget.Sorter(mob));
+		for (int i = 0 ; i < enemylist.size(); i++) {
+			if (enemylist.get(i).getAttackTarget() == mob) {
+				return enemylist.get(i);
+			}
+		}
+		return null;
+	}
+	
 	public static List<EntityMobWithInventory> enemylist (final EntityMobWithInventory mob) {
 		Predicate targetEnemySelector = new Predicate()
         {
