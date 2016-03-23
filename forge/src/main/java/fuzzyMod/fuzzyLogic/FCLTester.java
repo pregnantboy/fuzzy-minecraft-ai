@@ -15,7 +15,7 @@ import net.sourceforge.jFuzzyLogic.rule.Variable;
 public class FCLTester {
 	public static void main (String [] args) {
 		 InputStream inputFileStream = FCLTester.class.getResourceAsStream("fcl/test.fcl");
-		 InputStream ruleFileStream = FCLTester.class.getResourceAsStream("fcl/slot1.fcl");
+		 InputStream ruleFileStream = FCLTester.class.getResourceAsStream("fcl/slot4.fcl");
 		 
 		 SequenceInputStream stream = new SequenceInputStream(inputFileStream, ruleFileStream);
 		 
@@ -32,17 +32,15 @@ public class FCLTester {
 //     JFuzzyChart.get().chart(functionBlock);
      
      // Set inputs
-     fis.setVariable("Health", 12);
-     fis.setVariable("PlayerHealth", 20);
-     fis.setVariable("ArrowCount", 20);
-//     System.out.println(functionBlock.getRuleBlocks());
+     fis.setVariable("Health", 5);
+     fis.setVariable("PlayerHealth", 16);
+     fis.setVariable("PlayerAttackerStrength", 7);
+     System.out.println(functionBlock.getRuleBlocks());
      // Evaluate
      fis.evaluate();
 
 //     // Show output variable's chart
-//     Variable out1 = functionBlock.getVariable("AttackNearestEnemyWithMeleeWeapon");
-//     Variable out2 = functionBlock.getVariable("AttackNearestEnemyWithArrows");
-//     Variable out3 = functionBlock.getVariable("AttackPlayersTargetWithMeleeWeapon");
+
      System.out.println(functionBlock.getRuleBlocks());
      Iterator<RuleBlock> it = functionBlock.iterator();
      Iterator<Rule> ruleit;

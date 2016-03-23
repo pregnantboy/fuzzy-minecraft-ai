@@ -1,5 +1,6 @@
 package fuzzyMod.entity;
 
+import fuzzyMod.fuzzyLogic.FuzzyBrain;
 import fuzzyMod.tasks.HarvestCrops;
 import fuzzyMod.tasks.MineOres;
 import fuzzyMod.tasks.StoreLoot;
@@ -13,6 +14,7 @@ import net.minecraft.world.World;
 public class EntityTutMob4 extends EntityMobWithInventory {
 	
 	private int lastArrowCount;
+	private FuzzyBrain brain;
 
 	public EntityTutMob4(World worldIn) {
 		super(worldIn);
@@ -22,14 +24,15 @@ public class EntityTutMob4 extends EntityMobWithInventory {
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		
 
-		team = 2;
+		team = 1;
 		this.setCurrentItemOrArmor(0, new ItemStack(Items.bow));
-		this.setCurrentItemOrArmor(1, new ItemStack(Items.leather_boots));
-		this.setCurrentItemOrArmor(2, new ItemStack(Items.leather_leggings));
-		this.setCurrentItemOrArmor(3, new ItemStack(Items.leather_chestplate));
+		this.setCurrentItemOrArmor(1, new ItemStack(Items.diamond_boots));
+		this.setCurrentItemOrArmor(2, new ItemStack(Items.diamond_leggings));
+		this.setCurrentItemOrArmor(3, new ItemStack(Items.diamond_chestplate));
+		this.setCurrentItemOrArmor(3, new ItemStack(Items.diamond_helmet));
 		this.setSize(0.9F, 2.0F);
 		this.setCanPickUpLoot(true);
-		
+		brain = new FuzzyBrain (this,4);
 		this.arrows = 20;
 	}
 
@@ -49,5 +52,8 @@ public class EntityTutMob4 extends EntityMobWithInventory {
 	public void onUpdate()
 	{
 		super.onUpdate();
+		brain.setInputs();
+		brain.nextStep();
+		System.out.println("target 4: " + this.getAttackTarget());
 	}
 }

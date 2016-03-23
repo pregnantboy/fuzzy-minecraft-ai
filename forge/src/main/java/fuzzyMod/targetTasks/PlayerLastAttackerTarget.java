@@ -26,7 +26,7 @@ public class PlayerLastAttackerTarget {
         } 
 		if (mc.thePlayer.getEntityBoundingBox() != null) {
 			entities = mc.thePlayer.getEntityWorld().getEntitiesWithinAABBExcludingEntity(mc.thePlayer, mc.thePlayer.getEntityBoundingBox().expand(16.0D, 4.0D, 16.0D));
-//			System.out.println("found entities");
+			System.out.println("found entities");
 		} else {
 			return;
 		}
@@ -40,6 +40,7 @@ public class PlayerLastAttackerTarget {
 				System.out.println("attacktarget: " + entityLiving.getAttackTarget());
 				if (entityLiving.getAttackTarget()!= null){
 					if (entityLiving.getAttackTarget() == mc.thePlayer) {
+						System.out.println("updating");
 						theTarget = entityLiving;
 					}
 				}

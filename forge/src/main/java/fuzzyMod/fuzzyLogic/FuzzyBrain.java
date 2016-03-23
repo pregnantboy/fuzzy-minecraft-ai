@@ -138,7 +138,7 @@ public class FuzzyBrain {
 		}
 		if (action.startsWith("AttackPlayerWith")) {
 			if (mob.getTeamNo() != 1) {
-				mob.setAttackTarget(player);
+				mob.setAttackTarget(mob.getEntityWorld().getPlayerEntityByUUID(player.getUniqueID()));
 			} else {
 				return false;
 			}

@@ -67,14 +67,23 @@ public class FuzzyTasker {
 		}
 		case 1: {
 			// player last attacked target
-
-			target = PlayerLastAttackedTarget.getLastTarget(mob);
-			System.out.println("targeter" + target);
+			Entity temp = PlayerLastAttackedTarget.getLastTarget(mob);
+			if (temp == null) {
+				target = null;
+			} else {
+				target = mob.getEntityWorld().getEntityByID(temp.getEntityId());
+				System.out.println("targeter" + target);
+			}
 			break;
 		}
 		case 2: {
 			// player last attacker target
-			target = PlayerLastAttackerTarget.getPlayerAttacker();
+			Entity temp = PlayerLastAttackerTarget.getPlayerAttacker();
+			if (temp == null) {
+				target = null;
+			} else {
+				target = mob.getEntityWorld().getEntityByID(temp.getEntityId());
+			}
 			break;
 		}
 		default: {

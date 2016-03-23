@@ -2,6 +2,7 @@ package fuzzyMod.entity;
 
 import fuzzyMod.fuzzyLogic.FuzzyBrain;
 import fuzzyMod.tasks.SowSeeds;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAITempt;

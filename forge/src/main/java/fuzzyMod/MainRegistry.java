@@ -23,6 +23,9 @@ public class MainRegistry {
 	public static MainRegistry modInstance;
 	
 	@EventHandler
+	/**
+	 * Methods to call during pre-initialization
+	 */
 	public void preInit(FMLPreInitializationEvent event) {
 		TutorialItems.init();
 		TutorialItems.register();
@@ -30,11 +33,17 @@ public class MainRegistry {
 	}
 	
 	@EventHandler
+	/**
+	 * Methods to call during initialization
+	 */
 	public void init(FMLInitializationEvent event) {
 		proxy.registerRenders();
 	}
 	
 	@EventHandler
+	/**
+	 * Methods to call during post-initialization
+	 */
 	public void postInit (FMLPostInitializationEvent event) {
 		if ( FMLCommonHandler.instance().getSide().isServer())
 	    {
