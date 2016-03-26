@@ -7,7 +7,9 @@ import net.minecraft.entity.ai.RandomPositionGenerator;
 import net.minecraft.pathfinding.PathEntity;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
-
+/**
+ * Non-combat task that runs away from its target.
+ */
 public class RunAway {
 	protected EntityMobWithInventory mob;
 	protected Entity source;
@@ -17,18 +19,27 @@ public class RunAway {
 	protected PathEntity path;
 	protected Vec3 destination;
 	protected int ticker;
-
+	/**
+	 * Constructor class
+	 * @param mob The AI executing this task.
+	 * @param speed The movement speed when running away.
+	 */
 	public RunAway(EntityMobWithInventory mob, double speed) {
 		this.mob = mob;
 		this.runSpeed = speed;
 		this.destinationSet = false;
 		ticker = 0;
 	}
-
+	
+	/**
+	 * Set the target to run away from.
+	 */
 	public void setSource(Entity source) {
 		this.source = source;
 	}
-
+	/**
+	 * Looks for a random position in the opposite direction of the target.
+	 */
 	private void setDestination() {
 		if (this.source != null) {
 			if (this.source.getUniqueID() != mob.getUniqueID()) {
@@ -54,7 +65,9 @@ public class RunAway {
 		}
 		this.destinationSet = false;
 	}
-
+	/**
+	 * Sets the next action of this task.
+	 */
 	public void nextStep() {
 		if (!this.mob.isEntityAlive() || this.source == null || !this.source.isEntityAlive()) {
 			return;
@@ -72,7 +85,9 @@ public class RunAway {
 		} 
 		ticker --;
 	}
-
+	/**
+	 * Attempts to move the AI to the set destination.
+	 */
 	protected void moveToBlock() {
 		this.mob.getNavigator().setPath(this.path, this.runSpeed);
 	}

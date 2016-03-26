@@ -7,6 +7,9 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 
+/**
+ * Non-combat task that allows the AI to build a farm structure automatically.
+ */
 public class BuildFarm extends BuildGeneric {
 
 	private int length, width;
@@ -19,13 +22,21 @@ public class BuildFarm extends BuildGeneric {
 	IBlockState grassBlock = Blocks.grass.getDefaultState();
 //	IBlockState grassBlock = Blocks.wheat.getDefaultState();
 	IBlockState currBlock;
-	
+	/**
+	 * Constructor class for build farm.
+	 * @param mob The referenced mob.
+	 * @param length The length of the farm.
+	 * @param width The width of the farm.
+	 */
 	public BuildFarm(EntityMob mob, int length, int width) {
 		super(mob);
 		this.length = length;
 		this.width = width;
 	}
-
+	/**
+	 * Initializes the build farm task based on the AI's current location. It will then enqueue the blocks needed to build the farm in a Queue. 
+	 * Sets the equipped item as a iron_hoe.
+	 */
 	public void init() {
 
 		if (hasBuildingInit) {
@@ -78,7 +89,9 @@ public class BuildFarm extends BuildGeneric {
 		hasBuildingInit = true;
 		mob.setCurrentItemOrArmor(0, new ItemStack(Items.iron_hoe));
 	}
-
+	/**
+	 * Adds relevant finishing touches to the farm.
+	 */
 	@Override
 	protected void finishingTouches() {
 		// TODO Auto-generated method stub

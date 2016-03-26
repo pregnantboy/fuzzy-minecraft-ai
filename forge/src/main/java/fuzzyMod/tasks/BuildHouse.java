@@ -10,6 +10,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 
+/**
+ * Non-combat task the allows the AI to build a house automatically.
+ */
 public class BuildHouse extends BuildGeneric{
 
 	private int length, height, width;
@@ -26,13 +29,23 @@ public class BuildHouse extends BuildGeneric{
 	IBlockState brickBlockState = Blocks.brick_block.getDefaultState();
 	Block birchDoorBlock = Blocks.birch_door;
 
+	/**
+	 * Constructor class for build house.
+	 * @param mob The referenced mob.
+	 * @param length The length of the house.
+	 * @param height The height of the house.
+	 * @param width The width of the house.
+	 */
 	public BuildHouse(EntityMob mob, int length, int height, int width) {
 		super(mob);
 		this.length = length;
 		this.height = height;
 		this.width = width;
 	}
-
+	/**
+	 * Initializes the build house task based on the AI's current location. It will then enqueue the blocks needed to build the house in a Queue. 
+	 * Sets the equipped item as a iron shovel.
+	 */
 	@Override
 	public void init() {
 		
@@ -108,7 +121,9 @@ public class BuildHouse extends BuildGeneric{
 		hasBuildingInit = true;
 		mob.setCurrentItemOrArmor(0, new ItemStack(Items.iron_shovel));
 	}
-
+	/**
+	 * Adds a doors to the house.
+	 */
 	@Override
 	protected void finishingTouches() {
 		// build add door

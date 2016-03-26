@@ -6,6 +6,9 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAITarget;
 import net.minecraft.item.Item;
 
+/**
+ * Target task that sets the player as the target.
+ */
 public class PlayerTarget extends EntityAITarget {
 	Item itemTrigger;
 	public PlayerTarget(EntityMobWithInventory mob, Item itemTrigger) {

@@ -1,18 +1,29 @@
 package fuzzyMod.tasks;
 
 import fuzzyMod.entity.EntityMobWithInventory;
-
+/**
+ * Combat task that attacks the target with a held item.
+ */
 public class MeleeAttack extends GenericAttack{
-	
+	/**
+	 * Constructor class
+	 * @param mob The AI executing this task.
+	 */
 	public MeleeAttack (EntityMobWithInventory mob) {
 		super (mob, 20);	
 	}
-	
+	/**
+	 * Constructor class
+	 * @param mob The AI executing this task.
+	 * @param cooldown The time interval between each swing.
+	 */
 	public MeleeAttack (EntityMobWithInventory mob, int cooldown) {
 		super (mob, cooldown);
 	}
 		
-	
+	/**
+	 * Sets the next action of the task. Either moving towards the target or attacking the target with the equipped item.
+	 */
 	public void nextStep () {
 		if (!hasAttackTarget()) {
 			return;

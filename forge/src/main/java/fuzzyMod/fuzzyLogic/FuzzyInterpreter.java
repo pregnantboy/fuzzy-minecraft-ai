@@ -21,11 +21,17 @@ import net.sourceforge.jFuzzyLogic.rule.Rule;
 import net.sourceforge.jFuzzyLogic.rule.RuleBlock;
 import net.sourceforge.jFuzzyLogic.rule.RuleTerm;
 import net.sourceforge.jFuzzyLogic.rule.Variable;
-
+/**
+ * Reads rules file and returns output action string
+ */
 public class FuzzyInterpreter {
 
 	private FIS fis;
-
+	
+	/**
+	 * Constructor method for FuzzyInterpretor
+	 * @param slotNo Slot number to read the rules from.
+	 */
 	public FuzzyInterpreter(int slotNo) {
 		InputStream inputFileStream = this.getClass().getResourceAsStream("fcl/test.fcl");
 		InputStream ruleFileStream = this.getClass().getResourceAsStream("fcl/slot" + slotNo + ".fcl");
@@ -41,11 +47,19 @@ public class FuzzyInterpreter {
 		}
 
 	}
-
+	
+	/**
+	 * Sets the value of an input variable in the Fuzzy Inference System.
+	 * @param variable Input variable to set.
+	 * @param value Value to pass into the variable.
+	 */
 	public void setInput(String variable, double value) {
 		fis.setVariable(variable, value);
 	}
-
+	
+	/**
+	 * Evaluates the FIS and return the outcomes and their respective degree of support.
+	 */
 	public Map<String, Double> evaluate() {
 		FunctionBlock functionBlock = fis.getFunctionBlock(null);
 
@@ -77,16 +91,25 @@ public class FuzzyInterpreter {
 		}
 		return out;
 	}
-
+	
+	/**
+	 * Calls evaluate method and returns sorted outcome.
+	 */
 	public ArrayList<String> getActions() {
 		Map<String, Double> out = this.evaluate();
 		return sortByValue(out);
 	}
-
+	
+	/**
+	 * Prints input in console for debugging. 
+	 */
 	public void printInputs() {
 		System.out.println(fis.getFunctionBlock(null).getVariables().toString());
 	}
-
+	
+	/**
+	 * Sorts the map in descending order.
+	 */
 	public static <K, V extends Comparable<? super V>> ArrayList<K> sortByValue(Map<K, V> map) {
 		List<Map.Entry<K, V>> list = new LinkedList<Entry<K, V>>(map.entrySet());
 		Collections.sort(list, new Comparator<Map.Entry<K, V>>() {

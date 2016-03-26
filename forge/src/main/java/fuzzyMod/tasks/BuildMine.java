@@ -4,7 +4,9 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
-
+/**
+ * Non-combat task the allows the AI to build a mine automatically.
+ */
 public class BuildMine extends BuildGeneric{
 
 	private int length, width, height;
@@ -18,14 +20,22 @@ public class BuildMine extends BuildGeneric{
 	IBlockState [] ores = {Blocks.coal_ore.getDefaultState(), Blocks.diamond_ore.getDefaultState(),
 			Blocks.emerald_ore.getDefaultState(), Blocks.diamond_ore.getDefaultState(), Blocks.gold_ore.getDefaultState(),
 			Blocks.iron_ore.getDefaultState(), Blocks.lapis_ore.getDefaultState()};
-	
+	/**
+	 * Constructor class for build mine.
+	 * @param mob The referenced mob.
+	 * @param length The length of the mine.
+	 */
 	public BuildMine(EntityMob mob, int length) {
 		super(mob);
 		this.length = length;
 		this.width = 7;
 		this.height = 4;
 	}
-
+	
+	/**
+	 * Initializes the build mine task based on the AI's current location. It will then enqueue the blocks needed to build the mine in a Queue. 
+	 * Sets the equipped item as a iron shovel.
+	 */
 	@Override
 	public void init() {
 		if (hasBuildingInit) {
@@ -81,7 +91,9 @@ public class BuildMine extends BuildGeneric{
 		
 		hasBuildingInit = true;
 	}
-	
+	/**
+	 * Clears any other blocks in the mine.
+	 */
 	@Override
 	protected void finishingTouches() {
 		for (int l = 0; l < length -1 ; l++) {
@@ -97,6 +109,9 @@ public class BuildMine extends BuildGeneric{
 		buildCompletion = true;
 	}
 	
+	/**
+	 * Returns a random ore.
+	 */
 	private IBlockState getRandomOre () {
 		int randomNum = (int)(Math.random() * (ores.length));
 		return ores[randomNum];

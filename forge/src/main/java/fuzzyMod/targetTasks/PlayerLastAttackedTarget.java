@@ -8,6 +8,9 @@ import net.minecraft.entity.ai.EntityAITarget;
 import net.minecraft.item.Item;
 import net.minecraft.util.MovingObjectPosition;
 
+/**
+ * Target task that keeps track of the player's last attacked target.
+ */
 public class PlayerLastAttackedTarget 
 {
     private static Entity theTarget;
@@ -33,6 +36,9 @@ public class PlayerLastAttackedTarget
     	return true;
     }
     
+    /**
+	 * Constantly checks if the player swings its held item. If the held item is not an egg, it will update the target that it has attacked.
+	 */
     public static void updateLastTarget () {
     	
     	EntityLivingBase player = Minecraft.getMinecraft().thePlayer;
@@ -65,6 +71,10 @@ public class PlayerLastAttackedTarget
         }
     }
     
+    /**
+	 * Returns the stored entity for last attacked target.
+	 * @param mob The referenced mob.
+	 */
     public static Entity getLastTarget(EntityMobWithInventory mob) {
     	 if (theTarget != null ) {
     		 if (theTarget.getEntityId() == mob.getEntityId()) {  
@@ -79,8 +89,5 @@ public class PlayerLastAttackedTarget
     	 return null;
     }
     
-    /**
-     * Execute a one shot task or start executing a continuous task
-     */
   
 }

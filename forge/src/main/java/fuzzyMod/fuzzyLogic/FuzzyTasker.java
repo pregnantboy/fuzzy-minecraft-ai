@@ -19,6 +19,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 
+/**
+ * Class for dispatching actions to an AI.
+ */
 public class FuzzyTasker {
 	private EntityMobWithInventory mob;
 	ArrowAttack arrow;
@@ -36,7 +39,10 @@ public class FuzzyTasker {
 	RunAway runaway;
 	int taskMode;
 	int buildspeed;
-
+	
+	/**
+	 * Constructor for Fuzzy Tasker.
+	 */
 	public FuzzyTasker(EntityMobWithInventory mob) {
 		this.mob = mob;
 		fireball = new FireballAttack(this.mob, 30, 3);
@@ -56,7 +62,11 @@ public class FuzzyTasker {
 		taskMode = -1;
 		buildspeed = 5;
 	}
-
+	
+	/**
+	 * Computes and returns the entity to target.
+	 * @param mode Chooses which type of target to acquire.
+	 */
 	public Entity targeter(int mode) {
 		Entity target;
 		switch (mode) {
@@ -94,10 +104,16 @@ public class FuzzyTasker {
 		return target;
 	}
 
+	/**
+	 * Set the index of the current task.
+	 */
 	public void setTask(int mode) {
 		taskMode = mode;
 	}
 
+	/**
+	 * Generic method that calls the nextStep or attempBuildBlock method of the current task being asked to the AI.
+	 */
 	public void nextStep() {
 		switch (taskMode) {
 		case 0: {
@@ -183,7 +199,10 @@ public class FuzzyTasker {
 		}
 		}
 	}
-
+	
+	/**
+	 * Returns true of the mob is currently building a structure. This is mainly used to prevent a mob from starting to mine or farm when it has not finished building a structure.
+	 */
 	public boolean isBuilding() {
 		if (shortmine.isBuilding() || longmine.isBuilding() || smallfarm.isBuilding() || largefarm.isBuilding()
 				|| smallhouse.isBuilding() || largehouse.isBuilding()) {

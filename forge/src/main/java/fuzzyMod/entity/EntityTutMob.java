@@ -22,6 +22,9 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+/**
+ * Entity for FuzzyMob. Follows the rules exported into Slot 1 by FuzzyAIBuilder.
+ */
 public class EntityTutMob extends EntityMobWithInventory {
 	// house builder
 	
@@ -47,7 +50,11 @@ public class EntityTutMob extends EntityMobWithInventory {
 		this.mana = 50;
 		
 	}
-
+	
+	/**
+	 * Alters the attributes of the entity e.g. attackDamage, maxHealth, moveSpeed.
+	 * Called before the creation of the object.
+	 */
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(3);

@@ -11,6 +11,9 @@ import net.minecraft.init.Items;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 
+/**
+ * Non-combat task that allows the AI to automatically look for ores to mine.
+ */
 public class MineOres extends SearchTaskGeneric {
 	private boolean isMiningOre; 
 	private int numberOfTicksToDestroy;
@@ -19,6 +22,9 @@ public class MineOres extends SearchTaskGeneric {
 		isMiningOre = false;
 		setCurrentItem(Items.iron_pickaxe);
 	}
+	/**
+	 * Set the next action for the task. Could be either mining to ore or searching for one or moving towards it.
+	 */
 	@Override
 	public void nextStep() {
 		if (!isMiningOre){
@@ -37,6 +43,9 @@ public class MineOres extends SearchTaskGeneric {
 		}
 	}
 	
+	/**
+	 * Returns true if the block is of a mineable ore block.
+	 */
 	@Override
 	protected boolean isCorrectBlock(int i, int j, int k, int mode) {
 		BlockPos pos = new BlockPos(i, j + 1, k);
@@ -48,7 +57,9 @@ public class MineOres extends SearchTaskGeneric {
 		} 
 		return false;
 	}
-	
+	/**
+	 * Mines the ore by destroying it and adding to the inventory.
+	 */
 	private void destroyBlockOre () {
 		// probably set the number of ticks equal to the block hardness
 		mob.swingItem(); 

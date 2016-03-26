@@ -13,6 +13,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Renders Custom Entity for Slot 1 and assigns mob texture.
+ */
 @SideOnly(Side.CLIENT)
 public class RenderTestEntity extends RenderBiped
 {

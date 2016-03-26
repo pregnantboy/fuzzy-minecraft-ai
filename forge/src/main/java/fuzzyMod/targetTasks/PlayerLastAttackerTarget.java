@@ -11,11 +11,16 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAITarget;
 
+/**
+ * Target task that gets the last attacker that attacked the Player.
+ */
 public class PlayerLastAttackerTarget {
 	private static EntityLiving theTarget;
 
-	
-	
+	/**
+	 * Updates the player's attacker. This is done by getting the entities around the Player and sorting them based on their distance to the Player.
+	 * Next it checks if the attack target is the player itself.
+	 */
 	public static void updatePlayerAttacker() {
 	
 		Minecraft mc = Minecraft.getMinecraft();
@@ -48,6 +53,9 @@ public class PlayerLastAttackerTarget {
 		}
 	}
 	
+	/**
+	 * Returns the stored player's attacker.
+	 */
 	public static EntityLiving getPlayerAttacker() {
 		if (theTarget != null) {
 			return theTarget;

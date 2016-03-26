@@ -11,11 +11,16 @@ import fuzzyMod.MainRegistry;
 import net.minecraft.entity.EntityList;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
-public class TestEntity {
+/**
+ * Registers customEntityClasses and creates the item 'egg' for spawning in the game.
+ */
+public class EntityEggRegistry {
 	public static void mainRegistry() {
 		registerEntity();
 	}
-		
+	/**
+	 * Calls createEntity for each custom class created.
+	 */
 	public static void registerEntity() {
 		createEntity(EntityTutMob.class, "TutMob", 0x90C3D4, 0x010203);
 		createEntity(EntityTutMob2.class, "TutMob2", 0x010203, 0x90C3D4);
@@ -23,6 +28,9 @@ public class TestEntity {
 		createEntity(EntityTutMob4.class, "TutMob4", 0xff3232, 0x010203);
 	}
 	
+	/**
+	 * Registers customEntityClasses and assigns color to egg.
+	 */
 	public static void createEntity(Class entityClass, String entityName, int solidColour, int spotColour) {
 		int randomId = EntityRegistry.findGlobalUniqueEntityId();
 		
@@ -31,6 +39,9 @@ public class TestEntity {
 		createEgg(randomId, solidColour, spotColour);
 	}
 	
+	/**
+	 * Registers egg.
+	 */
 	public static void createEgg(int randomId, int solidColour, int spotColour) {
 		EntityList.entityEggs.put(Integer.valueOf(randomId), new EntityList.EntityEggInfo(randomId, solidColour, spotColour));
 	}

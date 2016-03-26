@@ -11,6 +11,9 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+/**
+ * Entity for FuzzyMob. Follows the rules exported into Slot 4 by FuzzyAIBuilder.
+ */
 public class EntityTutMob4 extends EntityMobWithInventory {
 	
 	private int lastArrowCount;
@@ -35,7 +38,10 @@ public class EntityTutMob4 extends EntityMobWithInventory {
 		brain = new FuzzyBrain (this,4);
 		this.arrows = 20;
 	}
-
+	/**
+	 * Alters the attributes of the entity e.g. attackDamage, maxHealth, moveSpeed.
+	 * Called before the creation of the object.
+	 */
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20);

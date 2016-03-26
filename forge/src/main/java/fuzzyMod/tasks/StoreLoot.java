@@ -7,17 +7,27 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.BlockPos;
-
+/**
+ * Non-combat task that allows the AI to store its current inventory in a chest.
+ */
 public class StoreLoot extends SearchTaskGeneric{
 	private boolean storingLoot;
 	private ItemStack[] itemStacks;
 	private TileEntityChest tileEntity;
 	private int currIndex;
+	/**
+	 * Constructor class for store loot task.
+	 * @param mob The AI executing the task.
+	 * @param range The range to search in.
+	 */
 	public StoreLoot(EntityMobWithInventory mob, int range) {
 		super(mob, range);
 		storingLoot = false;
 	}
-
+	
+	/**
+	 * Sets the next action for the task. Could be looking for, moving to or dumping loot in a chest.
+	 */
 	@Override
 	public void nextStep() {
 		if (!storingLoot) {
@@ -35,7 +45,11 @@ public class StoreLoot extends SearchTaskGeneric{
 			}
 		}
 	}
-
+	/**
+	 * Checks if block is chest.
+	 * @param i,j,k The position of the block to check.
+	 * @param mode not necessary.
+	 */
 	@Override
 	protected boolean isCorrectBlock(int i, int j, int k, int mode) {
 		BlockPos pos = new BlockPos(i, j + 1, k);
@@ -47,7 +61,9 @@ public class StoreLoot extends SearchTaskGeneric{
 		} 
 		return false;
 	}
-	
+	/**
+	 * Stores all item in the chest. The chest will show the items stored if the player interacts with 
+	 */
 	protected void dumpLoot() {
 		// if finished storing
 		 if (currIndex >= itemStacks.length) {

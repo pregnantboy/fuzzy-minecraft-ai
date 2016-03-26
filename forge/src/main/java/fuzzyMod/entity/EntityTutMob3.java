@@ -11,6 +11,9 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+/**
+ * Entity for FuzzyMob. Follows the rules exported into Slot 3 by FuzzyAIBuilder.
+ */
 public class EntityTutMob3 extends EntityMobWithInventory {
 	// planter
 
@@ -36,7 +39,11 @@ public class EntityTutMob3 extends EntityMobWithInventory {
 		this.setCanPickUpLoot(true);
 		team =2;
 	}
-
+	
+	/**
+	 * Alters the attributes of the entity e.g. attackDamage, maxHealth, moveSpeed.
+	 * Called before the creation of the object.
+	 */
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20);

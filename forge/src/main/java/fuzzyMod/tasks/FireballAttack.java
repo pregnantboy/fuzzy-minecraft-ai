@@ -8,11 +8,19 @@ import net.minecraft.util.MathHelper;
 
 // Taken from EntityBlaze
 
+/**
+ * Combat task that allows the AI to throw fireballs at a target, setting them ablaze.
+ */
 public class FireballAttack extends GenericAttack {
 
     private int charges;
     private int numBalls;
-
+    /**
+	 * Constructor class for fireball attack
+	 * @param mob The referenced mob
+	 * @param cooldown The time interval between each throw
+	 * @param numBalls The number of fireballs that can be thrown at once.
+	 */
     public FireballAttack(EntityMobWithInventory mob, int cooldown, int numBalls)
     {
     	super (mob, cooldown);
@@ -20,7 +28,9 @@ public class FireballAttack extends GenericAttack {
         this.charges = 0;
     }
 
-
+    /**
+	 * Sets the next action of the fireball task. If within range, it will spawn the fireballs with a directional heading towards the attack target. Or else, it will move into range.
+	 */
     public void nextStep()
     {
     	if (!hasAttackTarget()) {

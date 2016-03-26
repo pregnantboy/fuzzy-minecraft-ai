@@ -22,6 +22,9 @@ import net.sourceforge.jFuzzyLogic.FunctionBlock;
 import net.sourceforge.jFuzzyLogic.plot.JFuzzyChart;
 import net.sourceforge.jFuzzyLogic.rule.Variable;
 
+/**
+ * Decision Maker Class for fuzzy AI agents. To be instantiated in every custom mob.
+ */
 public class FuzzyBrain {
 	private EntityMobWithInventory mob;
 	private FuzzyInterpreter fin;
@@ -29,17 +32,25 @@ public class FuzzyBrain {
 	EntityPlayer player;
 	World world;
 	int ticker;
-
+	
+	/**
+	 * Constructor for FuzzyBrain
+	 * @param mob Mob to assign to.
+	 * @param slotNo Slot number corresponding to the rules to read from.
+	 */
 	public FuzzyBrain(EntityMobWithInventory mob, int slotNo) {
 		this.mob = mob;
 		fin = new FuzzyInterpreter(slotNo);
 		player = Minecraft.getMinecraft().thePlayer;
 		world = Minecraft.getMinecraft().theWorld;
-		ticker = 100;
+		ticker = 20;
 		futa = new FuzzyTasker(mob);
 	}
-
-	// should be executed every 10 ticks probably (0.5 seconds)
+	
+	/**
+	 * Sets the current world conditions as inputs for the Fuzzy Inference System.
+	 * Is called every 100 ticks.
+	 */
 	public void setInputs() {
 		if (player == null || world == null) {
 			return;
@@ -106,11 +117,17 @@ public class FuzzyBrain {
 			}
 		}
 	}
-
+	/**
+	 * Prints input in console for debuggin. 
+	 */
 	public void printInputs() {
 		fin.printInputs();
 	}
-
+	
+	/**
+	 * Set action to be executed by mob.
+	 * @param action String corresponding to the action to execute.
+	 */
 	public boolean setAction(String action) {
 		if (action.startsWith("AttackNearestEnemyWith")) {
 			Entity target = futa.targeter(0);
@@ -236,7 +253,10 @@ public class FuzzyBrain {
 		}
 		return false;
 	}
-
+	
+	/**
+	 * Calls nextStep method in Fuzzy Tasker.
+	 */
 	public void nextStep() {
 		futa.nextStep();
 	}

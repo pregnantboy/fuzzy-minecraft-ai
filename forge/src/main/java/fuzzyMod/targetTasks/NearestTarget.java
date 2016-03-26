@@ -14,8 +14,14 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.player.EntityPlayer;
 
+/**
+ * A target task that look for the nearest target. Can be either attacking or not attacking. 
+ */
 public class NearestTarget {
-	
+	/**
+	 * Returns the nearest enemy that is closest to the mob
+	 * @param mob The mob that is referenced to.
+	 */
 	public static EntityMobWithInventory nearestEnemy (EntityMobWithInventory mob) {
 		List <EntityMobWithInventory> enemylist = NearestTarget.enemylist(mob);
 		if (enemylist.size() == 0) {
@@ -24,7 +30,11 @@ public class NearestTarget {
 		Collections.sort(enemylist, new NearestTarget.Sorter(mob));
 		return enemylist.get(0);
 	}
-	
+	/**
+	 * A target task that look for the nearest enemy attacker.
+	 * @param mob The mob that is referenced to.
+	 * @return The nearest attacker that is attacking the referenced mob.
+	 */
 	public static EntityMobWithInventory nearestAttacker (EntityMobWithInventory mob) {
 		List <EntityMobWithInventory> enemylist = NearestTarget.enemylist(mob);
 		if (enemylist.size() == 0) {
@@ -38,7 +48,11 @@ public class NearestTarget {
 		}
 		return null;
 	}
-	
+	/**
+	 * Finds the enemies that is around the referenced mob and checks if they are in the same team.
+	 * @param mob The mob that is referenced to.
+	 * @return List of enemies that are not in the same team as the referenced mob.
+	 */
 	public static List<EntityMobWithInventory> enemylist (final EntityMobWithInventory mob) {
 		Predicate targetEnemySelector = new Predicate()
         {
@@ -67,12 +81,21 @@ public class NearestTarget {
         return list;
 	}
 	
-	
+	/**
+	 * Using the enemylist function above, find the number fo enemies in the vicinity of the referenced mob.
+	 * @param mob The referenced mob.
+	 * @return Size of the enemylist.
+	 */
 	public static int numEnemies(EntityMobWithInventory mob) {
 		List list = NearestTarget.enemylist(mob);
         return list.size();
 	}
 	
+	/**
+	 * Finds the number of allies around the referenced mob.
+	 * @param mob The referenced mob.
+	 * @return Number of allies.
+	 */
 	public static int numAllies(final EntityMobWithInventory mob) {
 		Predicate targetAllySelector = new Predicate()
         {
@@ -101,6 +124,9 @@ public class NearestTarget {
         return list.size();
 	}
 	
+	/**
+	 * Used to sort the number list of enemies based on the squared distance to the mob.
+	 */
 	public static class Sorter implements Comparator
     {
         private final Entity theEntity;

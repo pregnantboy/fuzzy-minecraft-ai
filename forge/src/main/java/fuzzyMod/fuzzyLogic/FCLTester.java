@@ -12,6 +12,9 @@ import net.sourceforge.jFuzzyLogic.rule.RuleBlock;
 import net.sourceforge.jFuzzyLogic.rule.RuleTerm;
 import net.sourceforge.jFuzzyLogic.rule.Variable;
 
+/**
+ * Used for debugging and testing of FCL library. Also used for calculating fuzzified values for crisp input for testing purposes.
+ */
 public class FCLTester {
 	public static void main (String [] args) {
 		 InputStream inputFileStream = FCLTester.class.getResourceAsStream("fcl/test.fcl");

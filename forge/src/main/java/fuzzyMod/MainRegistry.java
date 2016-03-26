@@ -1,6 +1,6 @@
 package fuzzyMod;
 
-import fuzzyMod.entity.TestEntity;
+import fuzzyMod.entity.EntityEggRegistry;
 import fuzzyMod.init.TutorialItems;
 import fuzzyMod.proxy.ServerProxy;
 import net.minecraftforge.common.MinecraftForge;
@@ -22,28 +22,28 @@ public class MainRegistry {
 	@Instance(Reference.MOD_ID)
 	public static MainRegistry modInstance;
 	
-	@EventHandler
 	/**
 	 * Methods to call during pre-initialization
 	 */
+	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		TutorialItems.init();
 		TutorialItems.register();
-		TestEntity.mainRegistry();
+		EntityEggRegistry.mainRegistry();
 	}
 	
-	@EventHandler
 	/**
 	 * Methods to call during initialization
 	 */
+	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		proxy.registerRenders();
 	}
 	
-	@EventHandler
 	/**
 	 * Methods to call during post-initialization
 	 */
+	@EventHandler
 	public void postInit (FMLPostInitializationEvent event) {
 		if ( FMLCommonHandler.instance().getSide().isServer())
 	    {

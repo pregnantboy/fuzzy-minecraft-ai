@@ -13,6 +13,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
+/**
+ * Client proxy class for local game clients that register custom renderers for custom entities.
+ */
 public class ClientProxy extends ServerProxy {
 	@Override
 	public void registerRenders() {

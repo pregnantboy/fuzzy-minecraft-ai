@@ -6,13 +6,23 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 
+/**
+ * Combat task that allows the AI to fire arrows at the target, damaging them.
+ */
 public class ArrowAttack extends GenericAttack{
 
+	/**
+	 * Constructor class for arrow attack.
+	 * @param mob The referenced mob.
+	 * @param cooldown The number of ticks between each firing.
+	 */
 	public ArrowAttack(EntityMobWithInventory mob, int cooldown) {
 		super(mob, cooldown);
 		currCooldown = cooldown;
 	}
-
+	/**
+	 * Decides on the next action for the task. Firstly, checks if it is within range. If yes, it will start firing arrows. If no, it will move into range.
+	 */
 	@Override
 	public void nextStep() {
 		if (!hasAttackTarget()) {
