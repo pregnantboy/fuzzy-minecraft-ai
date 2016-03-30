@@ -135,14 +135,6 @@ public class BuildHouse extends BuildGeneric{
 		BlockPos doorPos14 = new BlockPos(x + width / 2 - 1, y + 1, z + length - 1);
 		BlockPos doorPos23 = new BlockPos(x + width / 2, y + 1, z);
 		BlockPos doorPos24 = new BlockPos(x + width / 2 - 1, y + 1, z);
-		// world.setBlockToAir(doorPos11);
-		// world.setBlockToAir(doorPos12);
-		// world.setBlockToAir(doorPos21);
-		// world.setBlockToAir(doorPos22);
-		// world.setBlockToAir(doorPos13);
-		// world.setBlockToAir(doorPos14);
-		// world.setBlockToAir(doorPos23);
-		// world.setBlockToAir(doorPos24);
 		ItemDoor.placeDoor(world, doorPos11, EnumFacing.NORTH, birchDoorBlock);
 		ItemDoor.placeDoor(world, doorPos12, EnumFacing.NORTH, birchDoorBlock);
 		ItemDoor.placeDoor(world, doorPos21, EnumFacing.SOUTH, birchDoorBlock);

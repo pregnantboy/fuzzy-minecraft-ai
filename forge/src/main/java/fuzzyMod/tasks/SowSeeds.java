@@ -10,7 +10,7 @@ import net.minecraft.util.BlockPos;
  * Non-combat task that either sow seeds on fertile ground or till soil.
  */
 public class SowSeeds extends SearchTaskGeneric{
-	private boolean sowingSeeds, tillingSoil; // actually means moving to block to sow/till
+	private boolean sowingSeeds, tillingSoil; 
 	IBlockState wheatBlock = Blocks.wheat.getDefaultState();
 	IBlockState farmlandBlock = Blocks.farmland.getDefaultState();
 	/**
@@ -127,7 +127,4 @@ public class SowSeeds extends SearchTaskGeneric{
 		nextBlock = null;
 		tillingSoil = false;
 	}
-	// /give player minecraft:dye 1 15 for bone meal
-	// checkout destroyBlock
-	// setBlockState flag = 3?
 }
