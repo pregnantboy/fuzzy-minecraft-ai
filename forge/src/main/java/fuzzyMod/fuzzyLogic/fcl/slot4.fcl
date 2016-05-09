@@ -1,5 +1,4 @@
-	RULE 0 : IF Health IS NOT Low AND PlayerHealth IS NOT High THEN AttackPlayersAttackerWithMeleeWeapon IS Yes;
-	RULE 1 : IF Health IS Low AND PlayerAttackerStrength IS NOT Noob THEN RunAwayFromPlayersAttacker IS Yes;
+	RULE 0 : IF Health IS High THEN MineOresAny IS Yes;
 END_RULEBLOCK
 
 END_FUNCTION_BLOCK

@@ -171,15 +171,15 @@ public class FuzzyTasker {
 			break;
 		}
 		case 9: {
-			harvest.nextStep();
-			break;
-		}
-		case 10: {
 			if (this.mob.getMobIventory().isFull()) {
 				loot.nextStep();
 			} else {
-				sow.nextStep();
+				harvest.nextStep();
 			}
+			break;
+		}
+		case 10: {
+			sow.nextStep();
 			break;
 		}
 		case 11: {

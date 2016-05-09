@@ -59,7 +59,7 @@ public class FuzzyBrain {
 			ticker--;
 			return;
 		}
-		ticker = 100;
+		ticker = 10;
 		fin.setInput("Health", this.mob.getHealth());
 		fin.setInput("Mana", this.mob.getMana());
 		fin.setInput("ArrowCount", this.mob.getArrows());

@@ -13,6 +13,7 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAIBreakDoor;
+import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -30,6 +31,8 @@ public class EntityTutMob2 extends EntityMobWithInventory {
 		// TODO Auto-generated constructor stub
 		ticker =0;
 		runaway = new RunAway(this, 1.6D);
+		this.tasks.addTask(1, new EntityAISwimming(this));
+
 		this.setCurrentItemOrArmor(0, new ItemStack(Items.golden_hoe));
 		this.setCurrentItemOrArmor(1, new ItemStack(Items.golden_boots));
 		this.setCurrentItemOrArmor(2, new ItemStack(Items.golden_leggings));

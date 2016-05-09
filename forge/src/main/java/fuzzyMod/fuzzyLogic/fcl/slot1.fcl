@@ -1,6 +1,7 @@
-	RULE 0 : IF PlayerHealth IS NOT Low THEN AttackPlayersTargetWithMeleeWeapon IS Yes;
-	RULE 1 : IF Mana IS Low THEN AttackNearestEnemyWithMeleeWeapon IS Yes;
-	RULE 2 : IF Mana IS NOT Low THEN AttackNearestEnemyWithFireballs IS Yes;
+	RULE 0 : IF NumEnemies IS NOT None AND DistFromNearestEnemy IS Near THEN RunAwayFromNearestEnemy IS Yes;
+	RULE 1 : IF FertileSoil IS NOT OutofRange AND NumEnemies IS None THEN SowSeedsOfWheat IS Yes;
+	RULE 2 : IF Crop IS Near AND FertileSoil IS NOT Near THEN HarvestWheat IS Yes;
+	RULE 3 : IF DistFromNearestEnemy IS NOT Near AND Health IS NOT Low THEN AttackNearestEnemyWithArrows IS Yes;
 END_RULEBLOCK
 
 END_FUNCTION_BLOCK

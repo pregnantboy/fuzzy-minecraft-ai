@@ -41,12 +41,13 @@ public class EntityTutMob extends EntityMobWithInventory {
 		this.setCanPickUpLoot(true);
 		team = 1;
 		brain = new FuzzyBrain(this, 1);
-		
+		this.tasks.addTask(1, new EntityAISwimming(this));
+		this.tasks.addTask(0, new EntityAITempt(this, 1.2D, Items.apple, false));
 		this.setCurrentItemOrArmor(0, new ItemStack(Items.blaze_rod));
 		this.setCurrentItemOrArmor(1, new ItemStack(Items.leather_boots));
 		this.setCurrentItemOrArmor(2, new ItemStack(Items.leather_leggings));
 		this.setCurrentItemOrArmor(3, new ItemStack(Items.leather_chestplate));
-		
+		this.arrows = 200;
 		this.mana = 50;
 		
 	}

@@ -26,6 +26,7 @@ public class MobInventory {
 	 * Returns true if inventory is full.
 	 */
 	public boolean isFull () {
+		System.out.println(count + " >= " + limit);
 		return count >= limit;
 	}
 	

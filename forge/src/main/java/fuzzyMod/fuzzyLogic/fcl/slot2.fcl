@@ -1,6 +1,4 @@
-	RULE 0 : IF Weather IS Rain THEN AttackPlayerWithArrows IS Yes;
-	RULE 1 : IF PlayerHealth IS NOT Low THEN AttackPlayersTargetWithArrows IS Yes;
-	RULE 2 : IF Sky IS Dark THEN BuildHouseSmall IS Yes;
+	RULE 0 : IF Crop IS Near THEN HarvestWheat IS Yes;
 END_RULEBLOCK
 
 END_FUNCTION_BLOCK

@@ -107,6 +107,7 @@ public class BuildMine extends BuildGeneric{
 			}			
 		}
 		buildCompletion = true;
+		hasBuiltOnce = true;
 	}
 	
 	/**
